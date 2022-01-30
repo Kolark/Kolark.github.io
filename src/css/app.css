@@ -1,0 +1,53 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+:root {
+    --bg : #160C28;
+    --title : #EFCB68;
+    --text : rgb(255, 255, 255);
+    --margin : 6vh 6vw;
+    --w-margin: 6vw;
+    --h-margin: 6vh;
+    --bottom-margin : 3vmin;
+    --max-fontsize : 2rem;
+    --min-fontsize : 1rem;
+    --fontsize: 10vmax;
+}
+
+@font-face {
+  font-family: geosans;
+  src: url(../fonts/GeosansLight.ttf);
+}
+
+@font-face {
+  font-family: lexendMega;
+  src: url(../fonts/LexendMega-ExtraLight.ttf);
+}
+
+section,
+p,
+ul,
+li,
+a {
+    margin: 0;
+    padding: 0;
+}
+
+
+p {
+  /* font-family: "geosans"; */
+  color: var(--text);
+}
+
+.title {
+  font-family: "lexendMega";
+  color: var(--title);
+}
+

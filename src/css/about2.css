@@ -1,0 +1,165 @@
+
+:root {
+	--about-size : 100vw;
+	--skills-size : 40vw;
+	--projects-size : 100vw;
+	--about-margin: 5rem 3vmin;
+	--skills-margin: 5rem 0vmin 5rem 8vmin;
+}
+
+body {
+	position: relative;
+	height: calc(var(--about-size)+var(--skills-size)+var(--projects-size) - 100vw + 100vh);
+	width: 100vw;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: var(--bg);
+	/* border: solid 0.4px firebrick; */
+	overflow-x: hidden;
+}
+
+.main-content {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: calc(var(--about-size) + var(--skills-size) + var(--projects-size));;
+	background-color: rgba(137, 43, 226, 0.171);
+	border: solid 0.4px rgb(242, 247, 0);
+
+	display: grid;
+	grid-template-columns: 1fr 0.4fr 1fr;
+	grid-auto-rows: 1fr;
+
+}
+
+
+.main-section {
+	border: 0.1px solid rgb(0, 255, 85);
+	/* background-color: brown; */
+}
+/* -----ABOUT-------- */
+.about {
+	position: relative;
+	display: flex;
+	justify-content: center;
+
+}
+
+#name {
+	display: block;
+	font-size: clamp(1.25rem,8vw,2.9rem);;
+}
+
+.about-content {
+	position: absolute;
+	/* top: var(--margin-top); */
+	margin: var(--about-margin);
+	width: max(70vw,70vmin);
+	text-align: center;
+	font-family: "geosans";
+	font-size: clamp(1rem,6vw,2.3rem);
+	background-color: rgb(46, 48, 47);
+}
+
+/*  */
+
+.projects {
+
+}
+/* -----skills */
+.skills {
+	position: relative;
+}
+
+.skills__content {
+	margin: var(--skills-margin);
+	background-color: cadetblue;
+	font-size: 1.75rem;
+	font-family: "geosans";
+}
+
+.skills__content h2 {
+	font-family: "lexendMega";
+	color: var(--text);
+	text-align: left;
+}
+.skills__content p {
+	line-height: 2.125rem;
+}
+
+.skill {
+	transition: all 100ms;
+	border-color: rgb(255, 0, 119);
+}
+.skill:hover {
+
+	padding: 0.125rem 1rem;
+	border: solid 0.1rem rgb(255, 0, 119);
+	border-radius: 2rem;
+}
+
+/*  */
+
+/* ----TEST------ */
+.test {
+	position: absolute;
+	width: 100vw;
+	height: calc(var(--about-size)+var(--skills-size)+var(--projects-size) - 100vw + 100vh);
+	background-color: rgba(0, 0, 0, 0.281);
+	z-index: -10;
+}
+
+.squares {
+	position: absolute;
+	left: 50vw;
+	top: 140vw;
+}
+.square {
+	height: 200px;
+	width: 200px;
+	background-color: chartreuse;
+	border: solid 2px red;
+}
+
+@media screen and (max-width: 1024px) {
+
+	body {
+		height: fit-content;
+	}
+
+	.main-content {
+		position: relative;
+		height: 300vh;
+		width: 100vw;
+		background-color: blueviolet;
+		border: solid 0.4px rgb(242, 247, 0);
+
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-auto-rows: 1fr 1fr 1fr;
+	}
+
+	.main-section {
+		border: 0.4px solid rgb(255, 174, 0);
+	}
+	.about-content {
+		top: minmax(10vmin,15vmax);
+		width: 90vmin;
+	}
+}
+
+
+
+
+
+
+.test3 {
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background-color: rgb(255, 0, 0);
+	top: 10px;
+	right: 0;
+}

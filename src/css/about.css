@@ -1,0 +1,149 @@
+body {
+	height: 100vh;
+	width: 100vw;
+	padding: var(--margin);
+	background-color: var(--bg);
+}
+.mainContent {
+    --mbtm: 50px;
+	/* border: solid 1px blueviolet; */
+    display: grid;
+    grid-template-columns: 4.2fr 2fr;
+    grid-auto-rows : max-content;
+    gap: 1.5vh 15vw;
+    height: calc(100% - var(--mbtm));
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 0 0 5vmin 0vw ;
+    }
+
+    .mainContent {
+        --mbtm : 100px;
+        grid-template-columns: 90vw;
+        grid-template-rows: 1.85fr 0.6fr 1fr;
+        justify-content: center;
+        /* gap: minmax(2vmax,150px) 0; */
+        gap: 0 0;
+    }
+
+    .projects-types {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .projects-types li {
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .title, #name, p {
+        text-align: center;
+    }
+
+    .about-content {
+        padding: 15px;
+        height: 100%;
+        background-color: rgb(77, 62, 43);
+    }
+}
+
+
+.title {
+    /* border: solid 0.5px blue; */
+	font-size: clamp(0.75rem,5vmin,2rem);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*Sections - About */
+.about {
+
+}
+
+.about-content {
+	font-size: clamp(1.25rem,6vmin,2rem);
+    max-height: fit-content;
+
+}
+#name {
+	font-size: clamp(1.7rem,6vmin,2.4rem);
+	display: block;
+}
+
+/*Sections - Projects */
+.projects {
+	font-family: "lexendMega";
+	color: var(--text);
+}
+
+.projects-types {
+	list-style: none;
+	font-size: clamp(1.25rem,3vmin,1.76rem);
+}
+
+.projects-types li {
+	margin: 2vmin 0rem;
+    /* border: solid 1px yellowgreen; */
+}
+
+.projects-types li a {
+	text-decoration: none;
+	color: var(--text);
+}
+
+/*Sections - Languages */
+.languages {
+    /* height: min-content; */
+}
+
+.languages p {
+	font-size: clamp(1.125rem,4vmin,2rem);
+	margin: 0;
+    /* border: solid 1px yellowgreen; */
+}
+
+
+
+
+
+/* FOOTER */
+.footer {
+	position: fixed;
+	inset: auto 6vw var(--btm) 6vw;
+    padding: 1vh 1vw;
+
+	display: flex;
+	justify-content: space-between;
+    flex-wrap: wrap;
+    height: fit-content;
+
+    border: solid 1px rgb(47, 209, 74);
+}
+
+
+
+
+.contact-links__list {
+	display: flex;
+	font-family: "lexendMega";
+    font-size: clamp(0.5rem,5vmin,1rem);
+}
+
+.contact-links li {
+	list-style: none;
+	margin: 2vmin;
+}
+
+.contact-links__list a {
+	text-decoration: none;
+	color: var(--text);
+}
+
+@media screen and (max-width: 678px) {
+    .footer {
+        justify-content: center !important;
+        --btm : 0;
+    }
+}
