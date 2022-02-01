@@ -2,14 +2,14 @@
 :root {
 	--about-size : 100vw;
 	--skills-size : 40vw;
-	--projects-size : 200vw;
+	--projects-size : 400vw;
 	--about-margin: 5rem 3vmin;
 	--skills-margin: 5rem 0vmin 5rem 8vmin;
 }
 
 body {
 	position: relative;
-	height: calc(var(--about-size)+var(--skills-size)+var(--projects-size) - 100vw + 100vh);
+	height: calc(var(--about-size)+var(--projects-size)  - 100vw + 100vh);
 	width: 100vw;
 	max-width: 100%;
 	margin: 0;
@@ -24,12 +24,12 @@ body {
 	top: 0;
 	left: 0;
 	height: 100vh;
-	width: calc(var(--about-size) + var(--skills-size) + var(--projects-size));;
+	width: calc(var(--about-size)+ var(--projects-size));;
 	background-color: rgba(137, 43, 226, 0.171);
 	border: solid 0.4px rgb(242, 247, 0);
 
 	display: grid;
-	grid-template-columns: 1fr 0.4fr 2fr;
+	grid-template-columns: 1fr 4fr;
 	grid-auto-rows: 1fr;
 
 }
@@ -71,11 +71,13 @@ body {
 /* -----skills */
 .skills {
 	position: relative;
+	width: var(--skills-size);
+	height: 100%;
+	background-color: blueviolet;
 }
 
 .skills__content {
 	margin: var(--skills-margin);
-	background-color: cadetblue;
 	font-size: 1.75rem;
 	font-family: "geosans";
 }
@@ -157,6 +159,9 @@ body {
 
 
 .test3 {
+	position: absolute;
+	right: 0;
+	top: 0;
 	height: 50px;
 	width: 50px;
 	background-color: rgb(255, 0, 0);

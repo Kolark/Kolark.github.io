@@ -12,7 +12,13 @@ export default function horizontalPin(selector, length, offset = 0) {
 		.getBoundingClientRect().x;
 
 	const startPos = elementPos - offset + window.screen.height;
-	const endPos = elementPos - offset + length;
+	const endPos = startPos + length;
+
+	console.log("elementPos : " + elementPos);
+	console.log("length : " + length);
+	console.log("offset : " + offset);
+	console.log("startPos > " + startPos);
+	console.log("endPos > " + endPos);
 
 	gsap.to(selector, {
 		scrollTrigger: {
@@ -20,7 +26,7 @@ export default function horizontalPin(selector, length, offset = 0) {
 			start: `${startPos}px bottom`,
 			end: `${endPos}px top`,
 			scrub: true,
-			markers: true,
+			// markers: true,
 		},
 		x: `${length}px`,
 		ease: "linear",

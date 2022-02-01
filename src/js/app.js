@@ -12,7 +12,7 @@ window.addEventListener("scroll", (e) => {
 	}
 });
 
-horizontalPin(".test3", 600, 200);
+horizontalPin(".skills", 500, 300);
 
 // const elementPos = document.querySelector(".test3").getBoundingClientRect().x;
 
