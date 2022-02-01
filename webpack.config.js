@@ -6,11 +6,14 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-	entry: ["./src/js/app.js"],
+	entry: {
+		app: "./src/js/app.js",
+		app2: "./src/js/app2.js",
+	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		// filename: '[name].bundle.js',
-		filename: "app.js",
+		filename: "[name].js",
 	},
 	module: {
 		rules: [

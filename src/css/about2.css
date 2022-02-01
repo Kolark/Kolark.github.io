@@ -2,7 +2,7 @@
 :root {
 	--about-size : 100vw;
 	--skills-size : 40vw;
-	--projects-size : 100vw;
+	--projects-size : 200vw;
 	--about-margin: 5rem 3vmin;
 	--skills-margin: 5rem 0vmin 5rem 8vmin;
 }
@@ -29,7 +29,7 @@ body {
 	border: solid 0.4px rgb(242, 247, 0);
 
 	display: grid;
-	grid-template-columns: 1fr 0.4fr 1fr;
+	grid-template-columns: 1fr 0.4fr 2fr;
 	grid-auto-rows: 1fr;
 
 }
@@ -111,6 +111,7 @@ body {
 	z-index: -10;
 }
 
+
 .squares {
 	position: absolute;
 	left: 50vw;
@@ -156,10 +157,7 @@ body {
 
 
 .test3 {
-	position: absolute;
 	height: 50px;
 	width: 50px;
 	background-color: rgb(255, 0, 0);
-	top: 10px;
-	right: 0;
 }
