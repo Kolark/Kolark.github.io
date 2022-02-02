@@ -1,6 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import horizontalPin from "./horizontalPin";
+import verticalMove from "./verticalMove";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,28 +13,16 @@ window.addEventListener("scroll", (e) => {
 	}
 });
 
-horizontalPin(".skills", 500, 300);
-
-// const elementPos = document.querySelector(".test3").getBoundingClientRect().x;
-
-// const projectWidth = document
-// 	.querySelector(".projects")
-// 	.getBoundingClientRect().width;
-
-// const scrollPos = elementPos + window.screen.height;
-// const offset = window.screen.width * 0.5;
-// const startPos = elementPos - offset + window.screen.height;
-// const endPos = elementPos - offset + projectWidth * 0.25;
-// gsap.to(".test3", {
-// 	scrollTrigger: {
-// 		trigger: ".test3",
-// 		start: `${startPos}px bottom`,
-// 		end: `${endPos}px top`,
-// 		scrub: true,
-// 		markers: true,
-// 	},
-// 	x: `${projectWidth * 0.25}px`,
-// 	// rotation: 360,
-// 	duration: 3,
-// 	ease: "linear",
-// });
+horizontalPin(
+	".skills",
+	window.screen.width * 1.5,
+	true,
+	window.screen.width * 0.05
+);
+horizontalPin(
+	".projects",
+	window.screen.width * 1.5,
+	true,
+	window.screen.width * 0.45
+);
+verticalMove(".projects-container", -200, -window.screen.height * 0.5);

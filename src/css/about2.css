@@ -2,9 +2,11 @@
 :root {
 	--about-size : 100vw;
 	--skills-size : 40vw;
-	--projects-size : 400vw;
+	--projects-size : 220vw;
+	--columns-size : 22.5vw;
 	--about-margin: 5rem 3vmin;
-	--skills-margin: 5rem 0vmin 5rem 8vmin;
+	--gap-length : 50vmin;
+	--skills-margin: 0rem 0vmin 5rem 8vmin;
 }
 
 body {
@@ -15,7 +17,6 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: var(--bg);
-	/* border: solid 0.4px firebrick; */
 	overflow-x: hidden;
 }
 
@@ -24,12 +25,12 @@ body {
 	top: 0;
 	left: 0;
 	height: 100vh;
-	width: calc(var(--about-size)+ var(--projects-size));;
+	width: calc(var(--about-size)+ var(--projects-size) + 4*(var(--columns-size)+var(--gap-length)));;
 	background-color: rgba(137, 43, 226, 0.171);
 	border: solid 0.4px rgb(242, 247, 0);
 
 	display: grid;
-	grid-template-columns: 1fr 4fr;
+	grid-template-columns: 100vw calc(var(--about-size)+ var(--projects-size) + 4*(var(--columns-size)+var(--gap-length)) - 100vw);
 	grid-auto-rows: 1fr;
 
 }
@@ -37,7 +38,6 @@ body {
 
 .main-section {
 	border: 0.1px solid rgb(0, 255, 85);
-	/* background-color: brown; */
 }
 /* -----ABOUT-------- */
 .about {
@@ -66,14 +66,55 @@ body {
 /*  */
 
 .projects {
-
+	width: 50vw;
+	height: 100%;
+	background-color: crimson;
+	position: relative;
 }
+
+
+.projects-container {
+	position: absolute;
+	height: fit-content;
+	width: 100%;
+	top: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.container {
+	height: fit-content;
+	width: var(--columns-size);
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-rows: var(--columns-size);
+	gap: var(--gap-length) 0;
+
+	background-color: rgb(11, 184, 63);
+}
+
+
+.project {
+	background-color :chartreuse;
+}
+
+.right {
+	margin-top: calc(((22.5vw - var(--gap-length))/2) + var(--gap-length));
+}
+
+.squaretest {
+	background-color: chartreuse;
+	border: solid 2px orchid;
+}
+
 /* -----skills */
 .skills {
 	position: relative;
+	display: block;
 	width: var(--skills-size);
 	height: 100%;
-	background-color: blueviolet;
+	background-color: rgba(137, 43, 226, 0.267);
 }
 
 .skills__content {
@@ -103,6 +144,13 @@ body {
 }
 
 /*  */
+
+.section-container {
+	display: flex;
+	width: 100vw;
+	justify-content: space-around;
+	border: solid 1px orangered;
+}
 
 /* ----TEST------ */
 .test {
@@ -153,16 +201,3 @@ body {
 	}
 }
 
-
-
-
-
-
-.test3 {
-	position: absolute;
-	right: 0;
-	top: 0;
-	height: 50px;
-	width: 50px;
-	background-color: rgb(255, 0, 0);
-}

@@ -6,29 +6,22 @@ gsap.registerPlugin(ScrollTrigger);
 //To do generalize the function, lo importante es que puedo saber cuando el item entra en pantalla.
 //y con eso hacer diferentes cosas como hacer play a animaciones, pinear elementos horizontalmente.
 
-export default function horizontalPin(selector, length, scrub, offset = 0) {
-	const elementPos = document
-		.querySelector(selector)
-		.getBoundingClientRect().x;
+export default function verticalMove(selector, length, offset = 0) {
+	const element = document.querySelector(selector);
+	const elementPos = element.getBoundingClientRect().x;
 
-	const startPos = elementPos - offset;
-	const endPos = startPos + length;
-
-	console.log("elementPos : " + elementPos);
-	console.log("length : " + length);
-	console.log("offset : " + offset);
-	console.log("startPos > " + startPos);
-	console.log("endPos > " + endPos);
+	const startPos = elementPos - offset - element.getBoundingClientRect().x;
+	const endPos = startPos + element.getBoundingClientRect().height;
 
 	gsap.to(selector, {
 		scrollTrigger: {
 			trigger: selector,
 			start: `${startPos}px top`,
 			end: `${endPos}px top`,
-			scrub: scrub,
+			scrub: true,
 			// markers: true,
 		},
-		x: `${length}px`,
+		y: `${-element.getBoundingClientRect().height + length}px`,
 		ease: "linear",
 	});
 }
