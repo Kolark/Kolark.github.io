@@ -6,29 +6,51 @@ gsap.registerPlugin(ScrollTrigger);
 //To do generalize the function, lo importante es que puedo saber cuando el item entra en pantalla.
 //y con eso hacer diferentes cosas como hacer play a animaciones, pinear elementos horizontalmente.
 
-export default function horizontalPin(selector, length, scrub, offset = 0) {
-	const elementPos = document
-		.querySelector(selector)
-		.getBoundingClientRect().x;
+export default class HorizontalPin {
+	#element;
+	#selector;
+	#length = 0;
+	#scrub = false;
+	#offset = 0;
 
-	const startPos = elementPos - offset;
-	const endPos = startPos + length;
+	#tween = null;
 
-	console.log("elementPos : " + elementPos);
-	console.log("length : " + length);
-	console.log("offset : " + offset);
-	console.log("startPos > " + startPos);
-	console.log("endPos > " + endPos);
+	#elementPos;
+	#startPos;
+	#endPos;
+	constructor(selector, length, scrub, offset = 0) {
+		this.#element = document.querySelector(selector);
+		this.#selector = selector;
+		this.#length = length;
+		this.#scrub = scrub;
+		this.#offset = offset;
+		this.calculateValues();
+		this.createTween();
+	}
 
-	gsap.to(selector, {
-		scrollTrigger: {
-			trigger: selector,
-			start: `${startPos}px top`,
-			end: `${endPos}px top`,
-			scrub: scrub,
-			// markers: true,
-		},
-		x: `${length}px`,
-		ease: "linear",
-	});
+	calculateValues() {
+		this.#elementPos = this.#element.getBoundingClientRect().x;
+		this.#startPos = this.#elementPos - this.#offset;
+		this.#endPos = this.#startPos + this.#length;
+	}
+
+	createTween() {
+		console.log("tween Created");
+		this.#tween = gsap.to(this.#selector, {
+			scrollTrigger: {
+				trigger: this.#selector,
+				start: `${this.#startPos}px top`,
+				end: `${this.#endPos}px top`,
+				scrub: this.#scrub,
+				// markers: true,
+			},
+			x: `${this.#length}px`,
+			ease: "linear",
+		});
+	}
+
+	killTween() {
+		this.#tween.killTween();
+		this.#tween = null;
+	}
 }

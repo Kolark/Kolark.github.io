@@ -27,6 +27,8 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
-    "gsap": "^3.9.1"
+    "debounce": "^1.2.1",
+    "gsap": "^3.9.1",
+    "swiper": "^8.0.2"
   }
 }
