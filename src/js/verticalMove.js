@@ -21,7 +21,6 @@ export default class VerticalMove {
 		this.#selector = selector;
 		this.#length = length;
 		this.#offset = offset;
-		this.calculateValues();
 		this.createTween();
 	}
 
@@ -38,6 +37,7 @@ export default class VerticalMove {
 	}
 
 	createTween() {
+		this.calculateValues();
 		this.#tween = gsap.to(this.#selector, {
 			scrollTrigger: {
 				trigger: this.#selector,
@@ -54,7 +54,11 @@ export default class VerticalMove {
 	}
 
 	killTween() {
-		this.#tween.killTween();
+		this.#tween.kill();
 		this.#tween = null;
+	}
+
+	isAlive() {
+		return this.#tween !== null;
 	}
 }

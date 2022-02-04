@@ -24,7 +24,6 @@ export default class HorizontalPin {
 		this.#length = length;
 		this.#scrub = scrub;
 		this.#offset = offset;
-		this.calculateValues();
 		this.createTween();
 	}
 
@@ -36,6 +35,7 @@ export default class HorizontalPin {
 
 	createTween() {
 		console.log("tween Created");
+		this.calculateValues();
 		this.#tween = gsap.to(this.#selector, {
 			scrollTrigger: {
 				trigger: this.#selector,
@@ -50,7 +50,10 @@ export default class HorizontalPin {
 	}
 
 	killTween() {
-		this.#tween.killTween();
+		this.#tween.kill();
 		this.#tween = null;
+	}
+	isAlive() {
+		return this.#tween !== null;
 	}
 }
