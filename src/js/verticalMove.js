@@ -47,7 +47,8 @@ export default class VerticalMove {
 				// markers: true,
 			},
 			y: `${
-				-this.#element.getBoundingClientRect().height + this.#length
+				-this.#element.getBoundingClientRect().height +
+				window.innerHeight
 			}px`,
 			ease: "linear",
 		});

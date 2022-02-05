@@ -62,20 +62,20 @@ function onScroll() {
 function instanceGsapAnimations() {
 	skillsHorizontalPin = new HorizontalPin(
 		".skills",
-		window.screen.width * 1.5,
+		window.screen.width * 4,
 		true,
 		window.screen.width * 0.05
 	);
 	projectsHorizontalPin = new HorizontalPin(
 		".projects",
-		window.screen.width * 1.5,
+		window.screen.width * 4,
 		true,
 		window.screen.width * 0.45
 	);
 	verticalScroll = new VerticalMove(
 		".projects-container",
-		-200,
-		-window.screen.height * 0.5
+		0,
+		-window.screen.width * 0.8
 	);
 }
 
