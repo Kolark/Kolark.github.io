@@ -8,7 +8,7 @@
 	--gap-length : 5vw;
 	--skills-margin: 0rem 0vmin 5rem 8vmin;
 }
-/* + calc(6*var(--columns-size) + 110vh) */
+
 body {
 	position: relative;
 	height: calc(var(--about-size)+var(--projects-size) - 100vw + 100vh + calc(var(--columns-size)*6 + var(--gap-length)*5 + 115vh));
@@ -20,7 +20,7 @@ body {
 	overflow-x: hidden;
 }
 
-.main-content {
+.main {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -29,20 +29,58 @@ body {
 	display: grid;
 	grid-template-columns: 100vw 100vw;
 	grid-auto-rows: 1fr;
+}
 
-	/* border: solid 4px red; */
+.content {
+	height: 100%;
+	width: 100%;
+}
+
+/* ------------------------------------ */
+.view_1 {
 
 }
 
-/* -----ABOUT-------- */
 .about {
 	position: relative;
 	display: flex;
 	justify-content: center;
-	/* border: solid 4px orchid; */
+}
+/* ------------------------------------ */
+.view_2 {
+	display: flex;
+	width: 100vw;
+	justify-content: space-around;
 }
 
-#name {
+.skills {
+	position: relative;
+	display: block;
+	width: var(--skills-size);
+	height: 100%;
+}
+
+.projects {
+	width: 50vw;
+	height: 100%;
+	position: relative;
+}
+
+.projects-mobile {
+	display: none;
+	position: relative;
+}
+/* ------------------------------------ */
+/* #########################################################################
+############################################################################
+############################################################################
+############################################################################
+############################################################################
+*/
+/* -----ABOUT-------- */
+
+
+/* #name {
 	display: block;
 	font-size: clamp(1.25rem,8vw,2.9rem);;
 }
@@ -56,15 +94,8 @@ body {
 	font-size: clamp(1rem,6vw,2.3rem);
 }
 
-.projects {
-	width: 50vw;
-	height: 100%;
-	position: relative;
-}
-.projects-mobile {
-	display: none;
-	position: relative;
-}
+
+
 .projects-container {
 	position: absolute;
 	height: fit-content;
@@ -73,29 +104,6 @@ body {
 	justify-content: space-around;
 }
 
-.tlab {
-	position: absolute;
-	height: 100vh;
-	width: 100px;
-	background-color: chocolate;
-	bottom:0;
-	left: 0;
-}
-.up {
-	position: absolute;
-	top: 0;
-	width: 50px;
-	height: 50px;
-	background-color: red;
-}
-.down {
-	position: absolute;
-	bottom: 0;
-	height: 50px;
-	width: 50px;
-	background-color: red;
-
-}
 .container {
 	height: fit-content;
 	width: var(--columns-size);
@@ -163,20 +171,14 @@ body {
 
 .project__title:hover {
 	color: red;
-}
+} */
 /* -----skills */
-.skills {
-	position: relative;
-	display: block;
-	width: var(--skills-size);
-	height: 100%;
-}
 
-.skills__content {
+
+/* .skills__content {
 	margin: var(--skills-margin);
 	font-size: 1.75rem;
 	font-family: "geosans";
-	
 }
 
 .skills__content h2 {
@@ -195,16 +197,10 @@ body {
 
 	padding: 0.125rem 1rem;
 	border-radius: 2rem;
-}
+} */
 
-/*  */
 
-.section-container {
-	display: flex;
-	width: 100vw;
-	justify-content: space-around;
-	/* border: solid 4px coral; */
-}
+
 
 
 @media screen and (max-width: 1024px) {
@@ -213,11 +209,10 @@ body {
 		height: fit-content;
 	}
 
-	.main-content {
+	.main {
 		position: relative;
 		height: 150vh;
 		width: 100vw;
-
 		display: grid;
 		grid-template-columns: 1fr;
 		gap: 10rem 0;
@@ -237,7 +232,7 @@ body {
 	
 	}
 
-	.section-container {
+	.view_2 {
 		flex-direction: column;
 		justify-content: flex-start;
 		gap: 0 0;
@@ -303,7 +298,7 @@ body {
 
 
 
-.swiper {
+/* .swiper {
 	width: 100%;
 	height: 100%;
 	background-color:rgb(45, 141, 16);
@@ -359,4 +354,4 @@ body {
 	color: white;
 	margin: 0;
 	padding: 0;
-}
+} */

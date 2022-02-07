@@ -27,6 +27,7 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
+    "@ashthornton/asscroll": "^2.0.4",
     "debounce": "^1.2.1",
     "gsap": "^3.9.1",
     "swiper": "^8.0.2"

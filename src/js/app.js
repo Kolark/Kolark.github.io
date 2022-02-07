@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HorizontalPin from "./horizontalPin";
 import VerticalMove from "./verticalMove";
+import setupASScroll from "./setupASScroll";
 import { debounce } from "debounce";
 import Swiper, { Navigation, Pagination } from "swiper";
 import "swiper/css";
@@ -12,14 +13,9 @@ gsap.registerPlugin(ScrollTrigger);
 //------------------Fields---------------------------+
 let mainContent = document.querySelector(".main-content");
 
-let skillsHorizontalPin = null;
-let projectsHorizontalPin = null;
-let verticalScroll = null;
+const asscroll = setupASScroll(".content");
 
 let swiper = null;
-
-window.onresize = debounce(onResize, 400);
-window.addEventListener("scroll", onScroll);
 
 onStart();
 //-------------------------------
@@ -32,19 +28,7 @@ function onStart() {
 }
 
 function onResize() {
-	window.scrollTo(0, 0);
-	//
 	if (window.screen.width <= 1024) {
-		//TO Mobile
-		if (
-			projectsHorizontalPin !== null &&
-			skillsHorizontalPin !== null &&
-			verticalScroll !== null
-		) {
-			projectsHorizontalPin.killTween();
-			skillsHorizontalPin.killTween();
-			verticalScroll.killTween();
-		}
 		if (swiper === null) {
 			instanceSwiper();
 		}
@@ -53,31 +37,8 @@ function onResize() {
 		instanceGsapAnimations();
 	}
 }
-function onScroll() {
-	if (window.screen.width > 1024) {
-		mainContent.style.transform = `translate3d(-${window.scrollY}px,0px,0px)`;
-	}
-}
 
-function instanceGsapAnimations() {
-	skillsHorizontalPin = new HorizontalPin(
-		".skills",
-		window.screen.width * 4,
-		true,
-		window.screen.width * 0.05
-	);
-	projectsHorizontalPin = new HorizontalPin(
-		".projects",
-		window.screen.width * 4,
-		true,
-		window.screen.width * 0.45
-	);
-	verticalScroll = new VerticalMove(
-		".projects-container",
-		0,
-		-window.screen.width * 0.8
-	);
-}
+function instanceGsapAnimations() {}
 
 function instanceSwiper() {
 	swiper = new Swiper(".projects-slides", {
