@@ -117,6 +117,53 @@ body {
 	background-color: darkred;
 }
 
+.project_img {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background-color: crimson;
+}
+
+.project__link {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(245, 245, 220, 0.233);
+}
+
+.project_img img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+
+.project__info {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+}
+
+.project__title {
+	pointer-events: auto;
+	font-family: "geosans";
+	color: white;
+	font-size: 3.5rem;
+	text-decoration-line: underline;
+}
+
+.project__title:hover {
+	color: red;
+}
 /* -----skills */
 .skills {
 	position: relative;
@@ -254,38 +301,7 @@ body {
 	}
 }
 
-.project_img {
-	position: relative;
-	height: 100%;
-	width: 100%;
-	background-color: crimson;
-}
 
-.project_img img {
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
-}
-
-
-.project__info {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.project__title {
-	font-family: "geosans";
-	color: white;
-	font-size: 3.5rem;
-	text-decoration-line: underline;
-}
 
 .swiper {
 	width: 100%;
@@ -294,3 +310,53 @@ body {
 	border: solid 2px rgb(80, 255, 197);
 }
 
+
+
+.project_mobile {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+.project_mobile-img {
+	height: 90%;
+	width: 100%;
+	border-radius: 5%;
+}
+
+.project_mobile-img img {
+	object-fit: cover;
+}
+
+.project_mobile-info {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	font-family: "geosans";
+	border: solid 1px crimson;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.project_mobile-title {
+	color: white;
+}
+.project_mobile-link {
+	position: relative;
+	border-radius: 2rem;
+	color: white;
+	padding: 0.25rem 1.5rem 0.5rem 1.5rem;
+	background-color: black;
+	border: solid 2px white;
+}
+.project_mobile-link h2 {
+	display: inline;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
