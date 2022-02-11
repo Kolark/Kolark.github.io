@@ -1,357 +1,283 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
 
 :root {
-	--about-size : 100vw;
-	--skills-size : 40vw;
-	--projects-size : 100vw;
-	--columns-size : 40vw;
-	--about_margin: 5rem 2vmin;
-	--gap-length : 5vw;
-	--skills-margin: 0rem 0vmin 5rem 8vmin;
-}
 
-body {
-	position: relative;
-	height: calc(var(--about-size)+var(--projects-size) - 100vw + 100vh + calc(var(--columns-size)*6 + var(--gap-length)*5 + 115vh));
-	width: 100vw;
-	max-width: 100%;
-	margin: 0;
-	padding: 0;
-	background-color: var(--bg);
-	overflow-x: hidden;
-}
-
-.main {
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100vh;
-	width: calc(var(--about-size)+ var(--projects-size));
-	display: grid;
-	grid-template-columns: 100vw 100vw;
-	grid-auto-rows: 1fr;
 }
 
 .content {
-	height: 100%;
-	width: 100%;
+    height: 100vh;
 }
-
-/* ------------------------------------ */
+.wrapper {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: 100vw 350vw;
+    grid-template-rows: 100vh;
+}
+/* VIEW1 */
 .view_1 {
-
+    margin: 0;
+    padding: 0%;
+    background-color: darksalmon;
 }
 
 .about {
-	position: relative;
-	display: flex;
-	justify-content: center;
-}
-/* ------------------------------------ */
-.view_2 {
-	display: flex;
-	width: 100vw;
-	justify-content: space-around;
-}
-
-.skills {
-	position: relative;
-	display: block;
-	width: var(--skills-size);
-	height: 100%;
-}
-
-.projects {
-	width: 50vw;
-	height: 100%;
-	position: relative;
-}
-
-.projects-mobile {
-	display: none;
-	position: relative;
-}
-/* ------------------------------------ */
-/* #########################################################################
-############################################################################
-############################################################################
-############################################################################
-############################################################################
-*/
-/* -----ABOUT-------- */
-
-
-/* #name {
-	display: block;
-	font-size: clamp(1.25rem,8vw,2.9rem);;
+    color: var(--text);
+    font-family: "geosans";
+    font-size: clamp(1rem,4vw,2.5rem);
 }
 
 .about-content {
-	position: absolute;
-	margin: var(--about_margin);
-	width: max(70vw,70vmin);
-	text-align: center;
-	font-family: "geosans";
-	font-size: clamp(1rem,6vw,2.3rem);
+    margin: 16vmin 12vmax;
+    background-color: cornflowerblue;
 }
 
-
-
-.projects-container {
-	position: absolute;
-	height: fit-content;
-	width: 100%;
-	display: flex;
-	justify-content: space-around;
+#name {
+    display: block;
+    font-size: clamp(1.25rem,5vw,2.75rem);
+}
+/*END VIEW1 */
+/* VIEW2 */
+.view_2 {
+    background-color:chartreuse;
+    position: relative;
 }
 
-.container {
-	height: fit-content;
-	width: var(--columns-size);
-	grid-auto-rows: var(--columns-size);
-	padding-top: 100vh;
-	padding-bottom: 15vh;
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: var(--gap-length) 0;
+.skills {
+    position: absolute;
+    height: 100vh;
+    width: 40vw;
+    left: 0vh;
+    padding: 10vmin 0rem 5rem 2.5rem;
+    background-color: crimson;
+    display: flex;
+    flex-direction: column;
 }
 
-
-.project {
-	background-color :chartreuse;
-	border: solid 3px rgb(139, 35, 224);
+.title {
+    margin: 0 0 2rem 0;
+    font-size: clamp(1.5rem,15vw,4rem);
 }
 
-.project:last-child{
-	background-color: darkred;
+.skills_container {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.project_img {
-	position: relative;
-	height: 100%;
-	width: 100%;
-	background-color: crimson;
+.skill__type h2 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    color: var(--text);
+    font-family: "lexendMega";
+    font-size: clamp(1.5rem,5vw,2.25rem);
 }
-
-.project__link {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	bottom: 0;
-	left: 0;
-	background-color: rgba(245, 245, 220, 0.233);
-}
-
-.project_img img {
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
-}
-
-
-.project__info {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	pointer-events: none;
-}
-
-.project__title {
-	pointer-events: auto;
-	font-family: "geosans";
-	color: white;
-	font-size: 3.5rem;
-	text-decoration-line: underline;
-}
-
-.project__title:hover {
-	color: red;
-} */
-/* -----skills */
-
-
-/* .skills__content {
-	margin: var(--skills-margin);
-	font-size: 1.75rem;
-	font-family: "geosans";
-}
-
-.skills__content h2 {
-	font-family: "lexendMega";
-	color: var(--text);
-	text-align: left;
-}
-.skills__content p {
-	line-height: 2.125rem;
-}
-
 .skill {
-	transition: all 100ms;
+    display: inline;
+    font-family: "geosans";
+    margin: 1rem 1rem 1rem 0rem;
+    font-size: clamp(1.25rem,4vw,2rem);
 }
+
 .skill:hover {
 
 	padding: 0.125rem 1rem;
+    border: solid 1px chartreuse;
 	border-radius: 2rem;
-} */
+}
 
+.projects {
+    left: 60vw;
+    position: absolute;
+    height: 100vh;
+    width: 50vw;
+    background-color:coral
+}
 
+.projects_title {
+    position: absolute;
+    height: fit-content;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: darkmagenta;
+    font-family: "lexendMega";
+    font-size: clamp(1rem,6vw,3rem);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.projects_container {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem 0;
+    padding-top: 100vh;
+    padding-bottom: 20vh;
+}
 
+.project {
+    position: relative;
+    width: 40vw;
+    height: 40vw;
+    background-color: darksalmon;
+    border: solid 2px red;
+}
 
-@media screen and (max-width: 1024px) {
+.project_link {
+    height: 100%;
+    width: 100%;
+}
 
-	body {
-		height: fit-content;
-	}
+.project img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 
-	.main {
-		position: relative;
-		height: 150vh;
-		width: 100vw;
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 10rem 0;
-		grid-auto-rows: max(50vh,50vmax) 100vh;
-	}
+.title:hover {
+    color: blue;
+}
 
-	.about {
-		justify-content: center;
-		align-content: center;
-		align-items: center;
-		border: solid 2px chartreuse;
-	}
-	.about-content {
-		height: fit-content;
-		width: 90%;
-		font-size: clamp(1rem,6vw,2.8rem);
-	
-	}
-
-	.view_2 {
-		flex-direction: column;
-		justify-content: flex-start;
-		gap: 0 0;
-		margin: 0;
-		padding: 0;
-		border: solid 2px chartreuse;
-	}
-
-	.projects {
-		display: none;
-	}
-
-	.projects-mobile {
-		display: block;
-		width: 100%;
-		height: 50%;
-		max-width: 100vw;
-		background-color: darkgoldenrod;
-	}
-	.skills {
-		display: flex;
-		justify-content: center;
-		width: 100%;
-		height: 50%;
-		background-color:rgb(255, 102, 0);
-	}
-	
-	.skill__type {
-		border: solid 1px rgb(0, 4, 255);
-	}
-
-	.skills__content {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		margin: 1rem 0 0 0;
-		width: 90%;
-		background-color: deeppink;
-	}
-
-	.skills__content h1 {
-		margin: 0;
-		font-size: clamp(1.75rem,5vw,3rem);
-		text-align: center;
-	}
-
-	.skills__content h2 {
-		margin: 0 0 0 0;
-		font-size: clamp(1.5rem,4vw,2.5rem);
-		text-align: center;
-	}
-
-	.skills__content p {
-		margin: 0.1rem 0.175rem 0.175rem 0.175rem;
-		font-size: clamp(1.25rem,4vw,2.5rem);
-		text-align: center;
-	}
-
-	.mobile-disable {
-		display: none;
-	}
+.projects_info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
+.projects__mobile {
+    display: none;
+    position: relative;
+}
+/* END VIEW2 */
+@media screen and (max-width: 1024px) {
+    .wrapper {
+        grid-template-columns: 100vw;
+        grid-template-rows: 70vh 100vh;
+    }
 
-/* .swiper {
+    .about-content {
+        margin: 6vw 6vw;
+        text-align: justify;
+        font-size: clamp(1rem,7vw,2.5rem);
+    }
+    #name {
+        font-size: clamp(1.25rem,8vw,2.75rem);
+    }
+    .skills {
+        position: relative;
+        height: 55%;
+        width: 100vw;
+        background-color: darkblue;
+        padding: 0;
+    }
+    .skills .title {
+        text-align: center;
+        margin: 0;
+    }
+    
+    .skill__type h2 {
+
+        font-size: clamp(1.5rem,5vmax,2.25rem);
+    }
+    .skill {
+        font-size: clamp(1.25rem,4vmax,2rem);
+    }
+    .skills_container {
+        background-color: chartreuse;
+    }
+    .skill__type {
+        border: solid 2px royalblue;
+        text-align: center;
+    }
+    .mobile_disable {
+        display: none;
+    }
+    .projects {
+        display: none;
+    }
+    .projects__mobile {
+        position: relative;
+        display: block;
+        height: 45%;
+        width: 100vw;
+        background-color: brown;
+    }
+}
+
+/* MOBILE SWIPER */
+
+
+
+
+.swiper {
 	width: 100%;
 	height: 100%;
-	background-color:rgb(45, 141, 16);
-	border: solid 2px rgb(80, 255, 197);
 }
 
 
 
-.project_mobile {
+.project__mobile {
 	height: 100%;
 	width: 100%;
 	position: relative;
-	display: flex;
+	/* display: flex;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: flex-end; */
 }
-.project_mobile-img {
-	height: 90%;
+.project__mobile img {
+	height: 100%;
 	width: 100%;
-	border-radius: 5%;
+    object-fit: cover;
 }
 
-.project_mobile-img img {
-	object-fit: cover;
-}
-
-.project_mobile-info {
+.project__mobile-info {
 	position: absolute;
 	height: 100%;
 	width: 100%;
 	top: 0;
 	left: 0;
 	font-family: "geosans";
-	border: solid 1px crimson;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 }
-.project_mobile-title {
-	color: white;
+.project__mobile-title {
+    font-size: clamp(1rem,8vw,2.5rem);
+	color: var(--text);
 }
-.project_mobile-link {
+.project__mobile-link a{
 	position: relative;
 	border-radius: 2rem;
-	color: white;
 	padding: 0.25rem 1.5rem 0.5rem 1.5rem;
-	background-color: black;
-	border: solid 2px white;
+    background: radial-gradient(ellipse at top, rgb(255, 112, 112), transparent),
+    radial-gradient(ellipse at bottom, #68cf13, transparent);
+    font-size: clamp(1rem,8vw,2.5rem);
+    filter: invert(10%);
+    color: var(--text);
+    text-decoration: none;
 }
-.project_mobile-link h2 {
+
+.project__mobile-link h2 {
 	display: inline;
 	color: white;
 	margin: 0;
 	padding: 0;
-} */
+}
+
+
+/* END MOBILE SWIPER */
