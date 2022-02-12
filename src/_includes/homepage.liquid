@@ -64,49 +64,28 @@
 							<h1>Projects</h1>
 						</div>
 						<div class="projects_container">
+                            {% for post in collections.posts %}
 							<div class="project">
 								<a class="project_link" href="">
-									<img src="img/testimg.jpg" alt="">
+									<img src="/img/{{post.data.image}}" alt="">
 									<div class="projects_info">
-										<h1 class="title">Test</h1>
+										<h1 class="title">{{ post.data.title }}</h1>
 									</div>
 								</a>
 							</div>
-							<div class="project">
-								<a class="project_link" href="">
-									<img src="img/testimg.jpg" alt="">
-									<div class="projects_info">
-										<h1 class="title">Test</h1>
-									</div>
-								</a>
-							</div>
-							<div class="project">
-								<a class="project_link" href="">
-									<img src="img/testimg.jpg" alt="">
-									<div class="projects_info">
-										<h1 class="title">Test</h1>
-									</div>
-								</a>
-							</div>
-							<div class="project">
-								<a class="project_link" href="">
-									<img src="img/testimg.jpg" alt="">
-									<div class="projects_info">
-										<h1 class="title">Test</h1>
-									</div>
-								</a>
-							</div>
+                            {% endfor %}
 						</div>
 					</section>
 					<section class="projects__mobile">
 						<div class="swiper projects_slides">
 							<div class="swiper-wrapper">
-								<div class="swiper-slide">
+                                {% for post in collections.posts %}
+                                <div class="swiper-slide">
 									<div class="project__mobile">
-										<img src="img/testimg.jpg" alt="">
+										<img src="/img/{{post.data.image}}" alt="">
 										<div class="project__mobile-info">
 											<div class="project__mobile-title">
-												<h2>Test</h2>
+												<h2>{{ post.data.title }}</h2>
 											</div>
 											<div class="project__mobile-link">
 												<a href="">
@@ -116,51 +95,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="swiper-slide">
-									<div class="project__mobile">
-										<img src="img/testimg.jpg" alt="">
-										<div class="project__mobile-info">
-											<div class="project__mobile-title">
-												<h2>Test 2</h2>
-											</div>
-											<div class="project__mobile-link">
-												<a href="">
-													See more
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div class="project__mobile">
-										<img src="img/testimg.jpg" alt="">
-										<div class="project__mobile-info">
-											<div class="project__mobile-title">
-												<h2>Test 3</h2>
-											</div>
-											<div class="project__mobile-link">
-												<a href="">
-													See more
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div class="project__mobile">
-										<img src="img/testimg.jpg" alt="">
-										<div class="project__mobile-info">
-											<div class="project__mobile-title">
-												<h2>Test 4</h2>
-											</div>
-											<div class="project__mobile-link">
-												<a href="">
-													See more
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
+                                {% endfor %}
 							</div>
 							<div class="swiper-pagination"></div>
 						</div>
