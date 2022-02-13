@@ -9,15 +9,18 @@
     "builddev": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf _site",
-
-    "serve:webpack": "webpack --mode development && echo webpackxdddddddd",
-    "serve:eleventy": "eleventy --serve && echo ELEVENTY",
+    "serve:webpack": "webpack --mode development --watch",
+    "serve:eleventy": "eleventy --serve",
     "serve": "npm-run-all clean --parallel serve:*",
 
     "start": "cross-env NODE_ENV=development npm-run-all -l clean --parallel start:*",
-    "start:webpack": "webpack --mode development",
+    "start:awebpack": "webpack --watch",
     "start:eleventy": "eleventy --serve",
-    
+
+    "testa":"npm-run-all --parallel testxd:*",
+    "testxd:XD2" : "echo aa",
+    "testxd:XD3" : "echo xdd",
+
     "build:webpack": "webpack --mode production",
     "build:eleventy": "eleventy",
     "build": "run-s clean build:*"
@@ -30,6 +33,7 @@
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^10.2.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.6.0",
     "css-minimizer-webpack-plugin": "^3.4.1",
     "html-minimizer-webpack-plugin": "^3.5.0",

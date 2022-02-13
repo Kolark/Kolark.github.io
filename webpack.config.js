@@ -15,6 +15,7 @@ module.exports = {
 		path: path.resolve(__dirname, "_site"),
 		// filename: '[name].bundle.js',
 		filename: "[name].js",
+		clean: false,
 	},
 	module: {
 		rules: [
@@ -44,7 +45,7 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
+		// new CleanWebpackPlugin(),
 		new CopyPlugin({
 			patterns: [
 				// {
