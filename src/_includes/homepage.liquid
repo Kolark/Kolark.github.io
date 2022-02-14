@@ -66,7 +66,7 @@
 						<div class="projects_container">
                             {% for post in collections.posts %}
 							<div class="project">
-								<a class="project_link" href="">
+								<a class="project_link" href="{{post.url}}">
 									<img src="/img/{{post.data.image}}" alt="">
 									<div class="projects_info">
 										<h1 class="title">{{ post.data.title }}</h1>
