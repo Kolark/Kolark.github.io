@@ -12,7 +12,7 @@
 <body>
     <header class="header">
         <div class="about__link">
-            <a href=""><h2>About</h2></a>
+            <a href="/"><h2>About</h2></a>
         </div>
         <div class="contact">
             <ul class="contact__links">
@@ -24,29 +24,30 @@
     </header>
     <main class="main">
         <div class="project">
-            <div class="project__title">
-                <h1>{{title}}</h1>
+            <div class="project__overview">
+                <div class="project__title">
+                    <h1>{{title}}</h1>
+                </div>
+                <div class="project__description">
+                    <p>{{description}}</p>
+                </div>
+                <div class="project__links">
+                    <h3>Web Development</h3>
+                    <h3>skills</h3>
+                    {% if arra %}
+                    <div class="">{{ arra | arrayToClasses }}</div>
+                    {% endif %}
+                    <h3>Related Links</h3>
+                    {% if numbers %}
+                    <ul class="project__links-list">
+                        {% for n in numbers %}
+                        <li>{{n}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
             </div>
-            <div class="project__description">
-                <p>{{description}}</p>
-            </div>
-            <div class="project__links">
-                {% if github %}
-                <a href="{{ github}}" target="__blank">Githublink</a>
-                {% endif %}
-                {% if numbers %}
-                <ul>
-                    {% for n in numbers %}
-                    <li>{{n}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-                <p>Web Dev Projects</p>
-                <p>C# Unity Rest Apis</p>
-                <p>Github</p>
-                <p>Playstore</p>
-                <p>Itch.io</p>
-            </div>
+
         </div>
     </main>
 </body>

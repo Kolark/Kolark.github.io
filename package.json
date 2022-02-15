@@ -12,15 +12,9 @@
     "serve:webpack": "webpack --mode development --watch",
     "serve:eleventy": "eleventy --serve",
     "serve": "npm-run-all clean --parallel serve:*",
-
     "start": "cross-env NODE_ENV=development npm-run-all -l clean --parallel start:*",
     "start:awebpack": "webpack --watch",
     "start:eleventy": "eleventy --serve",
-
-    "testa":"npm-run-all --parallel testxd:*",
-    "testxd:XD2" : "echo aa",
-    "testxd:XD3" : "echo xdd",
-
     "build:webpack": "webpack --mode production",
     "build:eleventy": "eleventy",
     "build": "run-s clean build:*"
@@ -48,6 +42,7 @@
   },
   "dependencies": {
     "@ashthornton/asscroll": "^2.0.4",
+    "@barba/core": "^2.9.7",
     "debounce": "^1.2.1",
     "gsap": "^3.9.1",
     "swiper": "^8.0.2"

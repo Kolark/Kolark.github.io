@@ -4,18 +4,23 @@ html {
     margin: 0;
 }
 
+:root {
+    --header_height : 8vh;
+    --top_size : 2rem;
+}
+
 body {
     background-color: blueviolet;
 }
 .header {
     position: fixed;
     width: 100vw;
-    height: 8vh;
+    height: var(--header_height);
     top: 0;
     left: 0;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     background-color:chocolate;
@@ -38,4 +43,83 @@ body {
     text-decoration: none;
     color: var(--text);
     font-family: "geosans";
+}
+/* MAIN----------------- */
+.main
+{
+    width: 100vw;
+    max-width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    padding-top: 8vh;
+    background-color:rgb(0, 94, 170)
+}
+
+.project {
+    width: 80vw;
+    height: 3000px;
+    background-color: deepskyblue;
+    color: var(--text);
+}
+
+.project__overview {
+    width: 100%;
+    height: calc(100vh - var(--header_height));
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: 0.6fr 1fr;
+    background-color:rgb(0, 94, 170)
+}
+
+.project__title {
+    font-family: "geosans";
+    font-size: 4.5rem;
+    border: solid 2px red;
+}
+
+.project__title h1{
+    margin-top: var(--top_size);
+    margin-bottom: 0;
+}
+
+.project__description {
+    padding-top: calc(var(--top_size)*2);
+    font-family: "geosans";
+    font-size: 2.25rem;
+    border: solid 2px red;
+    grid-column: 2;
+    grid-row: 1 / -1;
+}
+
+.project__description p {
+    text-align: justify;
+    line-height: 2.35rem;
+}
+
+.project__links {
+    font-family: "geosans";
+    font-size: 2.5rem;
+    border: solid 2px red;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:flex-start;
+}
+
+.project__links h3 {
+    margin: 0;
+}
+
+.project__links-list {
+    width: 80%;
+    list-style: none;
+    border: solid 2px crimson;
+    display: flex;
+    justify-content: space-around;
+}
+
+.project__links li {
+    border: solid 1px rgb(255, 166, 0);
 }
