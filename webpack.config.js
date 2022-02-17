@@ -9,11 +9,10 @@ const folder = "_site";
 
 module.exports = {
 	entry: {
-		app: "./src/js/app.js",
+		index: "./src/js/index.js",
 	},
 	output: {
 		path: path.resolve(__dirname, "_site"),
-		// filename: '[name].bundle.js',
 		filename: "[name].js",
 		clean: false,
 	},
