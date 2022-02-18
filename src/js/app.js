@@ -14,7 +14,7 @@ export default class App {
 				elementSelector: ".content",
 				isHorizontal: true,
 			});
-			this.instanceGsapAnimations();
+
 			this.barba();
 		} else {
 			instanceSwiper();
@@ -28,28 +28,34 @@ export default class App {
 				{
 					namespace: "home",
 					beforeLeave() {
-						console.log("Before Leave");
-						that.asscrollController.disableASScroller();
+						console.log("[BEFORE LEAVE HOME START]");
 						that.gsapTweens.forEach((tween) => {
 							tween.kill();
 						});
-						that.gsapTweens = 0;
+						that.gsapTweens = [];
+						that.asscrollController.disableASScroller();
+						console.log("[BEFORE LEAVE HOME END]");
 					},
-					afterEnter() {
-						console.log("after Enteer");
-						that.asscrollController.enableASScroller(true);
-						instanceGsapAnimations();
+					afterEnter(data) {
+						console.log("[AFTER ENTER HOME START]");
+						that.asscrollController.enableASScroller(
+							true,
+							data.next.container
+						);
+						that.instanceGsapAnimations(data.next.container);
+						console.log("[AFTER ENTER HOME END]");
 					},
 				},
 				{
 					namespace: "project",
 					beforeLeave() {
-						console.log("Before Leave");
 						that.asscrollController.disableASScroller();
 					},
-					afterEnter() {
-						console.log("after Enter");
-						that.asscrollController.enableASScroller(false);
+					afterEnter(data) {
+						that.asscrollController.enableASScroller(
+							false,
+							data.next.container
+						);
 					},
 				},
 			],
@@ -92,43 +98,50 @@ export default class App {
 		});
 	}
 
-	instanceGsapAnimations() {
-		const wrapper = document.querySelector(".wrapper");
+	instanceGsapAnimations(container) {
+		const wrapper = container.querySelector(".wrapper");
+		const skills = container.querySelector(".skills");
+		const projects = container.querySelector(".projects");
+		const projects_container = container.querySelector(
+			".projects_container"
+		);
+
 		this.gsapTweens.push(
-			gsap.to(".skills", {
+			gsap.to(skills, {
 				scrollTrigger: {
 					horizontal: true,
 					start: `${-window.innerWidth * 0.025} top`,
 					end: `${wrapper.getBoundingClientRect().width}px center`,
-					trigger: ".skills",
+					trigger: skills,
 					pin: true,
 				},
 			})
 		);
 
 		this.gsapTweens.push(
-			gsap.to(".projects", {
+			gsap.to(projects, {
 				scrollTrigger: {
 					horizontal: true,
 					start: `${-window.innerWidth * 0.475} top`,
 					end: `${wrapper.getBoundingClientRect().width}px center`,
-					trigger: ".projects",
+					trigger: projects,
 					pin: true,
 				},
 			})
 		);
 
 		this.gsapTweens.push(
-			gsap.to(".projects_container", {
+			gsap.to(projects_container, {
 				scrollTrigger: {
 					horizontal: true,
 					start: `${-window.innerWidth * 0.475} top`,
 					end: `${wrapper.getBoundingClientRect().width}px center`,
-					trigger: ".projects_container",
+					trigger: projects_container,
 					scrub: 0.25,
 				},
 				yPercent: -100,
 			})
 		);
+		console.log("INSTANCED ANIMATIONS");
 	}
 }

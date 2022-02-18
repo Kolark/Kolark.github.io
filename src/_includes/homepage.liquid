@@ -7,7 +7,8 @@
 		<title>Felipe Loaiza Portfolio</title>
 		<link rel="stylesheet" href="./css/normalize.css" />
 		<link rel="stylesheet" href="./css/app.css" />
-		<link rel="stylesheet" href="./css/about2.css" />
+		<link rel="stylesheet" href="./css/about.css" />
+		<link rel="stylesheet" href="/css/project.css">
 		<!-- <link rel="stylesheet" href="./css/footer.css" /> -->
 	</head>
 	<body>
@@ -70,8 +71,8 @@
 			</div>
 			<div class="projects_container">
 				{% for post in collections.posts %}
-				<div class="project">
-					<a class="project_link" href="{{post.url}}">
+				<div class="project_instance">
+					<a class="projects_link" href="{{post.url}}">
 						<img src="/img/{{post.data.image}}" alt="">
 						<div class="projects_info">
 							<h1 class="title">{{ post.data.title }}</h1>
