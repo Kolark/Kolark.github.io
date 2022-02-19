@@ -1,10 +1,13 @@
+:root {
+    --view2_size : 350vw;
+}
 .content {
     height: 100vh;
 }
 .wrapper {
     width: fit-content;
     display: grid;
-    grid-template-columns: 100vw 350vw;
+    grid-template-columns: 100vw var(--view2_size);
     grid-template-rows: 100vh;
 }
 /* VIEW1 */
@@ -110,7 +113,7 @@
     align-items: center;
     gap: 5rem 0;
     padding-top: 100vh;
-    padding-bottom: 20vh;
+    padding-bottom: 10vh;
 }
 
 .project_instance {

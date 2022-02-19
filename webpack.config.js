@@ -82,7 +82,7 @@ module.exports = {
 		port: 8080,
 		compress: true,
 		watchFiles: {
-			paths: ["src/*"],
+			paths: ["src/js/*", "src/css/*"],
 		},
 	},
 };

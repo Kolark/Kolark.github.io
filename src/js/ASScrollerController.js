@@ -22,6 +22,15 @@ export default class ASScrollerController {
 			container.querySelector(this.elementSelector),
 			{
 				scrollLeft(value) {
+					// console.log("GET SCROLL LEFT");
+					// console.log("Pos " + asscroll.currentPos);
+					return arguments.length
+						? (asscroll.currentPos = value)
+						: asscroll.currentPos;
+				},
+				scrollTop(value) {
+					// console.log("GET SCROLL TOP");
+					// console.log("Pos " + asscroll.currentPos);
 					return arguments.length
 						? (asscroll.currentPos = value)
 						: asscroll.currentPos;
@@ -47,7 +56,6 @@ export default class ASScrollerController {
 			),
 			reset: true,
 		});
-
 		this.asscroll = asscroll;
 		console.log("[ENABLE SCROLLER END]");
 	}
@@ -55,8 +63,14 @@ export default class ASScrollerController {
 	disableASScroller() {
 		console.log("Disabled asscroller");
 		gsap.ticker.remove(this.asscroll.update); //ticker.remove
+		this.asscroll.off("update", ScrollTrigger.update);
 		ScrollTrigger.removeEventListener("refresh", this.asscroll.resize); //remove
-
 		this.asscroll.disable();
+		// ScrollTrigger.clearScrollMemory();
+	}
+
+	debugInfo() {
+		if (this.asscroll == null) return;
+		console.log(this.asscroll);
 	}
 }
