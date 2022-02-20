@@ -9,11 +9,20 @@ gsap.registerPlugin(ScrollTrigger);
 export default class App {
 	constructor(options) {
 		this.gsapTweens = [];
+
+		// this.asscroll = new ASScroll({
+		// 	disableRaf: true,
+		// });
+
+		// this.asscroll.enable({
+		// 	horizontalScroll: !document.body.classList.contains("b-inside"),
+		// });
+
+		this.asscrollController = new ASScrollerController();
+		this.asscrollController.firstTime();
+
 		if (window.innerWidth > 1024) {
-			this.asscrollController = new ASScrollerController({
-				elementSelector: ".content",
-				isHorizontal: true,
-			});
+			console.log("creating asscroll");
 
 			this.barba();
 			document.addEventListener("keydown", (event) => {
@@ -23,7 +32,7 @@ export default class App {
 				}
 				if (keyName == "e") {
 					this.asscrollController.enableASScroller(true, document);
-					this.instanceGsapAnimations(document);
+					// this.instanceGsapAnimations(document);
 					console.log(
 						"SIZE " +
 							document.querySelector("[asscroll-container]")
@@ -35,41 +44,18 @@ export default class App {
 				}
 				if (keyName == "t") {
 					this.asscrollController.debugInfo();
-					console.log(
-						"SIZE " +
-							document.querySelector("[asscroll-container]")
-								.scrollHeight
-					);
 				}
 			});
 		} else {
 			instanceSwiper();
 		}
+
+		this.render();
 	}
 
 	barba() {
 		let that = this;
 		barba.init({
-			views: [
-				{
-					namespace: "home",
-					beforeLeave(data) {
-						that.onBeforeLeaveHome(that, data);
-					},
-					afterEnter(data) {
-						that.onEnterHome(that, data);
-					},
-				},
-				{
-					namespace: "project",
-					beforeLeave(data) {
-						that.onBeforeProject(that, data);
-					},
-					afterEnter(data) {
-						that.onEnterProject(that, data);
-					},
-				},
-			],
 			transitions: [
 				{
 					name: "from-home",
@@ -77,12 +63,15 @@ export default class App {
 						namespace: ["home"],
 					},
 					leave(data) {
+						that.onBeforeLeaveHome(that, data);
 						return gsap.timeline().to(data.current.container, {
 							opacity: 0,
 							duration: 0.5,
 						});
 					},
 					enter(data) {
+						that.onEnterProject(that, data);
+
 						return gsap.timeline().from(data.next.container, {
 							opacity: 0,
 						});
@@ -94,12 +83,14 @@ export default class App {
 						namespace: ["project"],
 					},
 					leave(data) {
+						that.onBeforeProject(that, data);
 						return gsap.timeline().to(data.current.container, {
 							opacity: 0,
 							duration: 0.5,
 						});
 					},
 					enter(data) {
+						that.onEnterHome(that, data);
 						return gsap.timeline().from(data.next.container, {
 							opacity: 0,
 						});
@@ -169,39 +160,46 @@ export default class App {
 	}
 
 	onBeforeLeaveHome(that, data) {
-		that.gsapTweens.forEach((tween) => {
-			tween.kill();
-		});
-		that.gsapTweens = [];
+		console.log("leave HOME");
+		// that.gsapTweens.forEach((tween) => {
+		// 	tween.kill();
+		// });
+		// that.gsapTweens = [];
 		that.asscrollController.disableASScroller();
 	}
 
 	onEnterHome(that, data) {
-		console.log("ENTER HOOME");
-		console.log(this);
+		console.log("ENTER HOME");
 		that.asscrollController.enableASScroller(true, data.next.container);
-		that.instanceGsapAnimations(data.next.container);
+		// that.instanceGsapAnimations(data.next.container);
 	}
 
 	onBeforeProject(that, data) {
-		that.gsapTweens.forEach((tween) => {
-			tween.kill();
-		});
-		that.gsapTweens = [];
+		console.log("Leave Project");
+		// that.gsapTweens.forEach((tween) => {
+		// 	tween.kill();
+		// });
+		// that.gsapTweens = [];
 		that.asscrollController.disableASScroller();
 	}
 
 	onEnterProject(that, data) {
+		console.log("ENTER project");
 		that.asscrollController.enableASScroller(false, data.next.container);
-		that.gsapTweens.push(
-			gsap.to(data.next.container.querySelector(".testscrollt"), {
-				scrollTrigger: {
-					trigger: data.next.container.querySelector(".testscrollt"),
-					scrub: 0.25,
-					markers: true,
-				},
-				xPercent: 100,
-			})
-		);
+		// that.gsapTweens.push(
+		// 	gsap.to(data.next.container.querySelector(".testscrollt"), {
+		// 		scrollTrigger: {
+		// 			trigger: data.next.container.querySelector(".testscrollt"),
+		// 			scrub: 0.25,
+		// 			markers: true,
+		// 		},
+		// 		xPercent: 100,
+		// 	})
+		// );
+	}
+
+	render() {
+		this.asscrollController.updateASScroller();
+		requestAnimationFrame(this.render.bind(this));
 	}
 }

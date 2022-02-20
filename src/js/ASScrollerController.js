@@ -3,68 +3,78 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default class ASScrollerController {
-	constructor(opts) {
-		this.elementSelector = opts.elementSelector;
-		this.asscroll = null;
-	}
-
 	enableASScroller(isHorizontal, container) {
 		console.log("[ENABLE SCROLLER START]");
 		const asscroll = new ASScroll({
 			disableRaf: true,
+			containerElement: container.querySelector("[asscroll-container]"),
 		});
-		gsap.ticker.add(asscroll.update);
+		// gsap.ticker.add(asscroll.update);
 
-		ScrollTrigger.defaults({
-			scroller: container.querySelector(this.elementSelector),
-		});
-		ScrollTrigger.scrollerProxy(
-			container.querySelector(this.elementSelector),
-			{
-				scrollLeft(value) {
-					console.log("GET SCROLL LEFT");
-					// console.log("Pos " + asscroll.currentPos);
-					return arguments.length
-						? (asscroll.currentPos = value)
-						: asscroll.currentPos;
-				},
-				scrollTop(value) {
-					console.log("GET SCROLL TOP");
-					// console.log("Pos " + asscroll.currentPos);
-					return arguments.length
-						? (asscroll.currentPos = value)
-						: asscroll.currentPos;
-				},
-				getBoundingClientRect() {
-					return {
-						top: 0,
-						left: 0,
-						width: window.innerWidth,
-						height: window.innerHeight,
-					};
-				},
-			}
-		);
+		// ScrollTrigger.defaults({
+		// 	scroller: container.querySelector(this.elementSelector),
+		// });
+		// ScrollTrigger.scrollerProxy(
+		// 	container.querySelector(this.elementSelector),
+		// 	{
+		// 		scrollLeft(value) {
+		// 			console.log("GET SCROLL LEFT");
+		// 			// console.log("Pos " + asscroll.currentPos);
+		// 			return arguments.length
+		// 				? (asscroll.currentPos = value)
+		// 				: asscroll.currentPos;
+		// 		},
+		// 		scrollTop(value) {
+		// 			console.log("GET SCROLL TOP");
+		// 			// console.log("Pos " + asscroll.currentPos);
+		// 			return arguments.length
+		// 				? (asscroll.currentPos = value)
+		// 				: asscroll.currentPos;
+		// 		},
+		// 		getBoundingClientRect() {
+		// 			return {
+		// 				top: 0,
+		// 				left: 0,
+		// 				width: window.innerWidth,
+		// 				height: window.innerHeight,
+		// 			};
+		// 		},
+		// 	}
+		// );
 
-		asscroll.on("update", ScrollTrigger.update); //re add
+		// asscroll.on("update", ScrollTrigger.update); //re add
 
-		ScrollTrigger.addEventListener("refresh", asscroll.resize); //remove
+		// ScrollTrigger.addEventListener("refresh", asscroll.resize); //remove
 		asscroll.enable({
 			horizontalScroll: isHorizontal ? window.innerWidth > 1024 : false,
-			newScrollElements: container.querySelectorAll(
-				".gsap-marker-start, .gsap-marker-end, [asscroll]"
-			),
-			reset: true,
+			newScrollElements: container.querySelector(".scroll-wrap"),
+			// reset: true,
 		});
 		this.asscroll = asscroll;
 		console.log("[ENABLE SCROLLER END]");
 	}
 
+	firstTime() {
+		console.log("FIRST TIME");
+		this.asscroll = new ASScroll({
+			disableRaf: true,
+		});
+
+		this.asscroll.enable({
+			horizontalScroll: !document.body.classList.contains("b-inside"),
+		});
+		console.log("FIRST TIME END");
+	}
+
+	updateASScroller() {
+		this.asscroll.update();
+	}
+
 	disableASScroller() {
 		console.log("Disabled asscroller");
-		gsap.ticker.remove(this.asscroll.update); //ticker.remove
-		this.asscroll.off("update", ScrollTrigger.update);
-		ScrollTrigger.removeEventListener("refresh", this.asscroll.resize); //remove
+		// gsap.ticker.remove(this.asscroll.update); //ticker.remove
+		// this.asscroll.off("update", ScrollTrigger.update);
+		// ScrollTrigger.removeEventListener("refresh", this.asscroll.resize); //remove
 		this.asscroll.disable();
 		// ScrollTrigger.clearScrollMemory();
 	}

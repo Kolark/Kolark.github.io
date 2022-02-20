@@ -1,11 +1,8 @@
 :root {
     --view2_size : 350vw;
 }
-.content {
-    height: 100vh;
-}
-.wrapper {
-    width: fit-content;
+.homepage__content {
+    /* width: fit-content; */
     display: grid;
     grid-template-columns: 100vw var(--view2_size);
     grid-template-rows: 100vh;
@@ -35,7 +32,8 @@
 /*END VIEW1 */
 /* VIEW2 */
 .view_2 {
-    background-color:chartreuse;
+    background: rgb(10,255,207);
+background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%, rgba(60,44,249,1) 50%, rgba(230,213,27,1) 100%);
     position: relative;
 }
 
@@ -157,7 +155,7 @@
 }
 /* END VIEW2 */
 @media screen and (max-width: 1024px) {
-    .wrapper {
+    .homepage__content {
         grid-template-columns: 100vw;
         grid-template-rows: 70vh 100vh;
     }

@@ -10,55 +10,57 @@
     <link rel="stylesheet" href="/css/project.css">
     <title>{{title}}</title>
 </head>
-<body>
+<body class="b-inside">
     <!-- START BARBA -->
 	<div data-barba="wrapper">
     <div data-barba="container" data-barba-namespace="project">
     <!-- START ASSCROLL  -->
     <div asscroll-container>
-    <div class="content" asscroll>
+    <div class="scroll-wrap">
     <!--START CONTENT  -->
-    <header class="header">
-        <div class="about__link">
-            <a href="/"><h2>About</h2></a>
-        </div>
-        <div class="contact">
-            <ul class="contact__links">
-                <li><a href=""><h2>Email</h2></a></li>
-                <li><a href=""><h2>Github</h2></a></li>
-                <li><a href=""><h2>Linkedin</h2></a></li>
-            </ul>
-        </div>
-    </header>
-    <main class="main">
-        <div class="project">
-            <div class="project__overview">
-                <div class="project__title">
-                    <h1>{{title}}</h1>
-                </div>
-                <div class="project__description">
-                    <p>{{description}}</p>
-                </div>
-                <div class="project__links">
-                    <h3>Web Development</h3>
-                    <h3>skills</h3>
-                    {% if arra %}
-                    <div class="">{{ arra | arrayToClasses }}</div>
-                    {% endif %}
-                    <h3>Related Links</h3>
-                    {% if numbers %}
-                    <ul class="project__links-list">
-                        {% for n in numbers %}
-                        <li>{{n}}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                </div>
+    <div class="project__content">
+        <header class="header">
+            <div class="about__link">
+                <a href="/"><h2>About</h2></a>
             </div>
+            <div class="contact">
+                <ul class="contact__links">
+                    <li><a href=""><h2>Email</h2></a></li>
+                    <li><a href=""><h2>Github</h2></a></li>
+                    <li><a href=""><h2>Linkedin</h2></a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="main">
+            <div class="project">
+                <div class="project__overview">
+                    <div class="project__title">
+                        <h1>{{title}}</h1>
+                    </div>
+                    <div class="project__description">
+                        <p>{{description}}</p>
+                    </div>
+                    <div class="project__links">
+                        <h3>Web Development</h3>
+                        <h3>skills</h3>
+                        {% if arra %}
+                        <div class="">{{ arra | arrayToClasses }}</div>
+                        {% endif %}
+                        <h3>Related Links</h3>
+                        {% if numbers %}
+                        <ul class="project__links-list">
+                            {% for n in numbers %}
+                            <li>{{n}}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
 
-            <div class="testscrollt">xdd</div>
-        </div>
-    </main>
+                <div class="testscrollt">xdd</div>
+            </div>
+        </main>
+    </div>
     <!-- END CONTENT -->
     </div>
     </div>
