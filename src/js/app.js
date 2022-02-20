@@ -10,17 +10,9 @@ export default class App {
 	constructor(options) {
 		this.gsapTweens = [];
 
-		// this.asscroll = new ASScroll({
-		// 	disableRaf: true,
-		// });
-
-		// this.asscroll.enable({
-		// 	horizontalScroll: !document.body.classList.contains("b-inside"),
-		// });
-
 		this.asscrollController = new ASScrollerController();
 		this.asscrollController.firstTime();
-
+		this.instanceGsapAnimations(document);
 		if (window.innerWidth > 1024) {
 			console.log("creating asscroll");
 
@@ -101,6 +93,7 @@ export default class App {
 	}
 
 	instanceGsapAnimations(container) {
+		console.log("INSTANCE ANIMATIONS");
 		const wrapper = container.querySelector(".wrapper");
 		const skills = container.querySelector(".skills");
 		const projects = container.querySelector(".projects");

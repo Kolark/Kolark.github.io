@@ -9,42 +9,42 @@ export default class ASScrollerController {
 			disableRaf: true,
 			containerElement: container.querySelector("[asscroll-container]"),
 		});
-		// gsap.ticker.add(asscroll.update);
+		gsap.ticker.add(asscroll.update);
 
-		// ScrollTrigger.defaults({
-		// 	scroller: container.querySelector(this.elementSelector),
-		// });
-		// ScrollTrigger.scrollerProxy(
-		// 	container.querySelector(this.elementSelector),
-		// 	{
-		// 		scrollLeft(value) {
-		// 			console.log("GET SCROLL LEFT");
-		// 			// console.log("Pos " + asscroll.currentPos);
-		// 			return arguments.length
-		// 				? (asscroll.currentPos = value)
-		// 				: asscroll.currentPos;
-		// 		},
-		// 		scrollTop(value) {
-		// 			console.log("GET SCROLL TOP");
-		// 			// console.log("Pos " + asscroll.currentPos);
-		// 			return arguments.length
-		// 				? (asscroll.currentPos = value)
-		// 				: asscroll.currentPos;
-		// 		},
-		// 		getBoundingClientRect() {
-		// 			return {
-		// 				top: 0,
-		// 				left: 0,
-		// 				width: window.innerWidth,
-		// 				height: window.innerHeight,
-		// 			};
-		// 		},
-		// 	}
-		// );
+		ScrollTrigger.defaults({
+			scroller: container.querySelector(this.elementSelector),
+		});
+		ScrollTrigger.scrollerProxy(
+			container.querySelector(this.elementSelector),
+			{
+				scrollLeft(value) {
+					// console.log("GET SCROLL LEFT");
+					// console.log("Pos " + asscroll.currentPos);
+					return arguments.length
+						? (asscroll.currentPos = value)
+						: asscroll.currentPos;
+				},
+				scrollTop(value) {
+					// console.log("GET SCROLL TOP");
+					// console.log("Pos " + asscroll.currentPos);
+					return arguments.length
+						? (asscroll.currentPos = value)
+						: asscroll.currentPos;
+				},
+				getBoundingClientRect() {
+					return {
+						top: 0,
+						left: 0,
+						width: window.innerWidth,
+						height: window.innerHeight,
+					};
+				},
+			}
+		);
 
-		// asscroll.on("update", ScrollTrigger.update); //re add
+		asscroll.on("update", ScrollTrigger.update);
 
-		// ScrollTrigger.addEventListener("refresh", asscroll.resize); //remove
+		ScrollTrigger.addEventListener("refresh", asscroll.resize);
 		asscroll.enable({
 			horizontalScroll: isHorizontal ? window.innerWidth > 1024 : false,
 			newScrollElements: container.querySelector(".scroll-wrap"),
@@ -63,7 +63,51 @@ export default class ASScrollerController {
 		this.asscroll.enable({
 			horizontalScroll: !document.body.classList.contains("b-inside"),
 		});
+
+		this.setupScrollTrigger();
+		if (!document.body.classList.contains("b-inside")) {
+		}
 		console.log("FIRST TIME END");
+	}
+
+	setupScrollTrigger() {
+		console.log("Setup Scroll Trigger STart");
+		const elementSelector = document.querySelector(".scroll-wrap");
+		let that = this;
+
+		ScrollTrigger.defaults({
+			scroller: elementSelector,
+		});
+
+		ScrollTrigger.scrollerProxy(elementSelector, {
+			scrollLeft(value) {
+				// console.log("GET SCROLL LEFT");
+				// console.log("Pos " + asscroll.currentPos);
+				return arguments.length
+					? (that.asscroll.currentPos = value)
+					: that.asscroll.currentPos;
+			},
+			scrollTop(value) {
+				// console.log("GET SCROLL TOP");
+				// console.log("Pos " + asscroll.currentPos);
+				return arguments.length
+					? (that.asscroll.currentPos = value)
+					: that.asscroll.currentPos;
+			},
+			getBoundingClientRect() {
+				return {
+					top: 0,
+					left: 0,
+					width: window.innerWidth,
+					height: window.innerHeight,
+				};
+			},
+		});
+
+		this.asscroll.on("update", ScrollTrigger.update);
+
+		ScrollTrigger.addEventListener("refresh", this.asscroll.resize);
+		console.log("Setup Scroll Trigger END");
 	}
 
 	updateASScroller() {
@@ -72,7 +116,6 @@ export default class ASScrollerController {
 
 	disableASScroller() {
 		console.log("Disabled asscroller");
-		// gsap.ticker.remove(this.asscroll.update); //ticker.remove
 		// this.asscroll.off("update", ScrollTrigger.update);
 		// ScrollTrigger.removeEventListener("refresh", this.asscroll.resize); //remove
 		this.asscroll.disable();
