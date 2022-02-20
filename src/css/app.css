@@ -14,7 +14,8 @@ html {
 }
 
 body {
-  background-color: blueviolet;
+  background: rgb(2,0,36);
+  background: linear-gradient(145deg, rgba(2,0,36,1) 0%, rgba(80,48,18,1) 27%, rgba(121,73,9,1) 33%, rgba(76,152,7,1) 47%, rgba(154,7,134,1) 72%, rgba(0,212,255,1) 100%);
 }
 
 :root {
