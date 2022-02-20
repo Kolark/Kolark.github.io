@@ -47,14 +47,14 @@ export default class ASScrollerController {
 
 		ScrollTrigger.scrollerProxy(elementSelector, {
 			scrollLeft(value) {
-				console.log("GET SCROLL LEFT");
+				// console.log("GET SCROLL LEFT");
 				// console.log("Pos " + asscroll.currentPos);
 				return arguments.length
 					? (that.asscroll.currentPos = value)
 					: that.asscroll.currentPos;
 			},
 			scrollTop(value) {
-				console.log("GET SCROLL TOP");
+				// console.log("GET SCROLL TOP");
 				// console.log("Pos " + asscroll.currentPos);
 				return arguments.length
 					? (that.asscroll.currentPos = value)

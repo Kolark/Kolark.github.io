@@ -8,8 +8,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default class App {
 	constructor(options) {
-		this.gsapTweens = [];
-
 		this.asscrollController = new ASScrollerController();
 
 		this.asscrollController.firstTime();
@@ -62,15 +60,19 @@ export default class App {
 						namespace: ["home"],
 					},
 					leave(data) {
+						console.log("Leave Home");
 						that.onBeforeLeaveHome(that, data);
 						return gsap.timeline().to(data.current.container, {
 							opacity: 0,
-							duration: 0.5,
+							duration: 1,
 						});
+					},
+					beforeEnter(data) {
+						console.log("Before Enter");
+						ScrollTrigger.getAll().forEach((t) => t.kill());
 					},
 					enter(data) {
 						that.onEnterProject(that, data);
-
 						return gsap.timeline().from(data.next.container, {
 							opacity: 0,
 						});
@@ -88,6 +90,10 @@ export default class App {
 							duration: 0.5,
 						});
 					},
+					beforeEnter(data) {
+						console.log("Before Enter");
+						ScrollTrigger.getAll().forEach((t) => t.kill());
+					},
 					enter(data) {
 						that.onEnterHome(that, data);
 						return gsap.timeline().from(data.next.container, {
@@ -100,7 +106,6 @@ export default class App {
 	}
 
 	instanceGsapAnimations(container) {
-		console.log("INSTANCE ANIMATIONS");
 		const wrapper = container.querySelector(".wrapper");
 		const skills = container.querySelector(".skills");
 		const projects = container.querySelector(".projects");
@@ -115,101 +120,75 @@ export default class App {
 			view2.getBoundingClientRect().width -
 			window.innerWidth * 0.6 -
 			window.innerHeight;
-		this.gsapTweens.push(
-			gsap.to(skills, {
-				scrollTrigger: {
-					horizontal: true,
-					start: `${-window.innerWidth * 0.025} top`,
-					end: `${view2.getBoundingClientRect().width}px center`,
-					trigger: skills,
-					pin: true,
-					// markers: true,
-				},
-			})
-		);
-
-		this.gsapTweens.push(
-			gsap.to(projects, {
-				scrollTrigger: {
-					horizontal: true,
-					start: `${-window.innerWidth * 0.475} top`,
-					end: `${projectsEnd}px center`,
-					trigger: projects,
-					pin: true,
-				},
-			})
-		);
-
-		this.gsapTweens.push(
-			gsap.to(projects_container, {
-				scrollTrigger: {
-					horizontal: true,
-					start: `${-window.innerWidth * 0.475} top`,
-					end: `${projectsEnd}px center`,
-					trigger: projects_container,
-					scrub: 0.25,
-				},
-				yPercent:
-					-100 +
-					(window.innerHeight /
-						projects_container.getBoundingClientRect().height) *
-						100,
-			})
-		);
+		gsap.to(skills, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.025} top`,
+				end: `${view2.getBoundingClientRect().width}px center`,
+				trigger: skills,
+				pin: true,
+				// markers: true,
+			},
+		});
+		gsap.to(projects, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.475} top`,
+				end: `${projectsEnd}px center`,
+				trigger: projects,
+				pin: true,
+			},
+		});
+		gsap.to(projects_container, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.475} top`,
+				end: `${projectsEnd}px center`,
+				trigger: projects_container,
+				scrub: 0.25,
+			},
+			yPercent:
+				-100 +
+				(window.innerHeight /
+					projects_container.getBoundingClientRect().height) *
+					100,
+		});
 		console.log("INSTANCED ANIMATIONS");
 	}
 
 	instanceProjectAnimations(container) {
-		console.log(this);
-		this.gsapTweens.push(
-			gsap.to(container.querySelector(".testscrollt"), {
-				scrollTrigger: {
-					trigger: container.querySelector(".testscrollt"),
-					scrub: 0.25,
-					markers: true,
-				},
-				xPercent: 100,
-			})
-		);
+		console.log("Instanced Project Animations");
+
+		gsap.to(container.querySelector(".testscrollt"), {
+			scrollTrigger: {
+				trigger: container.querySelector(".testscrollt"),
+				scrub: 0.25,
+				markers: true,
+			},
+			xPercent: 100,
+		});
 	}
 
 	onBeforeLeaveHome(that, data) {
 		console.log("leave HOME");
-		// that.gsapTweens.forEach((tween) => {
-		// 	tween.kill();
-		// });
-		// that.gsapTweens = [];
 		that.asscrollController.disableASScroller();
 	}
 
 	onEnterHome(that, data) {
 		console.log("ENTER HOME");
 		that.asscrollController.enableASScroller(true, data.next.container);
-		// that.instanceGsapAnimations(data.next.container);
+		that.instanceGsapAnimations(data.next.container);
 	}
 
 	onBeforeProject(that, data) {
 		console.log("Leave Project");
-		// that.gsapTweens.forEach((tween) => {
-		// 	tween.kill();
-		// });
-		// that.gsapTweens = [];
 		that.asscrollController.disableASScroller();
 	}
 
 	onEnterProject(that, data) {
 		console.log("ENTER project");
 		that.asscrollController.enableASScroller(false, data.next.container);
-		// that.gsapTweens.push(
-		// 	gsap.to(data.next.container.querySelector(".testscrollt"), {
-		// 		scrollTrigger: {
-		// 			trigger: data.next.container.querySelector(".testscrollt"),
-		// 			scrub: 0.25,
-		// 			markers: true,
-		// 		},
-		// 		xPercent: 100,
-		// 	})
-		// );
+		that.instanceProjectAnimations(data.next.container);
 	}
 
 	render() {
