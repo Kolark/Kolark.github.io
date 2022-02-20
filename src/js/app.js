@@ -15,7 +15,7 @@ export default class App {
 				isHorizontal: true,
 			});
 
-			// this.barba();
+			this.barba();
 			document.addEventListener("keydown", (event) => {
 				const keyName = event.key;
 				if (keyName == "d") {
@@ -53,42 +53,20 @@ export default class App {
 			views: [
 				{
 					namespace: "home",
-					beforeLeave() {
-						console.log("[BEFORE LEAVE HOME START]");
-						that.gsapTweens.forEach((tween) => {
-							tween.kill();
-						});
-						that.gsapTweens = [];
-
-						that.asscrollController.disableASScroller();
-						console.log("[BEFORE LEAVE HOME END]");
+					beforeLeave(data) {
+						that.onBeforeLeaveHome(that, data);
 					},
-					afterEnter: this.onEnterHome,
+					afterEnter(data) {
+						that.onEnterHome(that, data);
+					},
 				},
 				{
 					namespace: "project",
-					beforeLeave() {
-						that.asscrollController.disableASScroller();
+					beforeLeave(data) {
+						that.onBeforeProject(that, data);
 					},
 					afterEnter(data) {
-						that.asscrollController.enableASScroller(
-							false,
-							data.next.container
-						);
-						gsap.to(
-							data.next.container.querySelector(".testscrollt"),
-							{
-								scrollTrigger: {
-									trigger:
-										data.next.container.querySelector(
-											".testscrollt"
-										),
-									scrub: 0.25,
-									markers: true,
-								},
-								xPercent: 100,
-							}
-						);
+						that.onEnterProject(that, data);
 					},
 				},
 			],
@@ -190,10 +168,40 @@ export default class App {
 		console.log("INSTANCED ANIMATIONS");
 	}
 
-	onEnterHome(data) {
-		console.log("[AFTER ENTER HOME START]");
+	onBeforeLeaveHome(that, data) {
+		that.gsapTweens.forEach((tween) => {
+			tween.kill();
+		});
+		that.gsapTweens = [];
+		that.asscrollController.disableASScroller();
+	}
+
+	onEnterHome(that, data) {
+		console.log("ENTER HOOME");
+		console.log(this);
 		that.asscrollController.enableASScroller(true, data.next.container);
 		that.instanceGsapAnimations(data.next.container);
-		console.log("[AFTER ENTER HOME END]");
+	}
+
+	onBeforeProject(that, data) {
+		that.gsapTweens.forEach((tween) => {
+			tween.kill();
+		});
+		that.gsapTweens = [];
+		that.asscrollController.disableASScroller();
+	}
+
+	onEnterProject(that, data) {
+		that.asscrollController.enableASScroller(false, data.next.container);
+		that.gsapTweens.push(
+			gsap.to(data.next.container.querySelector(".testscrollt"), {
+				scrollTrigger: {
+					trigger: data.next.container.querySelector(".testscrollt"),
+					scrub: 0.25,
+					markers: true,
+				},
+				xPercent: 100,
+			})
+		);
 	}
 }

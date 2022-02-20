@@ -22,14 +22,14 @@ export default class ASScrollerController {
 			container.querySelector(this.elementSelector),
 			{
 				scrollLeft(value) {
-					// console.log("GET SCROLL LEFT");
+					console.log("GET SCROLL LEFT");
 					// console.log("Pos " + asscroll.currentPos);
 					return arguments.length
 						? (asscroll.currentPos = value)
 						: asscroll.currentPos;
 				},
 				scrollTop(value) {
-					// console.log("GET SCROLL TOP");
+					console.log("GET SCROLL TOP");
 					// console.log("Pos " + asscroll.currentPos);
 					return arguments.length
 						? (asscroll.currentPos = value)
