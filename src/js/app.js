@@ -11,8 +11,15 @@ export default class App {
 		this.gsapTweens = [];
 
 		this.asscrollController = new ASScrollerController();
+
 		this.asscrollController.firstTime();
-		this.instanceGsapAnimations(document);
+
+		if (document.body.classList.contains("b-inside")) {
+			this.instanceProjectAnimations(document);
+		} else {
+			this.instanceGsapAnimations(document);
+		}
+
 		if (window.innerWidth > 1024) {
 			console.log("creating asscroll");
 
@@ -150,6 +157,20 @@ export default class App {
 			})
 		);
 		console.log("INSTANCED ANIMATIONS");
+	}
+
+	instanceProjectAnimations(container) {
+		console.log(this);
+		this.gsapTweens.push(
+			gsap.to(container.querySelector(".testscrollt"), {
+				scrollTrigger: {
+					trigger: container.querySelector(".testscrollt"),
+					scrub: 0.25,
+					markers: true,
+				},
+				xPercent: 100,
+			})
+		);
 	}
 
 	onBeforeLeaveHome(that, data) {
