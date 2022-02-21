@@ -70,6 +70,8 @@ export default class App {
 					beforeEnter(data) {
 						console.log("Before Enter");
 						ScrollTrigger.getAll().forEach((t) => t.kill());
+						// ScrollTrigger.refresh();
+						// window.dispatchEvent(new Event("resize"));
 					},
 					enter(data) {
 						that.onEnterProject(that, data);
@@ -93,6 +95,8 @@ export default class App {
 					beforeEnter(data) {
 						console.log("Before Enter");
 						ScrollTrigger.getAll().forEach((t) => t.kill());
+						// ScrollTrigger.refresh();
+						// window.dispatchEvent(new Event("resize"));
 					},
 					enter(data) {
 						that.onEnterHome(that, data);
@@ -163,7 +167,7 @@ export default class App {
 			scrollTrigger: {
 				trigger: container.querySelector(".testscrollt"),
 				scrub: 0.25,
-				markers: true,
+				// markers: true,
 			},
 			xPercent: 100,
 		});

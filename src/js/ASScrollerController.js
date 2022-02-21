@@ -77,7 +77,9 @@ export default class ASScrollerController {
 	}
 
 	updateASScroller() {
-		this.asscroll.update();
+		if (this.asscroll.isScrollJacking) {
+			this.asscroll.update();
+		}
 	}
 
 	disableASScroller() {
