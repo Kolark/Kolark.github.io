@@ -11,7 +11,7 @@
 .view_1 {
     margin: 0;
     padding: 0%;
-    background-color: darksalmon;
+    /* background-color: darksalmon; */
 }
 
 .about {
@@ -22,7 +22,7 @@
 
 .about-content {
     margin: 16vmin 12vmax;
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; */
 }
 
 #name {
@@ -43,7 +43,7 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
     width: 40vw;
     left: 0vh;
     padding: 10vmin 0rem 5rem 2.5rem;
-    background-color: crimson;
+    /* background-color: crimson; */
     display: flex;
     flex-direction: column;
 }
@@ -86,7 +86,7 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
     position: absolute;
     height: 100vh;
     width: 50vw;
-    background-color:coral
+    /* background-color:coral */
 }
 
 .projects_title {
@@ -95,7 +95,7 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
     width: 100%;
     left: 0;
     top: 0;
-    background-color: darkmagenta;
+    /* background-color: darkmagenta; */
     font-family: "lexendMega";
     font-size: clamp(1rem,6vw,3rem);
     color: var(--text);
@@ -118,8 +118,8 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
     position: relative;
     width: 40vw;
     height: 40vw;
-    background-color: darksalmon;
-    border: solid 2px red;
+    /* background-color: darksalmon; */
+    /* border: solid 2px red; */
 }
 
 .projects_link {
@@ -172,7 +172,7 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
         position: relative;
         height: 55%;
         width: 100vw;
-        background-color: darkblue;
+        /* background-color: darkblue; */
         padding: 0;
     }
     .skills .title {
@@ -188,7 +188,7 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
         font-size: clamp(1.25rem,4vmax,2rem);
     }
     .skills_container {
-        background-color: chartreuse;
+        /* background-color: chartreuse; */
     }
     .skill__type {
         border: solid 2px royalblue;
@@ -205,7 +205,7 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
         display: block;
         height: 45%;
         width: 100vw;
-        background-color: brown;
+        /* background-color: brown; */
     }
 }
 

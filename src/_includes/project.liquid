@@ -56,7 +56,15 @@
                         {% endif %}
                     </div>
                 </div>
-
+                <div class="project__images">
+                    {% if project_images %}
+                    {% for img in project_images %}
+                    <div class="project_img">
+                        <img src="/img/{{img}}" alt="">
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
                 <div class="testscrollt">xdd</div>
             </div>
         </main>
@@ -68,7 +76,7 @@
 	</div>
     </div>
     <!-- END BARBA -->
-    
+
     <div class="curtain"></div>
 </body>
 <script src="/index.js"></script>

@@ -14,4 +14,11 @@ arra:
   - "C#"
   - "Rest API"
   - "Socket IO"
+project_images:
+  - "pochita1.JPG"
+  - "image1.jpg"
+  - "image2.jpg"
+  - "image3.jpg"
+  - "kirua.jpg"
+  - "kugisaki.jpg"
 ---
