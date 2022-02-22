@@ -3,7 +3,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 export default function instanceSwiper() {
-	swiper = new Swiper(".projects_slides", {
+	return new Swiper(".projects_slides", {
 		modules: [Pagination],
 		pagination: {
 			el: ".swiper-pagination",

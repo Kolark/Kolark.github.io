@@ -4,22 +4,23 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import barba from "@barba/core";
 import ASScrollerController from "./ASScrollerController";
 
+import instanceSwiper from "./instanceSwiper";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default class App {
 	constructor(options) {
-		this.asscrollController = new ASScrollerController();
-
-		this.asscrollController.firstTime();
-
-		if (document.body.classList.contains("b-inside")) {
-			this.instanceProjectAnimations(document);
-		} else {
-			this.instanceGsapAnimations(document);
-		}
-
 		if (window.innerWidth > 1024) {
 			console.log("creating asscroll");
+			this.asscrollController = new ASScrollerController();
+
+			this.asscrollController.firstTime();
+
+			if (document.body.classList.contains("b-inside")) {
+				this.instanceProjectAnimations(document);
+			} else {
+				this.instanceGsapAnimations(document);
+			}
 
 			this.barba();
 			document.addEventListener("keydown", (event) => {
@@ -44,7 +45,7 @@ export default class App {
 				}
 			});
 		} else {
-			instanceSwiper();
+			this.swiperInstance = instanceSwiper();
 		}
 
 		this.render();
@@ -196,7 +197,9 @@ export default class App {
 	}
 
 	render() {
-		this.asscrollController.updateASScroller();
+		if (this.asscrollController !== undefined) {
+			this.asscrollController.updateASScroller();
+		}
 		requestAnimationFrame(this.render.bind(this));
 	}
 }
