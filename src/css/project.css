@@ -3,19 +3,27 @@
     --top_size : 2rem;
 }
 
+.project__content {
+    position: relative;
+}
+
 .header {
-    position: fixed;
+    position: absolute;
     width: 100vw;
     height: var(--header_height);
-    top: 0;
+    top: 0px;
     left: 0;
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+}
 
+.header_content {
+    background-color: aqua;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    background-color:chocolate;
-    border: solid 2px red;
 }
 
 .header h2 {
@@ -36,24 +44,20 @@
 
 .contact__links li,.about__link {
     padding: 1rem;
-    border: solid 2px rgb(255, 166, 0);
 }
 
 /* MAIN----------------- */
 .main
 {
     width: 100vw;
-    max-width: 100%;
     height: fit-content;
     display: flex;
     justify-content: center;
     padding-top: 8vh;
-    background-color:rgb(0, 94, 170)
 }
 /* TO CHANGE */
 .project {
     width: 80vw;
-    background-color: deepskyblue;
     color: var(--text);
 }
 
@@ -64,13 +68,11 @@
     grid-template-columns: 1.2fr 1fr;
     grid-template-rows: 0.3fr 1fr;
     gap: 0 3rem;
-    background-color:rgb(0, 94, 170)
 }
 /* TO CHANGE */
 .project__title {
     font-family: "geosans";
     font-size: clamp(1rem,5vw,4.5rem);
-    border: solid 2px red;
     grid-column: 1 / -1;
 
     display: flex;
@@ -96,7 +98,6 @@
     /* padding-top: calc(var(--top_size)*2); */
     font-family: "geosans";
     font-size: clamp(1rem,2.65vw,2.25rem);
-    border: solid 2px red;
 }
 
 .project__description p {
@@ -106,7 +107,6 @@
 .project__links {
     font-family: "geosans";
     font-size: clamp(1rem,3vw,2.5rem);
-    border: solid 2px red;
     display: flex;
     gap: 2rem;
     flex-direction: column;
@@ -122,14 +122,9 @@
     width: 100%;
     height: max-content;
     list-style: none;
-    border: solid 2px rgb(102, 26, 99);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
-
-.project__links li {
-    border: solid 1px rgb(255, 166, 0);
 }
 
 .project__images {
@@ -153,10 +148,10 @@
 
 @media screen and (max-width: 1024px) {
 
-    .header {
-        justify-content: space-evenly;
+    .header_content{
+        width: 100%;
+        justify-content: space-around;
     }
-
     .contact__links li,.about__link {
         padding: 0rem;
     }

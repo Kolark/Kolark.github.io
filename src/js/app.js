@@ -121,6 +121,9 @@ export default class App {
 		const view1 = container.querySelector(".view_1");
 		const view2 = container.querySelector(".view_2");
 
+		const footer = container.querySelector(".footer");
+		const resume_download = container.querySelector("#resume_download");
+
 		const projectsEnd =
 			view2.getBoundingClientRect().width -
 			window.innerWidth * 0.6 -
@@ -158,20 +161,43 @@ export default class App {
 					projects_container.getBoundingClientRect().height) *
 					100,
 		});
+
+		gsap.to(footer, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.03}px top`,
+				end: `${projectsEnd + window.innerWidth}px center`,
+				trigger: footer,
+				pin: true,
+				// markers: true,
+			},
+		});
+		gsap.to(resume_download, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.03}px center`,
+				end: `${800}px center`,
+				trigger: resume_download,
+				scrub: true,
+			},
+			xPercent: -150,
+		});
+
 		console.log("INSTANCED ANIMATIONS");
 	}
 
 	instanceProjectAnimations(container) {
 		console.log("Instanced Project Animations");
-
-		gsap.to(container.querySelector(".testscrollt"), {
-			scrollTrigger: {
-				trigger: container.querySelector(".testscrollt"),
-				scrub: 0.25,
-				// markers: true,
-			},
-			xPercent: 100,
-		});
+		const header = container.querySelector(".header");
+		// gsap.to(header, {
+		// 	scrollTrigger: {
+		// 		trigger: header,
+		// 		pin: true,
+		// 		start: "10px top",
+		// 		end: "20px top",
+		// 		markers: true,
+		// 	},
+		// });
 	}
 
 	onBeforeLeaveHome(that, data) {
