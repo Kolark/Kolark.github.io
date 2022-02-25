@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
 	// eleventyConfig.addPassthroughCopy("js/");
 	eleventyConfig.addFilter("arrayToClasses", (values) => {
 		return values.join(" ");
+		// return "Unity";
 	});
 
 	return {

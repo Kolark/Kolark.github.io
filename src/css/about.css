@@ -74,11 +74,16 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
     font-size: clamp(1.25rem,4vw,2rem);
 }
 
-.skill:hover {
+.notselected {
+    padding: 0;
+    transition: all 150ms;
+}
 
-	padding: 0.125rem 1rem;
+.selected {
+	padding: 0.25rem 1rem;
     border: solid 1px chartreuse;
 	border-radius: 2rem;
+    transition: all 150ms;
 }
 
 .projects {

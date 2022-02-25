@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import barba from "@barba/core";
 import ASScrollerController from "./ASScrollerController";
+import Swiper, { Navigation, Pagination } from "swiper";
 
 import instanceSwiper from "./instanceSwiper";
 
@@ -21,7 +22,7 @@ export default class App {
 			} else {
 				this.instanceGsapAnimations(document);
 			}
-
+			this.onMouseOverEvents(document);
 			this.barba();
 			document.addEventListener("keydown", (event) => {
 				const keyName = event.key;
@@ -45,7 +46,7 @@ export default class App {
 				}
 			});
 		} else {
-			this.swiperInstance = instanceSwiper();
+			this.mobile();
 		}
 
 		this.render();
@@ -193,9 +194,10 @@ export default class App {
 		// 	scrollTrigger: {
 		// 		trigger: header,
 		// 		pin: true,
-		// 		start: "10px top",
-		// 		end: "20px top",
+		// 		start: "0px center",
+		// 		end: "2000px center",
 		// 		markers: true,
+		// 		horizontal: false,
 		// 	},
 		// });
 	}
@@ -209,6 +211,7 @@ export default class App {
 		console.log("ENTER HOME");
 		that.asscrollController.enableASScroller(true, data.next.container);
 		that.instanceGsapAnimations(data.next.container);
+		that.onMouseOverEvents(data.next.container);
 	}
 
 	onBeforeProject(that, data) {
@@ -220,6 +223,54 @@ export default class App {
 		console.log("ENTER project");
 		that.asscrollController.enableASScroller(false, data.next.container);
 		that.instanceProjectAnimations(data.next.container);
+	}
+
+	onMouseOverEvents(container) {
+		const projects = container.querySelectorAll(".project_instance");
+		const skills = container.querySelectorAll(".skill");
+		projects.forEach((element) => {
+			const usedSkills = element.dataset.used_skills.split(" ");
+			console.log(usedSkills);
+			element.addEventListener("mouseenter", (e) => {
+				skills.forEach((sk) => {
+					if (usedSkills.includes(sk.dataset.skill)) {
+						sk.classList.add("selected");
+						sk.classList.remove("notselected");
+					}
+				});
+			});
+			element.addEventListener("mouseleave", (e) => {
+				skills.forEach((sk) => {
+					sk.classList.remove("selected");
+					sk.classList.add("notselected");
+				});
+			});
+		});
+	}
+
+	offMouseOverEvents() {}
+
+	//MOBILE
+	mobile() {
+		const swiperSlides = document.querySelectorAll(".swiper-slide");
+		const skills = document.querySelectorAll(".skill");
+		this.swiperInstance = instanceSwiper();
+		const sw = this.swiperInstance;
+		this.swiperInstance.on("slideChange", function () {
+			const usedSkills =
+				swiperSlides[sw.activeIndex].dataset.used_skills.split(" ");
+			skills.forEach((sk) => {
+				if (usedSkills.includes(sk.dataset.skill)) {
+					sk.classList.add("selected");
+					sk.classList.remove("notselected");
+				} else {
+					sk.classList.remove("selected");
+					sk.classList.add("notselected");
+				}
+			});
+
+			console.log("slide changed");
+		});
 	}
 
 	render() {

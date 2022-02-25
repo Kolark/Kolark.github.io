@@ -9,11 +9,10 @@ numbers:
   - "one"
   - "one"
   - "one"
-arra:
+skills:
   - "Unity"
   - "C#"
-  - "Rest API"
-  - "Socket IO"
+  - "Rest-API"
 project_images:
   - "pochita1.JPG"
   - "image1.jpg"

@@ -40,27 +40,27 @@
 				<div class="skill__type">
 					<h2><span class="mobile_disable">For</span> Game Dev</h2>
 					<p>
-						<span class="skill">Unity</span>
-						<span class="skill">C#</span>
+						<span data-skill="Unity" class="skill">Unity</span>
+						<span data-skill="C#" class="skill">C#</span>
 					</p>
 				</div>
 				<div class="skill__type">
 					<h2><span class="mobile_disable">For</span> Web Dev</h2>
 					<p>
-						<span class="skill">Javascript</span>
-						<span class="skill">React</span>
-						<span class="skill">Node.Js</span>
-						<span class="skill">Express</span>
-						<span class="skill">MongoDB</span>
-						<span class="skill">Three.js</span>
+						<span data-skill="Javascript" class="skill">Javascript</span>
+						<span data-skill="React" class="skill">React</span>
+						<span data-skill="Node" class="skill">Node.Js</span>
+						<span data-skill="Express" class="skill">Express</span>
+						<span data-skill="MongoDB" class="skill">MongoDB</span>
+						<span data-skill="Threejs" class="skill">Three.js</span>
 					</p>
 				</div>
 				<div class="skill__type">
 					<h2>General</h2>
 					<p>
-						<span class="skill">Git</span>
-						<span class="skill">Rest-APIs</span>
-						<span class="skill">Socket.IO</span>
+						<span data-skill="Git" class="skill">Git</span>
+						<span data-skill="Rest-API" class="skill">Rest-APIs</span>
+						<span data-skill="Socket.IO" class="skill">Socket.IO</span>
 					</p>
 				</div>
 			</div>
@@ -71,7 +71,7 @@
 			</div>
 			<div class="projects_container">
 				{% for post in collections.posts %}
-				<div class="project_instance">
+				<div class="project_instance" data-used_skills="{{ post.data.skills | arrayToClasses }}">
 					<a class="projects_link" href="{{post.url}}">
 						<img src="/img/{{post.data.image}}" alt="">
 						<div class="projects_info">
@@ -86,7 +86,7 @@
 			<div class="swiper projects_slides">
 				<div class="swiper-wrapper">
 					{% for post in collections.posts %}
-					<div class="swiper-slide">
+					<div class="swiper-slide" data-used_skills="{{ post.data.skills | arrayToClasses }}">
 						<div class="project__mobile">
 							<img src="/img/{{post.data.image}}" alt="">
 							<div class="project__mobile-info">
