@@ -235,6 +235,23 @@ export default class App {
 			xPercent: -150,
 		});
 
+		gsap.timeline({ repeat: -1 })
+			.fromTo(
+				container.querySelector(".scroll-arrow"),
+				{
+					xPercent: -600,
+					scale: 1,
+				},
+				{
+					xPercent: 100,
+					duration: 4,
+				}
+			)
+			.to(container.querySelector(".scroll-arrow"), {
+				scale: 0,
+				duration: 0.25,
+			});
+
 		console.log("INSTANCED ANIMATIONS");
 	}
 
@@ -313,6 +330,24 @@ export default class App {
 			console.log("Slide change");
 		});
 		this.swiperUpdate(sw, skills, swiperSlides);
+
+		gsap.fromTo(
+			document.querySelector(".skills"),
+			{
+				opacity: 0,
+				duration: 0.5,
+			},
+			{
+				opacity: 1,
+				duration: 2,
+				scrollTrigger: {
+					start: "top center",
+					end: "top center",
+					trigger: document.querySelector(".skills"),
+					toggleActions: "play none none reverse",
+				},
+			}
+		);
 	}
 
 	swiperUpdate(swiper, skills, swiperSlides) {
