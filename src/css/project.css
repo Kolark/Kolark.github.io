@@ -16,6 +16,7 @@
     z-index: 200;
 }
 .header {
+    position: fixed;
     width: 100vw;
     height: var(--header_height);
     top: 0px;
@@ -160,14 +161,14 @@
         justify-content: space-around;
     }
     .contact__links li,.about__link {
-        padding: 0rem;
+        padding: 0.4rem;
     }
 
     .project {
         width: 100vw;
     }
     .project__description {
-        padding: 1rem 0;
+        padding: 1rem 1rem;
         font-family: "geosans";
         font-size: 1.25rem;
     }
@@ -197,7 +198,7 @@
         grid-template-columns: 1fr;
         grid-template-rows: 0.3fr min-content min-content;
         gap: 0 3rem;
-        background-color:rgb(0, 94, 170)
+        /* background-color:rgb(0, 94, 170) */
     }
 
     .project__title {

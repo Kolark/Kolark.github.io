@@ -32,8 +32,9 @@
 /*END VIEW1 */
 /* VIEW2 */
 .view_2 {
-    background: rgb(10,255,207);
-background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%, rgba(60,44,249,1) 50%, rgba(230,213,27,1) 100%);
+    background-color: black;
+    /* background: rgb(10,255,207);
+background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%, rgba(60,44,249,1) 50%, rgba(230,213,27,1) 100%); */
     position: relative;
 }
 
@@ -196,7 +197,7 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
         /* background-color: chartreuse; */
     }
     .skill__type {
-        border: solid 2px royalblue;
+        /* border: solid 2px royalblue; */
         text-align: center;
     }
     .mobile_disable {
@@ -277,3 +278,30 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
 
 
 /* END MOBILE SWIPER */
+
+.scrolldown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.scrolldown p{
+display: inline;
+}
+
+.scrolldown img {
+    height: 3vw;
+    width: 3vw;
+    color: white;
+    background-color: white;
+    fill: violet;
+    filter: invert(100%);
+    transform: rotate(-90deg);
+}
+
+.arrowdwn {
+    color: white;
+    fill: violet;
+    background-color: brown;
+}

@@ -49,6 +49,10 @@ export default class App {
 			this.mobile();
 		}
 
+		window.addEventListener("resize", function () {
+			window.location.href = window.location.href;
+		});
+
 		this.render();
 	}
 
@@ -64,10 +68,23 @@ export default class App {
 					leave(data) {
 						console.log("Leave Home");
 						that.onBeforeLeaveHome(that, data);
-						return gsap.timeline().to(data.current.container, {
-							opacity: 0,
-							duration: 1,
-						});
+						return gsap
+							.timeline()
+							.to(data.current.container, {
+								opacity: 0,
+								duration: 0.5,
+							})
+							.fromTo(
+								document.querySelector(".curtain"),
+								{
+									xPercent: -100,
+									duration: 0.75,
+								},
+								{
+									xPercent: 100,
+									duration: 0.75,
+								}
+							);
 					},
 					beforeEnter(data) {
 						console.log("Before Enter");
@@ -77,9 +94,22 @@ export default class App {
 					},
 					enter(data) {
 						that.onEnterProject(that, data);
-						return gsap.timeline().from(data.next.container, {
-							opacity: 0,
-						});
+						return gsap
+							.timeline()
+							.fromTo(
+								document.querySelector(".curtain"),
+								{
+									xPercent: 100,
+									duration: 0.75,
+								},
+								{
+									xPercent: 200,
+									duration: 0.75,
+								}
+							)
+							.from(data.next.container, {
+								opacity: 0,
+							});
 					},
 				},
 				{
@@ -89,10 +119,23 @@ export default class App {
 					},
 					leave(data) {
 						that.onBeforeProject(that, data);
-						return gsap.timeline().to(data.current.container, {
-							opacity: 0,
-							duration: 0.5,
-						});
+						return gsap
+							.timeline()
+							.to(data.current.container, {
+								opacity: 0,
+								duration: 0.5,
+							})
+							.fromTo(
+								document.querySelector(".curtain"),
+								{
+									xPercent: 200,
+									duration: 0.75,
+								},
+								{
+									xPercent: 100,
+									duration: 0.75,
+								}
+							);
 					},
 					beforeEnter(data) {
 						console.log("Before Enter");
@@ -102,9 +145,17 @@ export default class App {
 					},
 					enter(data) {
 						that.onEnterHome(that, data);
-						return gsap.timeline().from(data.next.container, {
-							opacity: 0,
-						});
+						return gsap.timeline().fromTo(
+							document.querySelector(".curtain"),
+							{
+								xPercent: 100,
+								duration: 0.75,
+							},
+							{
+								xPercent: -100,
+								duration: 0.75,
+							}
+						);
 					},
 				},
 			],
@@ -256,23 +307,27 @@ export default class App {
 		const skills = document.querySelectorAll(".skill");
 		this.swiperInstance = instanceSwiper();
 		const sw = this.swiperInstance;
+		let that = this;
 		this.swiperInstance.on("slideChange", function () {
-			const usedSkills =
-				swiperSlides[sw.activeIndex].dataset.used_skills.split(" ");
-			skills.forEach((sk) => {
-				if (usedSkills.includes(sk.dataset.skill)) {
-					sk.classList.add("selected");
-					sk.classList.remove("notselected");
-				} else {
-					sk.classList.remove("selected");
-					sk.classList.add("notselected");
-				}
-			});
-
-			console.log("slide changed");
+			that.swiperUpdate(sw, skills, swiperSlides);
+			console.log("Slide change");
 		});
+		this.swiperUpdate(sw, skills, swiperSlides);
 	}
 
+	swiperUpdate(swiper, skills, swiperSlides) {
+		const usedSkills =
+			swiperSlides[swiper.activeIndex].dataset.used_skills.split(" ");
+		skills.forEach((sk) => {
+			if (usedSkills.includes(sk.dataset.skill)) {
+				sk.classList.add("selected");
+				sk.classList.remove("notselected");
+			} else {
+				sk.classList.remove("selected");
+				sk.classList.add("notselected");
+			}
+		});
+	}
 	render() {
 		if (this.asscrollController !== undefined) {
 			this.asscrollController.updateASScroller();
