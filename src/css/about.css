@@ -1,27 +1,17 @@
-body,
-html {
-    padding: 0;
-    margin: 0;
-}
-
 :root {
-
+    --view2_size : 350vw;
 }
-
-.content {
-    height: 100vh;
-}
-.wrapper {
-    width: fit-content;
+.homepage__content {
+    /* width: fit-content; */
     display: grid;
-    grid-template-columns: 100vw 350vw;
+    grid-template-columns: 100vw var(--view2_size);
     grid-template-rows: 100vh;
 }
 /* VIEW1 */
 .view_1 {
     margin: 0;
     padding: 0%;
-    background-color: darksalmon;
+    /* background-color: darksalmon; */
 }
 
 .about {
@@ -32,7 +22,33 @@ html {
 
 .about-content {
     margin: 16vmin 12vmax;
-    background-color: cornflowerblue;
+    /* background-color: cornflowerblue; */
+}
+
+.scrolldown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.scrolldown p{
+display: inline;
+}
+
+.scrolldown img {
+    height: 2.5vw;
+    width: 2.5vw;
+    color: white;
+    background-color: white;
+    fill: violet;
+    filter: invert(100%);
+    mix-blend-mode: exclusion;
+    transform: rotate(-90deg);
+}
+
+.scroll-arrow {
+ z-index: 200;   
 }
 
 #name {
@@ -42,7 +58,9 @@ html {
 /*END VIEW1 */
 /* VIEW2 */
 .view_2 {
-    background-color:chartreuse;
+    background-color: var(--bg);
+    /* background: rgb(10,255,207);
+background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%, rgba(60,44,249,1) 50%, rgba(230,213,27,1) 100%); */
     position: relative;
 }
 
@@ -52,7 +70,7 @@ html {
     width: 40vw;
     left: 0vh;
     padding: 10vmin 0rem 5rem 2.5rem;
-    background-color: crimson;
+    /* background-color: crimson; */
     display: flex;
     flex-direction: column;
 }
@@ -63,10 +81,10 @@ html {
 }
 
 .skills_container {
-    flex-grow: 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 3vmin 0;
 }
 
 .skill__type h2 {
@@ -83,11 +101,18 @@ html {
     font-size: clamp(1.25rem,4vw,2rem);
 }
 
-.skill:hover {
+.notselected {
+    padding: 0;
+    transition: all 150ms;
+}
 
-	padding: 0.125rem 1rem;
-    border: solid 1px chartreuse;
+.selected {
+	padding: 0.25rem 1rem;
+    border: solid 1px var(--title);
+    color: black;
+    background-color: var(--title);
 	border-radius: 2rem;
+    transition: all 150ms;
 }
 
 .projects {
@@ -95,7 +120,7 @@ html {
     position: absolute;
     height: 100vh;
     width: 50vw;
-    background-color:coral
+    /* background-color:coral */
 }
 
 .projects_title {
@@ -104,7 +129,7 @@ html {
     width: 100%;
     left: 0;
     top: 0;
-    background-color: darkmagenta;
+    /* background-color: darkmagenta; */
     font-family: "lexendMega";
     font-size: clamp(1rem,6vw,3rem);
     color: var(--text);
@@ -120,31 +145,31 @@ html {
     align-items: center;
     gap: 5rem 0;
     padding-top: 100vh;
-    padding-bottom: 20vh;
+    padding-bottom: 10vh;
 }
 
-.project {
+.project_instance {
     position: relative;
     width: 40vw;
     height: 40vw;
-    background-color: darksalmon;
-    border: solid 2px red;
+    /* background-color: darksalmon; */
+    /* border: solid 2px red; */
 }
 
-.project_link {
+.projects_link {
     height: 100%;
     width: 100%;
 }
 
-.project img{
+.project_instance img{
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
 
-.title:hover {
+/* .title:hover {
     color: blue;
-}
+} */
 
 .projects_info {
     position: absolute;
@@ -164,7 +189,7 @@ html {
 }
 /* END VIEW2 */
 @media screen and (max-width: 1024px) {
-    .wrapper {
+    .homepage__content {
         grid-template-columns: 100vw;
         grid-template-rows: 70vh 100vh;
     }
@@ -174,6 +199,11 @@ html {
         text-align: justify;
         font-size: clamp(1rem,7vw,2.5rem);
     }
+
+    .scrolldown {
+        display: none;
+    }
+
     #name {
         font-size: clamp(1.25rem,8vw,2.75rem);
     }
@@ -181,7 +211,7 @@ html {
         position: relative;
         height: 55%;
         width: 100vw;
-        background-color: darkblue;
+        /* background-color: darkblue; */
         padding: 0;
     }
     .skills .title {
@@ -197,10 +227,10 @@ html {
         font-size: clamp(1.25rem,4vmax,2rem);
     }
     .skills_container {
-        background-color: chartreuse;
+        /* background-color: chartreuse; */
     }
     .skill__type {
-        border: solid 2px royalblue;
+        /* border: solid 2px royalblue; */
         text-align: center;
     }
     .mobile_disable {
@@ -214,7 +244,13 @@ html {
         display: block;
         height: 45%;
         width: 100vw;
-        background-color: brown;
+        /* background-color: brown; */
+    }
+
+    .selected {
+        padding: 0.125rem 0.125rem;
+
+        transition: all 150ms;
     }
 }
 
@@ -264,8 +300,8 @@ html {
 	position: relative;
 	border-radius: 2rem;
 	padding: 0.25rem 1.5rem 0.5rem 1.5rem;
-    background: radial-gradient(ellipse at top, rgb(255, 112, 112), transparent),
-    radial-gradient(ellipse at bottom, #68cf13, transparent);
+    background: radial-gradient(ellipse at top, var(--bg), transparent),
+    radial-gradient(ellipse at bottom, var(--bg), transparent);
     font-size: clamp(1rem,8vw,2.5rem);
     filter: invert(10%);
     color: var(--text);
@@ -281,3 +317,4 @@ html {
 
 
 /* END MOBILE SWIPER */
+

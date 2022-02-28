@@ -7,6 +7,15 @@ html {
     box-sizing: inherit;
   }
 
+  *{margin:0;padding:0} 
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+
+
 :root {
     --bg : #160C28;
     --title : #EFCB68;
@@ -19,7 +28,9 @@ html {
     --min-fontsize : 1rem;
     --fontsize: 10vmax;
 }
-
+body {
+  background-color: var(--bg);
+}
 @font-face {
   font-family: geosans;
   src: url(../fonts/GeosansLight.ttf);
@@ -50,3 +61,28 @@ p {
   color: var(--title);
 }
 
+.curtain{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--title);
+  transform: translate(-100%,0)
+}
+
+[data-barba-namespace]{
+  position: absolute;
+  top: 0;
+}
+
+@media screen and (max-width: 1024px) {
+
+  body {
+    height: fit-content;
+  }
+  .curtain {
+    display: none;
+  }
+}

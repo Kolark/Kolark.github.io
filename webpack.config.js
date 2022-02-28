@@ -5,14 +5,16 @@ const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
+const folder = "_site";
+
 module.exports = {
 	entry: {
-		app: "./src/js/app.js",
+		index: "./src/js/index.js",
 	},
 	output: {
-		path: path.resolve(__dirname, "dist"),
-		// filename: '[name].bundle.js',
+		path: path.resolve(__dirname, "_site"),
 		filename: "[name].js",
+		clean: false,
 	},
 	module: {
 		rules: [
@@ -42,13 +44,13 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
+		// new CleanWebpackPlugin(),
 		new CopyPlugin({
 			patterns: [
-				{
-					from: "src/*.html",
-					to: "[name][ext]",
-				},
+				// {
+				// 	from: "src/*.html",
+				// 	to: "[name][ext]",
+				// },
 				{
 					from: "src/img/*",
 					to: "img/[name][ext]",
@@ -80,7 +82,7 @@ module.exports = {
 		port: 8080,
 		compress: true,
 		watchFiles: {
-			paths: ["src/*"],
+			paths: ["src/js/*", "src/css/*"],
 		},
 	},
 };
