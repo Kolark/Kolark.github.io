@@ -5,14 +5,14 @@ const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-const folder = "_site";
+const folder = "docs";
 
 module.exports = {
 	entry: {
 		index: "./src/js/index.js",
 	},
 	output: {
-		path: path.resolve(__dirname, "_site"),
+		path: path.resolve(__dirname, "docs"),
 		filename: "[name].js",
 		clean: false,
 	},

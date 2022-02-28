@@ -8,7 +8,7 @@
     "webpackbuild": "webpack --mode=production",
     "builddev": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf _site",
+    "clean": "rimraf docs",
     "serve:webpack": "webpack --mode development --watch",
     "serve:eleventy": "eleventy --serve",
     "serve": "npm-run-all clean --parallel serve:*",

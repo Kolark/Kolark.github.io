@@ -12,7 +12,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default class App {
 	constructor(options) {
 		if (window.innerWidth > 1024) {
-			console.log("creating asscroll");
 			this.asscrollController = new ASScrollerController();
 
 			this.asscrollController.firstTime();
@@ -24,27 +23,6 @@ export default class App {
 			}
 			this.onMouseOverEvents(document);
 			this.barba();
-			document.addEventListener("keydown", (event) => {
-				const keyName = event.key;
-				if (keyName == "d") {
-					this.asscrollController.disableASScroller();
-				}
-				if (keyName == "e") {
-					this.asscrollController.enableASScroller(true, document);
-					// this.instanceGsapAnimations(document);
-					console.log(
-						"SIZE " +
-							document.querySelector("[asscroll-container]")
-								.scrollHeight
-					);
-				}
-				if (keyName == "r") {
-					this.asscrollController.enableASScroller(false, document);
-				}
-				if (keyName == "t") {
-					this.asscrollController.debugInfo();
-				}
-			});
 		} else {
 			this.mobile();
 		}
@@ -66,7 +44,6 @@ export default class App {
 						namespace: ["home"],
 					},
 					leave(data) {
-						console.log("Leave Home");
 						that.onBeforeLeaveHome(that, data);
 						return gsap
 							.timeline()
@@ -87,10 +64,7 @@ export default class App {
 							);
 					},
 					beforeEnter(data) {
-						console.log("Before Enter");
 						ScrollTrigger.getAll().forEach((t) => t.kill());
-						// ScrollTrigger.refresh();
-						// window.dispatchEvent(new Event("resize"));
 					},
 					enter(data) {
 						that.onEnterProject(that, data);
@@ -138,10 +112,7 @@ export default class App {
 							);
 					},
 					beforeEnter(data) {
-						console.log("Before Enter");
 						ScrollTrigger.getAll().forEach((t) => t.kill());
-						// ScrollTrigger.refresh();
-						// window.dispatchEvent(new Event("resize"));
 					},
 					enter(data) {
 						that.onEnterHome(that, data);
@@ -251,12 +222,9 @@ export default class App {
 				scale: 0,
 				duration: 0.25,
 			});
-
-		console.log("INSTANCED ANIMATIONS");
 	}
 
 	instanceProjectAnimations(container) {
-		console.log("Instanced Project Animations");
 		const header = container.querySelector(".header");
 		// gsap.to(header, {
 		// 	scrollTrigger: {
@@ -271,24 +239,20 @@ export default class App {
 	}
 
 	onBeforeLeaveHome(that, data) {
-		console.log("leave HOME");
 		that.asscrollController.disableASScroller();
 	}
 
 	onEnterHome(that, data) {
-		console.log("ENTER HOME");
 		that.asscrollController.enableASScroller(true, data.next.container);
 		that.instanceGsapAnimations(data.next.container);
 		that.onMouseOverEvents(data.next.container);
 	}
 
 	onBeforeProject(that, data) {
-		console.log("Leave Project");
 		that.asscrollController.disableASScroller();
 	}
 
 	onEnterProject(that, data) {
-		console.log("ENTER project");
 		that.asscrollController.enableASScroller(false, data.next.container);
 		that.instanceProjectAnimations(data.next.container);
 	}
@@ -298,7 +262,6 @@ export default class App {
 		const skills = container.querySelectorAll(".skill");
 		projects.forEach((element) => {
 			const usedSkills = element.dataset.used_skills.split(" ");
-			console.log(usedSkills);
 			element.addEventListener("mouseenter", (e) => {
 				skills.forEach((sk) => {
 					if (usedSkills.includes(sk.dataset.skill)) {
@@ -327,7 +290,6 @@ export default class App {
 		let that = this;
 		this.swiperInstance.on("slideChange", function () {
 			that.swiperUpdate(sw, skills, swiperSlides);
-			console.log("Slide change");
 		});
 		this.swiperUpdate(sw, skills, swiperSlides);
 

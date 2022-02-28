@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default class ASScrollerController {
 	enableASScroller(isHorizontal, container) {
-		console.log("[ENABLE SCROLLER START]");
 		this.asscroll = new ASScroll({
 			disableRaf: true,
 			containerElement: container.querySelector("[asscroll-container]"),
@@ -17,11 +16,9 @@ export default class ASScrollerController {
 			newScrollElements: container.querySelector(".scroll-wrap"),
 			// reset: true,
 		});
-		console.log("[ENABLE SCROLLER END]");
 	}
 
 	firstTime() {
-		console.log("FIRST TIME");
 		this.asscroll = new ASScroll({
 			disableRaf: true,
 		});
@@ -33,11 +30,9 @@ export default class ASScrollerController {
 		this.setupScrollTrigger(document);
 		if (!document.body.classList.contains("b-inside")) {
 		}
-		console.log("FIRST TIME END");
 	}
 
 	setupScrollTrigger(container) {
-		console.log("Setup Scroll Trigger STart");
 		const elementSelector = container.querySelector(".scroll-wrap");
 		let that = this;
 
@@ -47,15 +42,11 @@ export default class ASScrollerController {
 
 		ScrollTrigger.scrollerProxy(elementSelector, {
 			scrollLeft(value) {
-				// console.log("GET SCROLL LEFT");
-				// console.log("Pos " + asscroll.currentPos);
 				return arguments.length
 					? (that.asscroll.currentPos = value)
 					: that.asscroll.currentPos;
 			},
 			scrollTop(value) {
-				// console.log("GET SCROLL TOP");
-				// console.log("Pos " + asscroll.currentPos);
 				return arguments.length
 					? (that.asscroll.currentPos = value)
 					: that.asscroll.currentPos;
@@ -73,7 +64,6 @@ export default class ASScrollerController {
 		this.asscroll.on("update", ScrollTrigger.update);
 
 		ScrollTrigger.addEventListener("refresh", this.asscroll.resize);
-		console.log("Setup Scroll Trigger END");
 	}
 
 	updateASScroller() {
@@ -83,7 +73,6 @@ export default class ASScrollerController {
 	}
 
 	disableASScroller() {
-		console.log("Disabled asscroller");
 		this.asscroll.off("update", ScrollTrigger.update);
 		ScrollTrigger.removeEventListener("refresh", this.asscroll.resize); //remove
 		this.asscroll.disable();
