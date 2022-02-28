@@ -1,39 +1,372 @@
+import ASScroll from "@ashthornton/asscroll";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import horizontalPin from "./horizontalPin";
+import barba from "@barba/core";
+import ASScrollerController from "./ASScrollerController";
+import Swiper, { Navigation, Pagination } from "swiper";
+
+import instanceSwiper from "./instanceSwiper";
 
 gsap.registerPlugin(ScrollTrigger);
 
-let mainContent = document.querySelector(".main-content");
+export default class App {
+	constructor(options) {
+		if (window.innerWidth > 1024) {
+			console.log("creating asscroll");
+			this.asscrollController = new ASScrollerController();
 
-window.addEventListener("scroll", (e) => {
-	if (window.screen.width > 1024) {
-		mainContent.style.transform = `translate3d(-${window.scrollY}px,0px,0px)`;
+			this.asscrollController.firstTime();
+
+			if (document.body.classList.contains("b-inside")) {
+				this.instanceProjectAnimations(document);
+			} else {
+				this.instanceGsapAnimations(document);
+			}
+			this.onMouseOverEvents(document);
+			this.barba();
+			document.addEventListener("keydown", (event) => {
+				const keyName = event.key;
+				if (keyName == "d") {
+					this.asscrollController.disableASScroller();
+				}
+				if (keyName == "e") {
+					this.asscrollController.enableASScroller(true, document);
+					// this.instanceGsapAnimations(document);
+					console.log(
+						"SIZE " +
+							document.querySelector("[asscroll-container]")
+								.scrollHeight
+					);
+				}
+				if (keyName == "r") {
+					this.asscrollController.enableASScroller(false, document);
+				}
+				if (keyName == "t") {
+					this.asscrollController.debugInfo();
+				}
+			});
+		} else {
+			this.mobile();
+		}
+
+		window.addEventListener("resize", function () {
+			window.location.href = window.location.href;
+		});
+
+		this.render();
 	}
-});
 
-horizontalPin(".test3", 600, 200);
+	barba() {
+		let that = this;
+		barba.init({
+			transitions: [
+				{
+					name: "from-home",
+					from: {
+						namespace: ["home"],
+					},
+					leave(data) {
+						console.log("Leave Home");
+						that.onBeforeLeaveHome(that, data);
+						return gsap
+							.timeline()
+							.to(data.current.container, {
+								opacity: 0,
+								duration: 0.5,
+							})
+							.fromTo(
+								document.querySelector(".curtain"),
+								{
+									xPercent: -100,
+									duration: 0.75,
+								},
+								{
+									xPercent: 100,
+									duration: 0.75,
+								}
+							);
+					},
+					beforeEnter(data) {
+						console.log("Before Enter");
+						ScrollTrigger.getAll().forEach((t) => t.kill());
+						// ScrollTrigger.refresh();
+						// window.dispatchEvent(new Event("resize"));
+					},
+					enter(data) {
+						that.onEnterProject(that, data);
+						return gsap
+							.timeline()
+							.fromTo(
+								document.querySelector(".curtain"),
+								{
+									xPercent: 100,
+									duration: 0.75,
+								},
+								{
+									xPercent: 200,
+									duration: 0.75,
+								}
+							)
+							.from(data.next.container, {
+								opacity: 0,
+							});
+					},
+				},
+				{
+					name: "from-projects",
+					from: {
+						namespace: ["project"],
+					},
+					leave(data) {
+						that.onBeforeProject(that, data);
+						return gsap
+							.timeline()
+							.to(data.current.container, {
+								opacity: 0,
+								duration: 0.5,
+							})
+							.fromTo(
+								document.querySelector(".curtain"),
+								{
+									xPercent: 200,
+									duration: 0.75,
+								},
+								{
+									xPercent: 100,
+									duration: 0.75,
+								}
+							);
+					},
+					beforeEnter(data) {
+						console.log("Before Enter");
+						ScrollTrigger.getAll().forEach((t) => t.kill());
+						// ScrollTrigger.refresh();
+						// window.dispatchEvent(new Event("resize"));
+					},
+					enter(data) {
+						that.onEnterHome(that, data);
+						return gsap.timeline().fromTo(
+							document.querySelector(".curtain"),
+							{
+								xPercent: 100,
+								duration: 0.75,
+							},
+							{
+								xPercent: -100,
+								duration: 0.75,
+							}
+						);
+					},
+				},
+			],
+		});
+	}
 
-// const elementPos = document.querySelector(".test3").getBoundingClientRect().x;
+	instanceGsapAnimations(container) {
+		const wrapper = container.querySelector(".wrapper");
+		const skills = container.querySelector(".skills");
+		const projects = container.querySelector(".projects");
+		const projects_container = container.querySelector(
+			".projects_container"
+		);
 
-// const projectWidth = document
-// 	.querySelector(".projects")
-// 	.getBoundingClientRect().width;
+		const view1 = container.querySelector(".view_1");
+		const view2 = container.querySelector(".view_2");
 
-// const scrollPos = elementPos + window.screen.height;
-// const offset = window.screen.width * 0.5;
-// const startPos = elementPos - offset + window.screen.height;
-// const endPos = elementPos - offset + projectWidth * 0.25;
-// gsap.to(".test3", {
-// 	scrollTrigger: {
-// 		trigger: ".test3",
-// 		start: `${startPos}px bottom`,
-// 		end: `${endPos}px top`,
-// 		scrub: true,
-// 		markers: true,
-// 	},
-// 	x: `${projectWidth * 0.25}px`,
-// 	// rotation: 360,
-// 	duration: 3,
-// 	ease: "linear",
-// });
+		const footer = container.querySelector(".footer");
+		const resume_download = container.querySelector("#resume_download");
+
+		const projectsEnd =
+			view2.getBoundingClientRect().width -
+			window.innerWidth * 0.6 -
+			window.innerHeight;
+		gsap.to(skills, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.025} top`,
+				end: `${view2.getBoundingClientRect().width}px center`,
+				trigger: skills,
+				pin: true,
+				// markers: true,
+			},
+		});
+		gsap.to(projects, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.475} top`,
+				end: `${projectsEnd}px center`,
+				trigger: projects,
+				pin: true,
+			},
+		});
+		gsap.to(projects_container, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.475} top`,
+				end: `${projectsEnd}px center`,
+				trigger: projects_container,
+				scrub: 0.25,
+			},
+			yPercent:
+				-100 +
+				(window.innerHeight /
+					projects_container.getBoundingClientRect().height) *
+					100,
+		});
+
+		gsap.to(footer, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.03}px top`,
+				end: `${projectsEnd + window.innerWidth}px center`,
+				trigger: footer,
+				pin: true,
+				// markers: true,
+			},
+		});
+		// gsap.to(resume_download, {
+		// 	scrollTrigger: {
+		// 		horizontal: true,
+		// 		start: `${-window.innerWidth * 0.03}px center`,
+		// 		end: `${800}px center`,
+		// 		trigger: resume_download,
+		// 		scrub: true,
+		// 	},
+		// 	xPercent: -150,
+		// });
+
+		gsap.timeline({ repeat: -1 })
+			.fromTo(
+				container.querySelector(".scroll-arrow"),
+				{
+					xPercent: -600,
+					scale: 1,
+				},
+				{
+					xPercent: 100,
+					duration: 4,
+				}
+			)
+			.to(container.querySelector(".scroll-arrow"), {
+				scale: 0,
+				duration: 0.25,
+			});
+
+		console.log("INSTANCED ANIMATIONS");
+	}
+
+	instanceProjectAnimations(container) {
+		console.log("Instanced Project Animations");
+		const header = container.querySelector(".header");
+		// gsap.to(header, {
+		// 	scrollTrigger: {
+		// 		trigger: header,
+		// 		pin: true,
+		// 		start: "0px center",
+		// 		end: "2000px center",
+		// 		markers: true,
+		// 		horizontal: false,
+		// 	},
+		// });
+	}
+
+	onBeforeLeaveHome(that, data) {
+		console.log("leave HOME");
+		that.asscrollController.disableASScroller();
+	}
+
+	onEnterHome(that, data) {
+		console.log("ENTER HOME");
+		that.asscrollController.enableASScroller(true, data.next.container);
+		that.instanceGsapAnimations(data.next.container);
+		that.onMouseOverEvents(data.next.container);
+	}
+
+	onBeforeProject(that, data) {
+		console.log("Leave Project");
+		that.asscrollController.disableASScroller();
+	}
+
+	onEnterProject(that, data) {
+		console.log("ENTER project");
+		that.asscrollController.enableASScroller(false, data.next.container);
+		that.instanceProjectAnimations(data.next.container);
+	}
+
+	onMouseOverEvents(container) {
+		const projects = container.querySelectorAll(".project_instance");
+		const skills = container.querySelectorAll(".skill");
+		projects.forEach((element) => {
+			const usedSkills = element.dataset.used_skills.split(" ");
+			console.log(usedSkills);
+			element.addEventListener("mouseenter", (e) => {
+				skills.forEach((sk) => {
+					if (usedSkills.includes(sk.dataset.skill)) {
+						sk.classList.add("selected");
+						sk.classList.remove("notselected");
+					}
+				});
+			});
+			element.addEventListener("mouseleave", (e) => {
+				skills.forEach((sk) => {
+					sk.classList.remove("selected");
+					sk.classList.add("notselected");
+				});
+			});
+		});
+	}
+
+	offMouseOverEvents() {}
+
+	//MOBILE
+	mobile() {
+		const swiperSlides = document.querySelectorAll(".swiper-slide");
+		const skills = document.querySelectorAll(".skill");
+		this.swiperInstance = instanceSwiper();
+		const sw = this.swiperInstance;
+		let that = this;
+		this.swiperInstance.on("slideChange", function () {
+			that.swiperUpdate(sw, skills, swiperSlides);
+			console.log("Slide change");
+		});
+		this.swiperUpdate(sw, skills, swiperSlides);
+
+		gsap.fromTo(
+			document.querySelector(".skills"),
+			{
+				opacity: 0,
+				duration: 0.5,
+			},
+			{
+				opacity: 1,
+				duration: 0.5,
+				scrollTrigger: {
+					start: "top center",
+					end: "top center",
+					trigger: document.querySelector(".skills"),
+					toggleActions: "play none none reverse",
+				},
+			}
+		);
+	}
+
+	swiperUpdate(swiper, skills, swiperSlides) {
+		const usedSkills =
+			swiperSlides[swiper.activeIndex].dataset.used_skills.split(" ");
+		skills.forEach((sk) => {
+			if (usedSkills.includes(sk.dataset.skill)) {
+				sk.classList.add("selected");
+				sk.classList.remove("notselected");
+			} else {
+				sk.classList.remove("selected");
+				sk.classList.add("notselected");
+			}
+		});
+	}
+	render() {
+		if (this.asscrollController !== undefined) {
+			this.asscrollController.updateASScroller();
+		}
+		requestAnimationFrame(this.render.bind(this));
+	}
+}

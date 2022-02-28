@@ -1,149 +1,320 @@
-body {
-	height: 100vh;
-	width: 100vw;
-	padding: var(--margin);
-	background-color: var(--bg);
+:root {
+    --view2_size : 350vw;
 }
-.mainContent {
-    --mbtm: 50px;
-	/* border: solid 1px blueviolet; */
+.homepage__content {
+    /* width: fit-content; */
     display: grid;
-    grid-template-columns: 4.2fr 2fr;
-    grid-auto-rows : max-content;
-    gap: 1.5vh 15vw;
-    height: calc(100% - var(--mbtm));
+    grid-template-columns: 100vw var(--view2_size);
+    grid-template-rows: 100vh;
+}
+/* VIEW1 */
+.view_1 {
+    margin: 0;
+    padding: 0%;
+    /* background-color: darksalmon; */
 }
 
-@media screen and (max-width: 768px) {
-    body {
-        padding: 0 0 5vmin 0vw ;
-    }
-
-    .mainContent {
-        --mbtm : 100px;
-        grid-template-columns: 90vw;
-        grid-template-rows: 1.85fr 0.6fr 1fr;
-        justify-content: center;
-        /* gap: minmax(2vmax,150px) 0; */
-        gap: 0 0;
-    }
-
-    .projects-types {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .projects-types li {
-        margin-top: 0;
-        text-align: center;
-    }
-
-    .title, #name, p {
-        text-align: center;
-    }
-
-    .about-content {
-        padding: 15px;
-        height: 100%;
-        background-color: rgb(77, 62, 43);
-    }
-}
-
-
-.title {
-    /* border: solid 0.5px blue; */
-	font-size: clamp(0.75rem,5vmin,2rem);
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-/*Sections - About */
 .about {
-
+    color: var(--text);
+    font-family: "geosans";
+    font-size: clamp(1rem,4vw,2.5rem);
 }
 
 .about-content {
-	font-size: clamp(1.25rem,6vmin,2rem);
-    max-height: fit-content;
-
+    margin: 16vmin 12vmax;
+    /* background-color: cornflowerblue; */
 }
+
+.scrolldown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.scrolldown p{
+display: inline;
+}
+
+.scrolldown img {
+    height: 2.5vw;
+    width: 2.5vw;
+    color: white;
+    background-color: white;
+    fill: violet;
+    filter: invert(100%);
+    mix-blend-mode: exclusion;
+    transform: rotate(-90deg);
+}
+
+.scroll-arrow {
+ z-index: 200;   
+}
+
 #name {
-	font-size: clamp(1.7rem,6vmin,2.4rem);
-	display: block;
+    display: block;
+    font-size: clamp(1.25rem,5vw,2.75rem);
+}
+/*END VIEW1 */
+/* VIEW2 */
+.view_2 {
+    background-color: var(--bg);
+    /* background: rgb(10,255,207);
+background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%, rgba(60,44,249,1) 50%, rgba(230,213,27,1) 100%); */
+    position: relative;
 }
 
-/*Sections - Projects */
+.skills {
+    position: absolute;
+    height: 100vh;
+    width: 40vw;
+    left: 0vh;
+    padding: 10vmin 0rem 5rem 2.5rem;
+    /* background-color: crimson; */
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin: 0 0 2rem 0;
+    font-size: clamp(1.5rem,15vw,4rem);
+}
+
+.skills_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 3vmin 0;
+}
+
+.skill__type h2 {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    color: var(--text);
+    font-family: "lexendMega";
+    font-size: clamp(1.5rem,5vw,2.25rem);
+}
+.skill {
+    display: inline;
+    font-family: "geosans";
+    margin: 1rem 1rem 1rem 0rem;
+    font-size: clamp(1.25rem,4vw,2rem);
+}
+
+.notselected {
+    padding: 0;
+    transition: all 150ms;
+}
+
+.selected {
+	padding: 0.25rem 1rem;
+    border: solid 1px var(--title);
+    color: black;
+    background-color: var(--title);
+	border-radius: 2rem;
+    transition: all 150ms;
+}
+
 .projects {
-	font-family: "lexendMega";
-	color: var(--text);
+    left: 60vw;
+    position: absolute;
+    height: 100vh;
+    width: 50vw;
+    /* background-color:coral */
 }
 
-.projects-types {
-	list-style: none;
-	font-size: clamp(1.25rem,3vmin,1.76rem);
-}
-
-.projects-types li {
-	margin: 2vmin 0rem;
-    /* border: solid 1px yellowgreen; */
-}
-
-.projects-types li a {
-	text-decoration: none;
-	color: var(--text);
-}
-
-/*Sections - Languages */
-.languages {
-    /* height: min-content; */
-}
-
-.languages p {
-	font-size: clamp(1.125rem,4vmin,2rem);
-	margin: 0;
-    /* border: solid 1px yellowgreen; */
-}
-
-
-
-
-
-/* FOOTER */
-.footer {
-	position: fixed;
-	inset: auto 6vw var(--btm) 6vw;
-    padding: 1vh 1vw;
-
-	display: flex;
-	justify-content: space-between;
-    flex-wrap: wrap;
+.projects_title {
+    position: absolute;
     height: fit-content;
+    width: 100%;
+    left: 0;
+    top: 0;
+    /* background-color: darkmagenta; */
+    font-family: "lexendMega";
+    font-size: clamp(1rem,6vw,3rem);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    border: solid 1px rgb(47, 209, 74);
+.projects_container {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem 0;
+    padding-top: 100vh;
+    padding-bottom: 10vh;
+}
+
+.project_instance {
+    position: relative;
+    width: 40vw;
+    height: 40vw;
+    /* background-color: darksalmon; */
+    /* border: solid 2px red; */
+}
+
+.projects_link {
+    height: 100%;
+    width: 100%;
+}
+
+.project_instance img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* .title:hover {
+    color: blue;
+} */
+
+.projects_info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
-
-
-.contact-links__list {
-	display: flex;
-	font-family: "lexendMega";
-    font-size: clamp(0.5rem,5vmin,1rem);
+.projects__mobile {
+    display: none;
+    position: relative;
 }
+/* END VIEW2 */
+@media screen and (max-width: 1024px) {
+    .homepage__content {
+        grid-template-columns: 100vw;
+        grid-template-rows: 70vh 100vh;
+    }
 
-.contact-links li {
-	list-style: none;
-	margin: 2vmin;
-}
+    .about-content {
+        margin: 6vw 6vw;
+        text-align: justify;
+        font-size: clamp(1rem,7vw,2.5rem);
+    }
 
-.contact-links__list a {
-	text-decoration: none;
-	color: var(--text);
-}
+    .scrolldown {
+        display: none;
+    }
 
-@media screen and (max-width: 678px) {
-    .footer {
-        justify-content: center !important;
-        --btm : 0;
+    #name {
+        font-size: clamp(1.25rem,8vw,2.75rem);
+    }
+    .skills {
+        position: relative;
+        height: 55%;
+        width: 100vw;
+        /* background-color: darkblue; */
+        padding: 0;
+    }
+    .skills .title {
+        text-align: center;
+        margin: 0;
+    }
+    
+    .skill__type h2 {
+
+        font-size: clamp(1.5rem,5vmax,2.25rem);
+    }
+    .skill {
+        font-size: clamp(1.25rem,4vmax,2rem);
+    }
+    .skills_container {
+        /* background-color: chartreuse; */
+    }
+    .skill__type {
+        /* border: solid 2px royalblue; */
+        text-align: center;
+    }
+    .mobile_disable {
+        display: none;
+    }
+    .projects {
+        display: none;
+    }
+    .projects__mobile {
+        position: relative;
+        display: block;
+        height: 45%;
+        width: 100vw;
+        /* background-color: brown; */
+    }
+
+    .selected {
+        padding: 0.125rem 0.125rem;
+
+        transition: all 150ms;
     }
 }
+
+/* MOBILE SWIPER */
+
+
+
+
+.swiper {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+.project__mobile {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	/* display: flex;
+	justify-content: center;
+	align-items: flex-end; */
+}
+.project__mobile img {
+	height: 100%;
+	width: 100%;
+    object-fit: cover;
+}
+
+.project__mobile-info {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	font-family: "geosans";
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.project__mobile-title {
+    font-size: clamp(1rem,8vw,2.5rem);
+	color: var(--text);
+}
+.project__mobile-link a{
+	position: relative;
+	border-radius: 2rem;
+	padding: 0.25rem 1.5rem 0.5rem 1.5rem;
+    background: radial-gradient(ellipse at top, var(--bg), transparent),
+    radial-gradient(ellipse at bottom, var(--bg), transparent);
+    font-size: clamp(1rem,8vw,2.5rem);
+    filter: invert(10%);
+    color: var(--text);
+    text-decoration: none;
+}
+
+.project__mobile-link h2 {
+	display: inline;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+
+
+/* END MOBILE SWIPER */
+
