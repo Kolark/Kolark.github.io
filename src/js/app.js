@@ -224,16 +224,16 @@ export default class App {
 				// markers: true,
 			},
 		});
-		gsap.to(resume_download, {
-			scrollTrigger: {
-				horizontal: true,
-				start: `${-window.innerWidth * 0.03}px center`,
-				end: `${800}px center`,
-				trigger: resume_download,
-				scrub: true,
-			},
-			xPercent: -150,
-		});
+		// gsap.to(resume_download, {
+		// 	scrollTrigger: {
+		// 		horizontal: true,
+		// 		start: `${-window.innerWidth * 0.03}px center`,
+		// 		end: `${800}px center`,
+		// 		trigger: resume_download,
+		// 		scrub: true,
+		// 	},
+		// 	xPercent: -150,
+		// });
 
 		gsap.timeline({ repeat: -1 })
 			.fromTo(
@@ -339,7 +339,7 @@ export default class App {
 			},
 			{
 				opacity: 1,
-				duration: 2,
+				duration: 0.5,
 				scrollTrigger: {
 					start: "top center",
 					end: "top center",

@@ -6,7 +6,7 @@
 .project__content {
     position: relative;
 }
-.xd {
+/* .xd {
     position: fixed;
     top: 200px;
     left: 200px;
@@ -14,7 +14,7 @@
     width: 200px;
     background-color: blue;
     z-index: 200;
-}
+} */
 .header {
     position: fixed;
     width: 100vw;
@@ -23,11 +23,11 @@
     left: 0;
     display: flex;
     justify-content: center;
-    background-color: blue;
+    background-color: var(--bg);
+    border-bottom: solid 2px var(--title);
 }
 
 .header_content {
-    background-color: aqua;
     width: 80%;
     display: flex;
     justify-content: space-between;
@@ -126,13 +126,18 @@
     margin: 0;
 }
 
+.projects_info {
+    text-align: center;
+}
+
 .project__links-list {
     width: 100%;
     height: max-content;
     list-style: none;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content:start;
+    gap: 1rem;
 }
 
 .project__links-list a{

@@ -58,7 +58,7 @@ display: inline;
 /*END VIEW1 */
 /* VIEW2 */
 .view_2 {
-    background-color: black;
+    background-color: var(--bg);
     /* background: rgb(10,255,207);
 background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%, rgba(60,44,249,1) 50%, rgba(230,213,27,1) 100%); */
     position: relative;
@@ -108,7 +108,9 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
 
 .selected {
 	padding: 0.25rem 1rem;
-    border: solid 1px chartreuse;
+    border: solid 1px var(--title);
+    color: black;
+    background-color: var(--title);
 	border-radius: 2rem;
     transition: all 150ms;
 }
@@ -165,9 +167,9 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
     object-fit: cover;
 }
 
-.title:hover {
+/* .title:hover {
     color: blue;
-}
+} */
 
 .projects_info {
     position: absolute;
@@ -244,6 +246,12 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
         width: 100vw;
         /* background-color: brown; */
     }
+
+    .selected {
+        padding: 0.125rem 0.125rem;
+
+        transition: all 150ms;
+    }
 }
 
 /* MOBILE SWIPER */
@@ -292,8 +300,8 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
 	position: relative;
 	border-radius: 2rem;
 	padding: 0.25rem 1.5rem 0.5rem 1.5rem;
-    background: radial-gradient(ellipse at top, rgb(255, 112, 112), transparent),
-    radial-gradient(ellipse at bottom, #68cf13, transparent);
+    background: radial-gradient(ellipse at top, var(--bg), transparent),
+    radial-gradient(ellipse at bottom, var(--bg), transparent);
     font-size: clamp(1rem,8vw,2.5rem);
     filter: invert(10%);
     color: var(--text);

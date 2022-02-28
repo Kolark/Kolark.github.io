@@ -14,9 +14,7 @@ html {
     margin: 0;
 }
 
-body {
-  background-color: black;
-}
+
 
 :root {
     --bg : #160C28;
@@ -30,7 +28,9 @@ body {
     --min-fontsize : 1rem;
     --fontsize: 10vmax;
 }
-
+body {
+  background-color: var(--bg);
+}
 @font-face {
   font-family: geosans;
   src: url(../fonts/GeosansLight.ttf);
@@ -68,7 +68,7 @@ p {
   top: 0;
   left: 0;
   z-index: 100;
-  background: #949494;
+  background: var(--title);
   transform: translate(-100%,0)
 }
 
