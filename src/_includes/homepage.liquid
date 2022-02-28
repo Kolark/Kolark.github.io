@@ -74,7 +74,7 @@
 				<h1>Projects</h1>
 			</div>
 			<div class="projects_container">
-				{% for post in collections.posts | reverse %}
+				{% for post in collections.posts reversed %}
 				<div class="project_instance" data-used_skills="{{ post.data.skills | arrayToClasses }}">
 					<a class="projects_link" href="{{post.url}}">
 						<img src="/img/{{post.data.image}}" alt="">
@@ -89,7 +89,7 @@
 		<section class="projects__mobile">
 			<div class="swiper projects_slides">
 				<div class="swiper-wrapper">
-					{% for post in collections.posts | reverse %}
+					{% for post in collections.posts reversed %}
 					<div class="swiper-slide" data-used_skills="{{ post.data.skills | arrayToClasses }}">
 						<div class="project__mobile">
 							<img src="/img/{{post.data.image}}" alt="">
