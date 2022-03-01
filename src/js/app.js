@@ -145,7 +145,13 @@ export default class App {
 		const view2 = container.querySelector(".view_2");
 
 		const footer = container.querySelector(".footer");
+
+		const footerResume = container.querySelector(".footer__resume");
 		const resume_download = container.querySelector("#resume_download");
+		const widthToTravel =
+			footerResume.getBoundingClientRect().left -
+			resume_download.getBoundingClientRect().left +
+			resume_download.style.marginLeft;
 
 		const projectsEnd =
 			view2.getBoundingClientRect().width -
@@ -195,16 +201,16 @@ export default class App {
 				// markers: true,
 			},
 		});
-		// gsap.to(resume_download, {
-		// 	scrollTrigger: {
-		// 		horizontal: true,
-		// 		start: `${-window.innerWidth * 0.03}px center`,
-		// 		end: `${800}px center`,
-		// 		trigger: resume_download,
-		// 		scrub: true,
-		// 	},
-		// 	xPercent: -150,
-		// });
+		gsap.to(resume_download, {
+			scrollTrigger: {
+				horizontal: true,
+				start: `${-window.innerWidth * 0.03}px center`,
+				end: `${800}px center`,
+				trigger: resume_download,
+				scrub: true,
+			},
+			x: widthToTravel,
+		});
 
 		gsap.timeline({ repeat: -1 })
 			.fromTo(
