@@ -1,7 +1,7 @@
 ---
 title: Biopedia
 image: "biopedia1.png"
-description: Simple Web page I built using my knowledge in the MERN stack, MongoDB for the database, Express for the API, Node.js for the backend and React for the frontend.
+description: Simple Web page I built using my knowledge in the MERN stack. I used the MongoDB for the database, Express for the API and Node.js for the backend and React for the frontend.
 links:
   - name: Github
     href: https://github.com/Kolark/biopedia-mern

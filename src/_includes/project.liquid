@@ -51,11 +51,11 @@
                         {% if skills %}
                         <div class="">{{ skills | arrayToClasses }}</div>
                         {% endif %}
-                        <h3>Links</h3>
                         {% if links %}
+                        <h3>Links</h3>
                         <ul class="project__links-list">
                             {% for li in links %}
-                            <li><a href="{{li.href}}">{{li.name}}</a></li>
+                            <li><a href="{{li.href}}" target="_blank">{{li.name}}</a></li>
                             {% endfor %}
                         </ul>
                         {% endif %}

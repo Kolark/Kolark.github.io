@@ -201,16 +201,16 @@ export default class App {
 				// markers: true,
 			},
 		});
-		gsap.to(resume_download, {
-			scrollTrigger: {
-				horizontal: true,
-				start: `${-window.innerWidth * 0.03}px center`,
-				end: `${800}px center`,
-				trigger: resume_download,
-				scrub: true,
-			},
-			x: widthToTravel,
-		});
+		// gsap.to(resume_download, {
+		// 	scrollTrigger: {
+		// 		horizontal: true,
+		// 		start: `${-window.innerWidth * 0.03}px center`,
+		// 		end: `${800}px center`,
+		// 		trigger: resume_download,
+		// 		scrub: true,
+		// 	},
+		// 	x: widthToTravel,
+		// });
 
 		gsap.timeline({ repeat: -1 })
 			.fromTo(
