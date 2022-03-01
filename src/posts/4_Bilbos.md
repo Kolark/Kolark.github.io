@@ -1,6 +1,6 @@
 ---
 title: Bilbo's Plan
-image: "bilbo3.webp"
+image: "bilbo6.webp"
 description: I worked on this project during Video Game Workshop VI. The concept was revisited from a previous project at the 2020 Global Game Jam. The game is characterized by being a puzzle platformer for mobile phones where the player can switch between the <b> <u>past</u>, <u>present</u> and <u>future</u></b> in order to advance within the game. My role as a programmer was to develop the core <b>"time travel"</b> mechanic and all the other mechanics around it. Currently the game can be found on the playstore for download.
 links:
   - name: Playstore

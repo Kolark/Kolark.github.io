@@ -151,9 +151,16 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
 .project_instance {
     position: relative;
     width: 40vw;
-    height: 40vw;
+    height: fit-content;
+    box-shadow: 0px 0px 15px 1px var(--title);
     /* background-color: darksalmon; */
     /* border: solid 2px red; */
+    transition: all 150ms;
+}
+
+.project_instance:hover {
+    box-shadow: 0px 0px 10px 5px var(--title);
+    transition: all 150ms;
 }
 
 .projects_link {
@@ -162,7 +169,7 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
 }
 
 .project_instance img{
-    height: 100%;
+    height: auto;
     width: 100%;
     object-fit: cover;
 }
