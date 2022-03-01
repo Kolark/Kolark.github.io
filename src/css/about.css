@@ -189,7 +189,9 @@ background: linear-gradient(90deg, rgba(10,255,207,1) 0%, rgba(255,157,20,1) 44%
     align-items: center;
 }
 
-
+.projects_info .title {
+    text-shadow: 0px 0px 6px rgba(15, 15, 15, 1);
+}
 .projects__mobile {
     display: none;
     position: relative;
