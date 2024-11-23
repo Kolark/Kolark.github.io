@@ -1,0 +1,53 @@
+---
+import "../styles/globals.css";
+---
+
+<div class="skills_interests__container">
+    <h1 class="skills__title">Skills</h1>
+    <p class="skills_list">
+        Unity - C# - GLSL - Python - Git - Javascript - Next JS - SQL - Unity -
+        C# - GLSL - Python - Git - Javascript - Next JS - SQL
+    </p>
+    <h1 class="interests__title">Interests</h1>
+    <div class="interests__list">
+        <div class="interests__container">
+            <p>Graphics Programming</p>
+            <p>Game Dev</p>
+            <p>AI</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .skills__title,
+    .interests__title {
+        font-family: "Nohemi";
+        font-weight: 700;
+        font-size: var(--big);
+        text-align: center;
+        margin-top: 10vh;
+    }
+    .skills_list {
+        border: 2px solid black;
+        margin-top: 2vh;
+        font-size: var(--medium);
+        font-family: "Manrope";
+        font-weight: 300;
+    }
+
+    .interests__list {
+        display: flex;
+        justify-content: center;
+    }
+
+    .interests__container {
+        padding: 4vh;
+        width: fit-content;
+        border: 2px solid black;
+        text-align: center;
+
+        font-size: var(--medium);
+        font-family: "Manrope";
+        font-weight: 300;
+    }
+</style>

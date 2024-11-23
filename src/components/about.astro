@@ -1,0 +1,192 @@
+---
+import "../styles/globals.css";
+---
+
+<div class="landing__container">
+    <main class="main__container">
+        <div class="about__presentation">
+            <p class="about__presentation-hi">Hi I'm</p>
+            <div class="about__presentation-name">
+                Felipe Loaiza
+
+                <p class="about__presentation-city">Medellín, Colombia</p>
+            </div>
+        </div>
+        <div class="about__description">
+            I'm a 22-year-old Engineer and Developer with around 2 years of
+            experience. I primarily focus on developing games using the Unity
+            Engine. I'm also currently pursuing a degree in Data Science. I am
+            naturally a very curious person and passionate about learning new
+            skills. Among my hobbies, I enjoy cooking, reading manga and
+            exploring all kinds of music.
+        </div>
+        <div class="about__resume">
+            See my resume <a href=""><b>HERE</b></a>
+        </div>
+    </main>
+    <aside>
+        <div class="side__container">
+            <div class="side__work">
+                <div class="available"></div>OPEN TO WORK
+            </div>
+            <p>
+                <a href="">Email</a> -
+                <a href="">Github</a> -
+                <a href="">Linked In</a>
+            </p>
+        </div>
+    </aside>
+    <div class="about__scroll">Scroll Down</div>
+</div>
+
+<style>
+    .landing__container {
+        border: 2px solid red;
+        height: 100vh;
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 8fr 4fr;
+        background-color: #8fd1ee;
+    }
+
+    .main__container {
+        padding: var(--main-padding);
+    }
+
+    .about__presentation {
+    }
+
+    .about__presentation-hi {
+        font-family: "Manrope";
+        font-weight: 300;
+        font-size: var(--medium);
+    }
+    .about__presentation-name {
+        font-family: "Nohemi";
+        font-weight: 700;
+        font-size: var(--big);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .about__presentation-city {
+        font-family: "Manrope";
+        font-weight: 300;
+        font-size: var(--small);
+    }
+
+    .about__description,
+    .about__resume,
+    .about__scroll {
+        font-family: "Manrope";
+        font-weight: 300;
+        font-size: var(--regular);
+    }
+
+    .about__description {
+        letter-spacing: 0.06rem;
+        line-height: 2.3rem;
+    }
+
+    .about__description,
+    .about__resume {
+        margin-top: 6vh;
+    }
+
+    .about__scroll {
+        position: absolute;
+        bottom: var(--main-padding);
+        left: var(--main-padding);
+    }
+
+    /* ###################################### */
+    aside {
+        border: 2px solid blue;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: center;
+    }
+
+    .side__container {
+        border: 2px solid rgb(242, 255, 0);
+        text-align: center;
+        font-family: "Manrope";
+        font-weight: 300;
+        font-size: var(--small);
+        margin: var(--main-padding);
+    }
+
+    .side__work {
+        margin-bottom: 2vh;
+        background-color: grey;
+        text-align: center;
+        border-radius: 2rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .available {
+        height: 1rem;
+        width: 1rem;
+        background-color: greenyellow;
+        border-radius: 1rem;
+    }
+
+    @media only screen and (max-width: 1024px) {
+        /* Styles for tablet devices */
+        .main__container {
+            padding: 3rem 1rem 1rem 1rem;
+        }
+
+        .about__presentation-name {
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 3rem;
+        }
+
+        .about__presentation-city {
+            align-self: flex-end;
+            font-size: 0.75rem;
+        }
+        .landing__container {
+            grid-template-columns: 1fr;
+            grid-template-rows: 8fr 4fr;
+        }
+
+        .about__scroll {
+            bottom: 1rem;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            text-align: center;
+        }
+        .about__description {
+            font-size: var(--small);
+            letter-spacing: normal;
+            word-spacing: -0.05rem;
+            line-height: normal;
+            text-align: justify;
+            margin-top: 3vh;
+        }
+
+        .about__resume {
+            font-size: var(--small);
+            text-align: center;
+        }
+
+        aside {
+            justify-content: center;
+        }
+        .side__container {
+            font-size: var(--regular);
+        }
+    }
+</style>

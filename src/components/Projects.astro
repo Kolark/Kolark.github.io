@@ -1,0 +1,31 @@
+---
+import projects from "../../public/projects.json";
+console.log(projects);
+---
+
+<div class="projects__container">
+    <h1 class="projects__title">PROJECTS</h1>
+    <h2 class="projects__subtitle">Personal & work related</h2>
+    <div class="projects__list">
+        {projects.toString()};
+    </div>
+</div>
+
+<style>
+    .projects__container {
+    }
+
+    .projects__title {
+        font-size: 8rem;
+        font-family: "Nohemi";
+        text-align: center;
+        margin-top: 25vh;
+    }
+
+    .projects__subtitle {
+        font-size: var(--medium);
+        font-family: "Manrope";
+        text-align: center;
+        font-weight: 300;
+    }
+</style>

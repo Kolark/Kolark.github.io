@@ -1,0 +1,31 @@
+* {
+	padding: 0;
+ 	margin: 0;
+  	box-sizing: border-box;
+    --big: 4rem;
+    --medium: 2rem;
+    --regular: 1.6rem;
+    --small: 1.2rem;
+    --main-padding:5vh;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('/fonts/Manrope-Light.otf') format('opentype');
+    font-weight: 300; /* Light weight */
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('/fonts/Manrope-Bold.otf') format('opentype');
+    font-weight: 700; /* Bold weight */
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Nohemi';
+    src: url('/fonts/Nohemi-Bold.otf') format('opentype');
+    font-weight: 700; /* Bold weight */
+    font-style: normal;
+  }
