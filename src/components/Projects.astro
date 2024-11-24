@@ -13,19 +13,22 @@ console.log(projects);
 
 <style>
     .projects__container {
+        background-color: burlywood;
     }
 
     .projects__title {
-        font-size: 8rem;
+        font-size: clamp(3rem, 10vw, 8rem);
         font-family: "Nohemi";
         text-align: center;
         margin-top: 25vh;
     }
 
     .projects__subtitle {
-        font-size: var(--medium);
+        width: 100%;
+        font-size: clamp(1rem, 5vw, var(--medium));
         font-family: "Manrope";
         text-align: center;
         font-weight: 300;
+        background-color: blueviolet;
     }
 </style>

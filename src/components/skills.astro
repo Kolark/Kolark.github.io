@@ -5,8 +5,7 @@ import "../styles/globals.css";
 <div class="skills_interests__container">
     <h1 class="skills__title">Skills</h1>
     <p class="skills_list">
-        Unity - C# - GLSL - Python - Git - Javascript - Next JS - SQL - Unity -
-        C# - GLSL - Python - Git - Javascript - Next JS - SQL
+        Unity - C# - GLSL - Python - Git - Javascript - Next JS - SQL
     </p>
     <h1 class="interests__title">Interests</h1>
     <div class="interests__list">
@@ -23,14 +22,15 @@ import "../styles/globals.css";
     .interests__title {
         font-family: "Nohemi";
         font-weight: 700;
-        font-size: var(--big);
+        font-size: clamp(var(--medium), 8vw, var(--big));
         text-align: center;
         margin-top: 10vh;
     }
+
     .skills_list {
         border: 2px solid black;
         margin-top: 2vh;
-        font-size: var(--medium);
+        font-size: clamp(var(--small), 5vw, var(--medium));
         font-family: "Manrope";
         font-weight: 300;
     }
@@ -41,12 +41,12 @@ import "../styles/globals.css";
     }
 
     .interests__container {
-        padding: 4vh;
+        padding: 2vw;
         width: fit-content;
         border: 2px solid black;
         text-align: center;
 
-        font-size: var(--medium);
+        font-size: clamp(var(--small), 5vw, var(--medium));
         font-family: "Manrope";
         font-weight: 300;
     }
