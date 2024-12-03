@@ -1,0 +1,45 @@
+---
+const { info } = Astro.props;
+---
+
+<div class="project_card">
+    <div class="project_info">
+        <h1 class="project_info-title">{info.title}</h1>
+        <p>{info.description}</p>
+    </div>
+    <div class="project_img">
+        <img src=`imgs/${info.img}` alt="" />
+    </div>
+</div>
+
+<style>
+    .project_card {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background-color: cornflowerblue;
+    }
+    .project_info {
+        height: 100%;
+        width: 100%;
+        border: 2px solid red;
+        padding: 2vh;
+        font-family: "Manrope";
+    }
+
+    .project_info-title {
+        font-weight: 700;
+    }
+
+    .project_img {
+        height: 100%;
+        width: 100%;
+        background-color: coral;
+    }
+
+    .project_img img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+</style>
