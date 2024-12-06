@@ -14,6 +14,10 @@ import Skills from "../components/skills.astro";
     </head>
     <body>
         <div class="page__container">
+            <About />
+            <br /><br /><br />
+            <Skills />
+            <br /><br /><br />
             <Projects />
         </div>
     </body>
@@ -23,6 +27,34 @@ import Skills from "../components/skills.astro";
     .page__container {
         height: fit-content;
         width: 100%;
-        margin-bottom: 40vw;
     }
 </style>
+
+<script>
+    import gsap from "gsap";
+
+    for (let e of document.querySelectorAll("a")) {
+        let t = gsap.timeline({ paused: true }).fromTo(
+            e,
+            {
+                "--line-progress": "0%",
+            },
+            {
+                "--line-progress": "100%",
+                ease: "none",
+                duration: 0.6,
+            }
+        );
+
+        e.onmouseenter = () => {
+            t.tweenTo(t.duration(), {
+                ease: "expo.out",
+            });
+        };
+        e.onmouseleave = () => {
+            t.tweenTo(0, {
+                ease: "expo.out",
+            });
+        };
+    }
+</script>

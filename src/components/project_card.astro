@@ -6,6 +6,23 @@ const { info } = Astro.props;
     <div class="project_info">
         <h1 class="project_info-title">{info.title}</h1>
         <p>{info.description}</p>
+        <br />
+        <div class="stack_list">
+            {info.stack.map((e) => <p class="stack_element">{e}</p>)}
+        </div>
+        <br />
+        <div class="links_list">
+            {
+                info.links.map((e) => (
+                    <a href={e.url} target="_blank">
+                        {" "}
+                        {e.name}
+                    </a>
+                ))
+            }
+        </div>
+        <br />
+        <div class="project_date">{info.date}</div>
     </div>
     <div class="project_img">
         <img src=`imgs/${info.img}` alt="" />
@@ -20,9 +37,9 @@ const { info } = Astro.props;
         background-color: cornflowerblue;
     }
     .project_info {
+        position: relative;
         height: 100%;
         width: 100%;
-        border: 2px solid red;
         padding: 2vh;
         font-family: "Manrope";
     }
@@ -34,12 +51,47 @@ const { info } = Astro.props;
     .project_img {
         height: 100%;
         width: 100%;
-        background-color: coral;
     }
 
     .project_img img {
         height: 100%;
         width: 100%;
         object-fit: cover;
+    }
+    .stack_list {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .stack_element {
+        font-weight: 700;
+    }
+
+    .links_list {
+        font-weight: 700;
+    }
+
+    .links_list a:link {
+        color: rgb(29, 29, 29);
+    }
+
+    .project_date {
+        position: absolute;
+        bottom: 2vh;
+        left: 2vh;
+        font-size: 0.7rem;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .project_card {
+            grid-template-rows: auto 1fr;
+            grid-template-columns: 1fr;
+            background-color: cornflowerblue;
+        }
+
+        .project_img {
+            max-height: 400px;
+        }
     }
 </style>

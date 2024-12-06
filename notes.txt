@@ -1,0 +1,13 @@
+animations to implement using gsap
+
+projects title and subtitle fade in using scroll trigger
+project cards fade in
+
+check mobile
+
+adjust values on scrollDown
+
+set colors
+
+and then only then implement three js cool background
+

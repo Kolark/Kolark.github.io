@@ -4,9 +4,17 @@ import "../styles/globals.css";
 
 <div class="skills_interests__container">
     <h1 class="skills__title">Skills</h1>
-    <p class="skills_list">
-        Unity - C# - GLSL - Python - Git - Javascript - Next JS - SQL
-    </p>
+    <div class="skills_list">
+        <p class="skills_list-text" id="movingText">
+            Unity-C#-GLSL-Python-Git-Javascript-Next JS-SQL-
+        </p>
+        <p class="skills_list-text">
+            Unity-C#-GLSL-Python-Git-Javascript-Next JS-SQL-
+        </p>
+        <p class="skills_list-text">
+            Unity-C#-GLSL-Python-Git-Javascript-Next JS-SQL-
+        </p>
+    </div>
     <h1 class="interests__title">Interests</h1>
     <div class="interests__list">
         <div class="interests__container">
@@ -30,9 +38,20 @@ import "../styles/globals.css";
     .skills_list {
         border: 2px solid black;
         margin-top: 2vh;
+        width: 100%;
         font-size: clamp(var(--small), 5vw, var(--medium));
         font-family: "Manrope";
         font-weight: 300;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: hidden; /* Hide overflow to make it look seamless */
+    }
+
+    .skills_list-text {
+        white-space: nowrap; /* Prevent line breaks */
+        display: inline-block;
     }
 
     .interests__list {
@@ -51,3 +70,27 @@ import "../styles/globals.css";
         font-weight: 300;
     }
 </style>
+
+<script>
+    import gsap from "gsap";
+
+    // Select the moving text element
+    // GSAP conveyor belt animation
+
+    // Select the moving text element
+    const movingText = document.getElementById("movingText");
+
+    // Duplicate the text content for seamless looping
+    const textWidth = movingText.offsetWidth;
+    // const containerWidth = movingText.parentElement.offsetWidth;
+
+    gsap.to(".skills_list-text", {
+        duration: 5,
+        ease: "none",
+        x: `+=-${textWidth}`, //move each box 500px to right
+        modifiers: {
+            x: gsap.utils.unitize((x) => parseFloat(x) % textWidth), //force x value to be between 0 and 500 using modulus
+        },
+        repeat: -1,
+    });
+</script>

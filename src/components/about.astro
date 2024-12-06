@@ -5,11 +5,11 @@ import "../styles/globals.css";
 <div class="landing__container">
     <main class="main__container">
         <div class="about__presentation">
-            <p class="about__presentation-hi">Hi I'm</p>
+            <p class="about__presentation-hi anim1">Hi I'm</p>
             <div class="about__presentation-name">
-                Felipe Loaiza
+                <span class="anim1">Felipe Loaiza</span>
 
-                <p class="about__presentation-city">Medellín, Colombia</p>
+                <p class="about__presentation-city anim1">Medellín, Colombia</p>
             </div>
         </div>
         <div class="about__description">
@@ -37,17 +37,17 @@ import "../styles/globals.css";
         </div>
     </aside>
     <div class="about__scroll">Scroll Down</div>
+    <div class="about__scroll">Scroll Down</div>
+    <div class="about__scroll">Scroll Down</div>
 </div>
 
 <style>
     .landing__container {
-        border: 2px solid red;
         height: 100vh;
         width: 100%;
 
         display: grid;
         grid-template-columns: 8fr 4fr;
-        background-color: #8fd1ee;
     }
 
     .main__container {
@@ -105,7 +105,6 @@ import "../styles/globals.css";
 
     /* ###################################### */
     aside {
-        border: 2px solid blue;
         display: flex;
         flex-direction: column;
         justify-content: end;
@@ -113,7 +112,6 @@ import "../styles/globals.css";
     }
 
     .side__container {
-        border: 2px solid rgb(242, 255, 0);
         text-align: center;
         font-family: "Manrope";
         font-weight: 300;
@@ -123,7 +121,6 @@ import "../styles/globals.css";
 
     .side__work {
         margin-bottom: 2vh;
-        background-color: grey;
         text-align: center;
         border-radius: 2rem;
 
@@ -136,7 +133,6 @@ import "../styles/globals.css";
     .available {
         height: 1rem;
         width: 1rem;
-        background-color: greenyellow;
         border-radius: 1rem;
     }
 
@@ -191,3 +187,53 @@ import "../styles/globals.css";
         }
     }
 </style>
+
+<script>
+    import gsap from "gsap";
+
+    gsap.fromTo(
+        ".anim1", // Target elements
+        {
+            opacity: 0, // Starting opacity (invisible)
+            y: "100%", // Starting position (50px lower)
+            clipPath: "inset(0% 0% 100% 0%)",
+        },
+        {
+            opacity: 1, // Ending opacity (fully visible)
+            y: "0%", // Ending position (original position)
+            clipPath: "inset(0% 0% 0% 0%)",
+            duration: 0.75, // Duration of the animation
+            stagger: 0.1, // Stagger animations between each text element
+            ease: "power2.out", // Smooth easing
+        }
+    );
+
+    const tl = gsap.timeline({ repeat: -1 });
+
+    gsap.utils.toArray(".about__scroll").forEach((el, index) => {
+        gsap.fromTo(
+            el,
+            {
+                y: "-100%",
+                opacity: 1 - index / 3,
+                // repeat: -1,
+            },
+            {
+                y: "100%",
+                opacity: 0,
+                duration: 1,
+                delay: index * 0.1, // Stagger effect for the afterimages
+                ease: "power1.inOut",
+                repeat: -1,
+                repeatDelay: 2,
+            }
+        );
+    });
+
+    // about__scroll
+    // gsap.fromTo(
+    //     ".anim1",
+    //     { clipPath: "inset(0% 0% 0% 0%)" }, // Start fully clipped from the top
+    //     { clipPath: "inset(100% 0% 0% 0%)", duration: 10, ease: "power1.inOut" }
+    // );
+</script>

@@ -6,7 +6,7 @@
     --medium: 2rem;
     --regular: 1.6rem;
     --small: 1.2rem;
-    --main-padding:5vh;
+    --main-padding:6vw;
 }
 
 @font-face {
@@ -29,3 +29,19 @@
     font-weight: 700; /* Bold weight */
     font-style: normal;
   }
+
+a {
+    --line-progress: 0%;
+    position: relative;
+    text-decoration: none;
+}
+
+a:before {
+    content: "";
+    width: var(--line-progress);
+    background-color: red;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0
+}
