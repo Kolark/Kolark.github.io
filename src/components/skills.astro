@@ -18,9 +18,9 @@ import "../styles/globals.css";
     <h1 class="interests__title">Interests</h1>
     <div class="interests__list">
         <div class="interests__container">
-            <p>Graphics Programming</p>
-            <p>Game Dev</p>
-            <p>AI</p>
+            <p class="interest">Graphics Programming</p>
+            <p class="interest">Game Dev</p>
+            <p class="interest">AI</p>
         </div>
     </div>
 </div>
@@ -93,4 +93,32 @@ import "../styles/globals.css";
         },
         repeat: -1,
     });
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".interests__container",
+            start: "top 75%", // When the top of the container is 75% down the viewport
+            end: "top 25%", // When the top of the container is 25% down the viewport
+        },
+    });
+
+    tl.fromTo(
+        ".interests__container",
+        {
+            clipPath: "inset(0% 0% 100% 0%)",
+        },
+        {
+            clipPath: "inset(0% 0% 0% 0%)",
+        }
+    );
+    tl.fromTo(
+        ".interest",
+        {
+            opacity: 0,
+        },
+        {
+            opacity: 1, // Fade in
+            stagger: 0.25,
+        }
+    );
 </script>

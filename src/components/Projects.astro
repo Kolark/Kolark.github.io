@@ -5,8 +5,8 @@ console.log(projects);
 ---
 
 <div class="projects__container">
-    <h1 class="projects__title">PROJECTS</h1>
-    <h2 class="projects__subtitle">Personal & work related</h2>
+    <h1 class="projects__title title_anim">PROJECTS</h1>
+    <h2 class="projects__subtitle title_anim">Personal & work related</h2>
     <div class="projects__list">
         {projects.map((e) => <ProjectCard info={e} />)}
     </div>
@@ -43,3 +43,68 @@ console.log(projects);
         }
     }
 </style>
+
+<script>
+    // Import GSAP and ScrollTrigger
+    import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+
+    // Register the ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animation for the container
+    gsap.fromTo(
+        ".title_anim",
+        {
+            opacity: 0,
+        },
+        {
+            opacity: 1, // Fade in
+            scrollTrigger: {
+                trigger: ".projects__title",
+                start: "top 75%", // When the top of the container is 75% down the viewport
+                end: "top 25%", // When the top of the container is 25% down the viewport
+            },
+            stagger: 0.5,
+        }
+    );
+
+    gsap.utils.toArray(".project_card").forEach((el, index) => {
+        gsap.fromTo(
+            el,
+            {
+                opacity: 0,
+                clipPath: "inset(0% 100% 0% 0%)",
+            },
+            {
+                opacity: 1, // Fade in
+                duration: 1.5,
+                ease: "power2.out",
+                clipPath: "inset(0% 0% 0% 0%)",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 100%", // When the top of the container is 75% down the viewport
+                    end: "top 100%", // When the top of the container is 25% down the viewportd
+                },
+            }
+        );
+    });
+
+    // gsap.fromTo(
+    //         el,
+    //         {
+    //             y: "-100%",
+    //             opacity: 1 - index / 3,
+    //             // repeat: -1,
+    //         },
+    //         {
+    //             y: "100%",
+    //             opacity: 0,
+    //             duration: 1,
+    //             delay: index * 0.1, // Stagger effect for the afterimages
+    //             ease: "power1.inOut",
+    //             repeat: -1,
+    //             repeatDelay: 2,
+    //         }
+    //     );
+</script>
