@@ -1,6 +1,9 @@
 ---
-import projects from "../../public/projects.json";
+// import projects from "../../public/projects.json";
 import ProjectCard from "./project_card.astro";
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects");
 console.log(projects);
 ---
 
@@ -8,7 +11,7 @@ console.log(projects);
     <h1 class="projects__title title_anim">PROJECTS</h1>
     <h2 class="projects__subtitle title_anim">Personal & work related</h2>
     <div class="projects__list">
-        {projects.map((e) => <ProjectCard info={e} />)}
+        {projects.map((e) => <ProjectCard info={e.data} />)}
     </div>
 </div>
 

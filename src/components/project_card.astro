@@ -22,6 +22,14 @@ const { info } = Astro.props;
             }
         </div>
         <br />
+        {
+            !info.draft && (
+                <a class="project_link" href={`/projects/${info.slug}`}>
+                    See more
+                </a>
+            )
+        }
+        <br />
         <div class="project_date">{info.date}</div>
     </div>
     <div class="project_img">
@@ -81,6 +89,10 @@ const { info } = Astro.props;
         bottom: 2vh;
         left: 2vh;
         font-size: 0.7rem;
+    }
+
+    .project_link {
+        font-family: "Manrope";
     }
 
     @media only screen and (max-width: 768px) {

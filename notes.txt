@@ -4,9 +4,8 @@ set colors
 
 and then only then implement three js cool background
 
-way to implement mark downs, basically be able to create one from either mark down or in projects.json
-also see if its possible to have all in markdowns and only generate page on only some
+create animations for [slug]
+in index create projects based on markdowns
 
-implement a loading??????
 
 add content

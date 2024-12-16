@@ -1,0 +1,97 @@
+---
+import "../../styles/globals.css";
+import "../../styles/markdown.css";
+import { getCollection } from "astro:content";
+import Contact from "../../components/contact.astro";
+
+export async function getStaticPaths() {
+    const allposts = await getCollection("projects");
+    const posts = allposts.filter((post) => !post.data.draft);
+    return posts.map((post) => ({
+        params: { slug: post.slug }, // Corresponds to the [slug] dynamic segment
+        props: { post }, // Props passed to the component
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+// // Define static paths for the published posts
+// export async function getStaticPaths() {
+//
+//     const publishedPosts = allPosts.filter((post) => !post.data.draft);
+//     return publishedPosts.map((post) => ({
+//         params: { slug: post.slug },
+//     }));
+// }
+
+// // Find the current post based on the slug
+// const { slug } = Astro.params;
+// const post = publishedPosts.find((post) => post.slug === slug);
+
+// // If the post is not found, throw an error
+// if (!post) {
+//     throw new Error(`Post not found for slug: ${slug}`);
+// }
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8" />
+        <title>Titulo</title>
+    </head>
+    <body>
+        <header class="top_header">
+            <h1><a href="/">Felipe Loaiza</a></h1>
+            <Contact />
+        </header>
+        <main class="main__container markdown">
+            <div class="top_content">
+                <h1>{post.data.title}</h1>
+                <p>{post.data.date}</p>
+            </div>
+            <Content />
+        </main>
+        <!-- <h1>{currentPost.data.title}</h1>
+        <article>
+            {currentPost.body}
+        </article> -->
+    </body>
+</html>
+
+<style>
+    .top_header {
+        top: 0;
+        left: 0;
+        position: fixed;
+        height: 10vh;
+        width: 100%;
+        background-color: rgb(0, 149, 255);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10vw;
+        font-family: "Nohemi";
+        font-weight: 300;
+    }
+
+    .top_header h1 {
+        font-size: var(--medium);
+    }
+
+    .main__container {
+        width: 100%;
+        padding: 10vh 20vw 0 20vw;
+        height: fit-content;
+    }
+
+    .top_content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(9, 241, 33);
+        margin: 5vh 0;
+    }
+</style>
