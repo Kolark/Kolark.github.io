@@ -21,7 +21,7 @@ const { info } = Astro.props;
                 ))
             }
         </div>
-        <br />
+        <!-- <br /> -->
         {
             !info.draft && (
                 <a class="project_link" href={`/projects/${info.slug}`}>
@@ -29,8 +29,8 @@ const { info } = Astro.props;
                 </a>
             )
         }
-        <br />
-        <div class="project_date">{info.date}</div>
+        <!-- <br /> -->
+        <!-- <div class="project_date">{info.date}</div> -->
     </div>
     <div class="project_img">
         <img src=`imgs/${info.img}` alt="" />
@@ -42,11 +42,12 @@ const { info } = Astro.props;
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        align-items: stretch;
         background-color: cornflowerblue;
     }
     .project_info {
         position: relative;
-        height: 100%;
+        height: fit-content;
         width: 100%;
         padding: 2vh;
         font-family: "Manrope";
@@ -93,6 +94,7 @@ const { info } = Astro.props;
 
     .project_link {
         font-family: "Manrope";
+        margin-bottom: 5vh;
     }
 
     @media only screen and (max-width: 768px) {

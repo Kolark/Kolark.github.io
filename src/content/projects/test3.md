@@ -13,7 +13,7 @@ stack:
 links:
   - name: "Github"
     url: "https://github.com"
-img: "example.jpg"
+img: "example3.JPG"
 date: "Nov 2020"
 
 draft: false

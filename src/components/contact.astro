@@ -3,7 +3,24 @@
 ---
 
 <p>
-    <a href="">Email</a> -
-    <a href="">Github</a> -
-    <a href="">Linked In</a>
+    <a class="contact_link" href="">Email</a> -
+    <a class="contact_link" href="">Github</a> -
+    <a class="contact_link" href="">Linked In</a>
 </p>
+
+<script>
+    import gsap from "gsap";
+
+    gsap.fromTo(
+        ".contact_link",
+        {
+            opacity: 0,
+        },
+        {
+            opacity: 1,
+            stagger: 0.15,
+            duration: 0.75,
+            ease: "power2.out", // Smooth easing
+        }
+    );
+</script>

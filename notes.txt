@@ -1,11 +1,5 @@
-animations to implement using gsap
-
 set colors
 
 and then only then implement three js cool background
-
-create animations for [slug]
-in index create projects based on markdowns
-
 
 add content
