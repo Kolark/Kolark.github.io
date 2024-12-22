@@ -21,16 +21,19 @@ const { info } = Astro.props;
                 ))
             }
         </div>
-        <!-- <br /> -->
+        <br />
         {
             !info.draft && (
-                <a class="project_link" href={`/projects/${info.slug}`}>
-                    See more
-                </a>
+                <div>
+                    <a class="project_link" href={`/projects/${info.slug}`}>
+                        See more
+                    </a>
+                    <br />
+                </div>
             )
         }
         <!-- <br /> -->
-        <!-- <div class="project_date">{info.date}</div> -->
+        <div class="project_date">{info.date}</div>
     </div>
     <div class="project_img">
         <img src=`imgs/${info.img}` alt="" />
@@ -39,15 +42,16 @@ const { info } = Astro.props;
 
 <style>
     .project_card {
-        width: 100%;
         display: grid;
+        width: 100%;
         grid-template-columns: 1fr 1fr;
-        align-items: stretch;
+        grid-auto-rows: min-content;
+
         background-color: cornflowerblue;
     }
     .project_info {
         position: relative;
-        height: fit-content;
+        /* height: fit-content; */
         width: 100%;
         padding: 2vh;
         font-family: "Manrope";
@@ -60,11 +64,18 @@ const { info } = Astro.props;
     .project_img {
         height: 100%;
         width: 100%;
+
+        position: relative;
+        min-height: 0;
+        overflow: hidden;
     }
 
     .project_img img {
-        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
         object-fit: cover;
     }
     .stack_list {
@@ -86,15 +97,11 @@ const { info } = Astro.props;
     }
 
     .project_date {
-        position: absolute;
-        bottom: 2vh;
-        left: 2vh;
         font-size: 0.7rem;
     }
 
     .project_link {
         font-family: "Manrope";
-        margin-bottom: 5vh;
     }
 
     @media only screen and (max-width: 768px) {
@@ -106,6 +113,13 @@ const { info } = Astro.props;
 
         .project_img {
             max-height: 400px;
+        }
+
+        .project_img img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 </style>

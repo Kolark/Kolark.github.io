@@ -1,5 +1,5 @@
+add content
+
 set colors
 
 and then only then implement three js cool background
-
-add content
