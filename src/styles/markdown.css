@@ -7,4 +7,9 @@
   .markdown p {
     font-family: "Manrope";
     font-weight: 300;
+    font-size: 1.25rem;
+  }
+
+  .markdown img {
+    width: 100%;
   }

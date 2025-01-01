@@ -2,4 +2,9 @@ add content
 
 set colors
 
+make the links different, to let people know they are links,
+change animation of content from pages
+
+Ver si es posible tener paginas en paginas, osea poder tener proyectos personales en su propia carpeta.
+
 and then only then implement three js cool background
