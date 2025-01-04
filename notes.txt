@@ -7,4 +7,8 @@ change animation of content from pages
 
 Ver si es posible tener paginas en paginas, osea poder tener proyectos personales en su propia carpeta.
 
-and then only then implement three js cool background
+
+see if it has to be a 3d or can it be just a 2d image with a fragment shader
+
+Revisar el posicionamiento del circulo y el codigo para entenderlo bien
+cambiar los colores de negro a blanco
