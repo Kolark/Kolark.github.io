@@ -35,7 +35,6 @@ import Contact from "./contact.astro";
     <div class="about__scroll">Scroll Down</div>
     <div class="about__scroll">Scroll Down</div>
     <div class="about__scroll">Scroll Down</div>
-    <div id="about__container"></div>
 </div>
 
 <style>
@@ -46,16 +45,7 @@ import Contact from "./contact.astro";
         display: grid;
         grid-template-columns: 8fr 4fr;
         position: relative;
-        color: wheat;
-    }
-
-    #about__container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+        color: var(--colorD);
     }
 
     .main__container {
@@ -198,7 +188,7 @@ import Contact from "./contact.astro";
 
 <script>
     import gsap from "gsap";
-    import Sketch from "../sketch2";
+
     gsap.fromTo(
         ".anim1", // Target elements
         {
@@ -236,9 +226,5 @@ import Contact from "./contact.astro";
                 repeatDelay: 2,
             }
         );
-    });
-
-    new Sketch({
-        dom: document.getElementById("about__container"),
     });
 </script>

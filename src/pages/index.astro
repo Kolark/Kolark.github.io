@@ -20,6 +20,7 @@ import Skills from "../components/skills.astro";
             <br /><br /><br />
             <Projects />
         </div>
+        <div id="about__container"></div>
     </body>
 </html>
 
@@ -28,10 +29,27 @@ import Skills from "../components/skills.astro";
         height: fit-content;
         width: 100%;
     }
+
+    body {
+        position: relative;
+        color: wheat;
+    }
+
+    #about__container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 </style>
 
 <script>
+    import Sketch from "../sketch2";
     import gsap from "gsap";
+    import ScrollTrigger from "gsap/ScrollTrigger";
+    gsap.registerPlugin(ScrollTrigger);
 
     for (let e of document.querySelectorAll("a")) {
         let t = gsap.timeline({ paused: true }).fromTo(
@@ -57,4 +75,39 @@ import Skills from "../components/skills.astro";
             });
         };
     }
+
+    const canvas_gl = new Sketch({
+        dom: document.getElementById("about__container"),
+    });
+
+    let pageTransition = { progress: 0 };
+
+    ScrollTrigger.create({
+        trigger: ".skills__title",
+        start: "top 45%",
+        end: "top 65%",
+        onEnter: () => {
+            gsap.to(pageTransition, {
+                progress: 1,
+                duration: 1,
+                ease: "power2.out",
+                onUpdate: () => {
+                    canvas_gl.material.uniforms.pagetransition.value =
+                        pageTransition.progress;
+                },
+            });
+        },
+        onEnterBack: () => {
+            gsap.to(pageTransition, {
+                progress: 0,
+                duration: 1,
+                ease: "power2.in",
+                onUpdate: () => {
+                    canvas_gl.material.uniforms.pagetransition.value =
+                        pageTransition.progress;
+                },
+            });
+        },
+        markers: false,
+    });
 </script>

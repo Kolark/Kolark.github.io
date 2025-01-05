@@ -7,6 +7,10 @@
     --regular: 1.6rem;
     --small: 1.2rem;
     --main-padding:6vw;
+    --colorA:#DB910C;
+    --colorB:#0B25DB;
+    --colorC:#32385C;
+    --colorD:#32385C;
 }
 
 @font-face {

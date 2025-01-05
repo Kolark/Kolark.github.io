@@ -28,6 +28,8 @@ export default class Sketch {
             fragmentShader: fragment,
             uniforms: {
                 iTime: { value: 0 },
+                scroll: { value: 0 },
+                pagetransition: { value: 0 },
                 uResolution: {
                     value: new THREE.Vector2(this.width, this.height),
                 },
@@ -46,6 +48,7 @@ export default class Sketch {
         this.camera.position.z = 1;
 
         this.setupResize();
+        this.setupScroll();
         this.render();
     }
 
@@ -59,6 +62,17 @@ export default class Sketch {
         this.renderer.setSize(this.width, this.height);
     }
 
+    setupScroll() {
+        window.addEventListener("scroll", () => {
+            const scrollTop =
+                window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+            const scrollPercentage = scrollTop / scrollHeight;
+            this.material.uniforms.scroll.value = scrollPercentage;
+        });
+    }
     render() {
         this.time += 0.001;
         this.material.uniforms.iTime.value = this.time;

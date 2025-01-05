@@ -3,8 +3,8 @@ import "../styles/globals.css";
 ---
 
 <div class="skills_interests__container">
-    <h1 class="skills__title">Skills</h1>
-    <div class="skills_list">
+    <h1 class="skills__title skills_elm">Skills</h1>
+    <div class="skills_list skills_elm">
         <p class="skills_list-text" id="movingText">
             Unity-C#-GLSL-Python-Git-Javascript-Next JS-SQL-
         </p>
@@ -15,7 +15,7 @@ import "../styles/globals.css";
             Unity-C#-GLSL-Python-Git-Javascript-Next JS-SQL-
         </p>
     </div>
-    <h1 class="interests__title">Interests</h1>
+    <h1 class="interests__title skills_elm">Interests</h1>
     <div class="interests__list">
         <div class="interests__container">
             <p class="interest">Graphics Programming</p>
@@ -97,8 +97,9 @@ import "../styles/globals.css";
     const tl = gsap.timeline({
         scrollTrigger: {
             trigger: ".interests__container",
-            start: "top 75%", // When the top of the container is 75% down the viewport
-            end: "top 25%", // When the top of the container is 25% down the viewport
+            start: "top 75%",
+            end: "top 25%",
+            toggleActions: "play none reverse none",
         },
     });
 
@@ -119,6 +120,22 @@ import "../styles/globals.css";
         {
             opacity: 1, // Fade in
             stagger: 0.25,
+        }
+    );
+
+    gsap.fromTo(
+        ".skills_elm",
+        { opacity: 0 },
+        {
+            opacity: 1,
+            duration: 1,
+            scrollTrigger: {
+                trigger: ".skills__title",
+                start: "top 50%",
+                end: "top 50%",
+                toggleActions: "play none reverse none",
+                markers: true,
+            },
         }
     );
 </script>
