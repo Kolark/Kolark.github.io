@@ -1,9 +1,1 @@
-set colors
-
-make the links different, to let people know they are links,
-change animation of content from pagesn
-
 Ver si es posible tener paginas en paginas, osea poder tener proyectos personales en su propia carpeta.
-
-hacer que el circulito crezca y decrezca con gsap y scroll trigger
-asi mismo usando scroll trigger hacer que toda la parte de skills aparezca

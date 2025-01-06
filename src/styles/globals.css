@@ -7,10 +7,11 @@
     --regular: 1.6rem;
     --small: 1.2rem;
     --main-padding:6vw;
-    --colorA:#DB910C;
-    --colorB:#0B25DB;
+    --colorLink:#040B47;
+    --colorlink_highlight:#DB910C;
+    --colorB:#3E3EB8;
     --colorC:#32385C;
-    --colorD:#32385C;
+    --colorD:#F7F7C8;
 }
 
 @font-face {
@@ -38,12 +39,13 @@ a {
     --line-progress: 0%;
     position: relative;
     text-decoration: none;
+    color: var(--colorlink_highlight);
 }
 
 a:before {
     content: "";
     width: var(--line-progress);
-    background-color: red;
+    background-color: var(--colorlink_highlight);
     height: 2px;
     position: absolute;
     bottom: 0;

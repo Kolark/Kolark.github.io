@@ -13,6 +13,7 @@ import Skills from "../components/skills.astro";
         <title>Document</title>
     </head>
     <body>
+        <div id="about__container"></div>
         <div class="page__container">
             <About />
             <br /><br /><br />
@@ -20,7 +21,6 @@ import Skills from "../components/skills.astro";
             <br /><br /><br />
             <Projects />
         </div>
-        <div id="about__container"></div>
     </body>
 </html>
 
@@ -32,7 +32,8 @@ import Skills from "../components/skills.astro";
 
     body {
         position: relative;
-        color: wheat;
+        background-color: var(--colorC);
+        color: var(--colorD);
     }
 
     #about__container {
@@ -76,38 +77,45 @@ import Skills from "../components/skills.astro";
         };
     }
 
-    const canvas_gl = new Sketch({
-        dom: document.getElementById("about__container"),
-    });
+    function isPhone() {
+        const isMobileAgent = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+        const isSmallScreen = window.innerWidth <= 768;
+        return isMobileAgent || isSmallScreen;
+    }
+    if (!isPhone()) {
+        const canvas_gl = new Sketch({
+            dom: document.getElementById("about__container"),
+        });
 
-    let pageTransition = { progress: 0 };
+        let pageTransition = { progress: 0 };
 
-    ScrollTrigger.create({
-        trigger: ".skills__title",
-        start: "top 45%",
-        end: "top 65%",
-        onEnter: () => {
-            gsap.to(pageTransition, {
-                progress: 1,
-                duration: 1,
-                ease: "power2.out",
-                onUpdate: () => {
-                    canvas_gl.material.uniforms.pagetransition.value =
-                        pageTransition.progress;
-                },
-            });
-        },
-        onEnterBack: () => {
-            gsap.to(pageTransition, {
-                progress: 0,
-                duration: 1,
-                ease: "power2.in",
-                onUpdate: () => {
-                    canvas_gl.material.uniforms.pagetransition.value =
-                        pageTransition.progress;
-                },
-            });
-        },
-        markers: false,
-    });
+        ScrollTrigger.create({
+            trigger: ".skills__title",
+            start: "top 45%",
+            end: "top 65%",
+            onEnter: () => {
+                gsap.to(pageTransition, {
+                    progress: 1,
+                    duration: 1,
+                    ease: "power2.out",
+                    onUpdate: () => {
+                        canvas_gl.material.uniforms.pagetransition.value =
+                            pageTransition.progress;
+                    },
+                });
+            },
+            onEnterBack: () => {
+                gsap.to(pageTransition, {
+                    progress: 0,
+                    duration: 1,
+                    ease: "power2.in",
+                    onUpdate: () => {
+                        canvas_gl.material.uniforms.pagetransition.value =
+                            pageTransition.progress;
+                    },
+                });
+            },
+            markers: false,
+        });
+    }
 </script>

@@ -9,8 +9,8 @@ stack:
   - Web Gl
   - Three js
 links:
-  - name: Github
-    link: https://kolark.github.io/36daysoftype/
+  - name: "Github"
+    url: "https://kolark.github.io/36daysoftype/"
 img: "36days.jpg"
 date: "May 2023"
 

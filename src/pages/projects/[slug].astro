@@ -44,13 +44,16 @@ const { Content } = await post.render();
 </html>
 
 <style>
+    body {
+        background-color: var(--colorD);
+    }
     .top_header {
         top: 0;
         left: 0;
         position: fixed;
         height: 10vh;
         width: 100%;
-        background-color: rgb(0, 149, 255);
+        background-color: var(--colorC);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -68,6 +71,7 @@ const { Content } = await post.render();
         width: 100%;
         padding: 10vh 20vw 0 20vw;
         height: fit-content;
+        color: var(--colorC);
     }
 
     .top_content {
@@ -75,8 +79,7 @@ const { Content } = await post.render();
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: rgb(9, 241, 33);
-        margin: 5vh 0;
+        margin: 5vh 0 0 0;
     }
 
     .top_content h1 {
@@ -91,6 +94,31 @@ const { Content } = await post.render();
 
 <script>
     import gsap from "gsap";
+
+    for (let e of document.querySelectorAll("a")) {
+        let t = gsap.timeline({ paused: true }).fromTo(
+            e,
+            {
+                "--line-progress": "0%",
+            },
+            {
+                "--line-progress": "100%",
+                ease: "none",
+                duration: 0.6,
+            }
+        );
+
+        e.onmouseenter = () => {
+            t.tweenTo(t.duration(), {
+                ease: "expo.out",
+            });
+        };
+        e.onmouseleave = () => {
+            t.tweenTo(0, {
+                ease: "expo.out",
+            });
+        };
+    }
 
     const tl = gsap.timeline();
 
@@ -112,12 +140,11 @@ const { Content } = await post.render();
 
     tl.fromTo(
         "main",
-        { opacity: 0, y: "5%" },
+        { opacity: 0 },
         {
             opacity: 1,
             duration: 0.75,
             ease: "power2.out",
-            y: "0%",
         }
     );
 </script>

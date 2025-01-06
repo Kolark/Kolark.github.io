@@ -45,7 +45,13 @@ import Contact from "./contact.astro";
         display: grid;
         grid-template-columns: 8fr 4fr;
         position: relative;
-        color: var(--colorD);
+        color: var(--colorC);
+    }
+
+    @media only screen and (max-width: 768px) {
+        .landing__container {
+            background-color: var(--colorD);
+        }
     }
 
     .main__container {
@@ -132,6 +138,7 @@ import Contact from "./contact.astro";
         height: 1rem;
         width: 1rem;
         border-radius: 1rem;
+        background-color: greenyellow;
     }
 
     @media only screen and (max-width: 1024px) {

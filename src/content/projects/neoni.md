@@ -8,12 +8,12 @@ stack:
   - C#
   - GIT
 links:
-  - name: Github
-    link: https://github.com/Kolark/Taller7_NeOni
-  - name: Build
-    link: https://drive.google.com/file/d/1vNeJjM7gH0vackEC7pD9wipM8Cp36Shw
-  - name: Simmer.io
-    link: https://simmer.io/@SrGomer/ne-oni
+  - name: "Github"
+    url: "https://github.com/Kolark/Taller7_NeOni"
+  - name: "Build"
+    url: "https://drive.google.com/file/d/1vNeJjM7gH0vackEC7pD9wipM8Cp36Shw"
+  - name: "Simmer.io"
+    url: "https://simmer.io/@SrGomer/ne-oni"
 
 img: "neoni/neoni1.jpg"
 date: "May 2021 - Nov 2021"
