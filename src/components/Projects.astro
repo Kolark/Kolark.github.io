@@ -72,7 +72,7 @@ console.log(projects);
         }
     );
 
-    gsap.utils.toArray(".project_card").forEach((el, index) => {
+    gsap.utils.toArray(".project_card").forEach((el: any, index: any) => {
         gsap.fromTo(
             el,
             {

@@ -213,9 +213,7 @@ import Contact from "./contact.astro";
         }
     );
 
-    const tl = gsap.timeline({ repeat: -1 });
-
-    gsap.utils.toArray(".about__scroll").forEach((el, index) => {
+    gsap.utils.toArray(".about__scroll").forEach((el: any, index: any) => {
         gsap.fromTo(
             el,
             {

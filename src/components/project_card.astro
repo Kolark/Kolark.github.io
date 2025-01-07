@@ -9,13 +9,13 @@ const { info } = Astro.props;
         <br />
         <div class="stack_list">
             <h3>Made using:</h3>
-            {info.stack.map((e) => <p class="stack_element">{e}</p>)}
+            {info.stack.map((e: any) => <p class="stack_element">{e}</p>)}
         </div>
         <br />
         <div class="links_list">
             {info.links.length > 0 && <h3 class="links_title">Links:</h3>}
             {
-                info.links.map((e) => (
+                info.links.map((e: any) => (
                     <a href={e.url} target="_blank">
                         {e.name}
                     </a>
