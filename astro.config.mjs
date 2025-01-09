@@ -7,6 +7,9 @@ import rehypeExternalLinks from "rehype-external-links";
 export default defineConfig({
     site: "https://kolark.github.io",
     outDir: "./docs",
+    build: {
+        assets: "assets",
+    },
     vite: {
         plugins: [glsl()],
     },
