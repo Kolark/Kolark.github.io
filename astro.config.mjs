@@ -5,6 +5,7 @@ import rehypeExternalLinks from "rehype-external-links";
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://kolark.github.io",
     outDir: "./docs",
     vite: {
         plugins: [glsl()],
