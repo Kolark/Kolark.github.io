@@ -4,10 +4,11 @@
     font-weight: 300;
   }
   
-  .markdown p {
+  .markdown p, th {
     font-family: "Manrope";
     font-weight: 300;
     font-size: 1.25rem;
+    margin: 1rem 0;
   }
 
   .markdown img {

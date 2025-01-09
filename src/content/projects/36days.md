@@ -11,8 +11,10 @@ stack:
 links:
   - name: "Github"
     url: "https://kolark.github.io/36daysoftype/"
+  - name: "Website"
+    url: "/projects/36daysoftype/index.html"
 img: "36days.jpg"
 date: "May 2023"
-
+order: 4
 draft: true
 ---

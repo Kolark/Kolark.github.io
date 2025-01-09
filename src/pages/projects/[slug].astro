@@ -7,6 +7,7 @@ import Contact from "../../components/contact.astro";
 export async function getStaticPaths() {
     const allposts = await getCollection("projects");
     const posts = allposts.filter((post) => !post.data.draft);
+
     return posts.map((post) => ({
         params: { slug: post.slug },
         props: { post },
@@ -22,7 +23,7 @@ const { Content } = await post.render();
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="UTF-8" />
-        <title>Titulo</title>
+        <title>{post.data.title}</title>
     </head>
     <body>
         <header class="top_header">
@@ -36,10 +37,6 @@ const { Content } = await post.render();
             </div>
             <Content />
         </main>
-        <!-- <h1>{currentPost.data.title}</h1>
-        <article>
-            {currentPost.body}
-        </article> -->
     </body>
 </html>
 
