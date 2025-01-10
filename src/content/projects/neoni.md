@@ -9,7 +9,7 @@ stack:
   - GIT
 links:
   - name: "Github"
-    url: "https://github.com/Kolark/Taller7_NeOni"
+    url: "https://github.com/Kolark/NeoniT7"
   - name: "Build"
     url: "https://drive.google.com/file/d/1vNeJjM7gH0vackEC7pD9wipM8Cp36Shw"
   - name: "Simmer.io"

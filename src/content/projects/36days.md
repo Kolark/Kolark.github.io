@@ -10,7 +10,7 @@ stack:
   - Three js
 links:
   - name: "Github"
-    url: "https://kolark.github.io/36daysoftype/"
+    url: "https://github.com/Kolark/36daysoftype"
   - name: "Website"
     url: "/projects/36daysoftype/index.html"
 img: "36days.jpg"

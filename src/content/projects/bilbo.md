@@ -8,8 +8,6 @@ stack:
   - C#
   - GIT
 links:
-  - name: "Playstore"
-    url: "https://play.google.com/store/apps/details?id=projectTaller6.BilbosPlan"
   - name: "Github"
     url: "https://github.com/Kolark/BilboProjectTaller6"
   - name: "GGJ 2020"
