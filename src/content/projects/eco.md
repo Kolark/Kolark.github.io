@@ -2,7 +2,9 @@
 slug: eco
 title: "Eco"
 description: >
-  During my college internship, I worked on a Multiplayer Mobile Escape Room project. My primary role as a Unity Developer was to develop the client-side multiplayer architecture using REST APIs and sockets, as well as to design and implement the game's UI. Disclaimer: Due to an agreement, I am unable to share images of the project at the time of writing this.
+  Developed by Strange Loop Games, Eco is an online game where players collaborate to build a civilization and advance it technologically to stop a meteor, all while preserving the ecosystem.
+
+  I focused on core gameplay elements, including object occupancies, player interactions, and tools, while debugging and resolving issues in both client-side and server-side code.
 stack:
   - Unity
   - C#
